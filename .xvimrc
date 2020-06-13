@@ -1,0 +1,44 @@
+syn on
+let mapleader=" "
+set nocompatible
+set encoding=UTF-32
+set directory^=$HOME/.vim/tmp//
+set undodir=~/.vim/undodir
+set nu
+set modelines=0
+set mouse=v
+set autoindent
+set lazyredraw
+set undolevels=10000
+set noswapfile
+set nobackup
+set undofile
+set splitbelow
+set splitright
+set path+=**
+set guioptions=
+set relativenumber
+set nowrap
+set antialias
+set nocursorline
+set nowrap
+set numberwidth=4
+set noru
+set hlsearch
+set incsearch
+set smartcase
+set smarttab
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set noerrorbells
+set novisualbell
+set scrolloff=50
+set cmdheight=1
+set updatetime=50
+set linespace=2
+set hidden
+filetype plugin on
+nohls
+
