@@ -3,6 +3,7 @@
 !.config/karabiner/karabiner.json
 !.gitconfig
 !.gitignore
+!README.md
 !.vimrc
 !.vuerc
 !.xvimrc
