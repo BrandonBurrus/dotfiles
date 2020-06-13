@@ -4,6 +4,7 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting brew fzf iterm2 mvn tmu
 
 export ANDROID_HOME=/Users/Brandon/Library/Android/sdk
 export ANDROID_SDK_ROOT=/Users/Brandon/Library/Android/sdk
+export ECLIM=/Users/Brandon/eclipse/jee-2020-03/Eclipse.app/Contents/Eclipse
 export GOPATH=~/Files/Go
 export M2_PATH=~/.m2
 export PATH=$PATH:$GOPATH/bin

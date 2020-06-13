@@ -350,6 +350,7 @@ hi! link netrwPlain Identifier
 hi! link netrwDir Function
 hi! link netrwClassify Normal
 hi! link netrwTreeBar Normal
+hi! link netrwExe Constant
 
 " Spell Checking
 call s:X("SpellBad","","902020","underline","","DarkRed")
