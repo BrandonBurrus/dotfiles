@@ -345,6 +345,12 @@ hi! link MoreMsg Special
 hi! link StartifyNumber Constant
 hi! link StartifyPath Function
 
+" Netrw
+hi! link netrwPlain Identifier
+hi! link netrwDir Function
+hi! link netrwClassify Normal
+hi! link netrwTreeBar Normal
+
 " Spell Checking
 call s:X("SpellBad","","902020","underline","","DarkRed")
 call s:X("SpellCap","","0000df","underline","","Blue")

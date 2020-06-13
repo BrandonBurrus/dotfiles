@@ -58,7 +58,7 @@ nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <leader>0 :e ~/.vimrc<CR>
 nnoremap <ESC><ESC> :nohls<CR><C-z>
 nnoremap <leader>\ :so % <CR>
-nnoremap <leader>u :UndotreeShow<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>l :Lines<CR>
 nnoremap <leader>w :bd<CR>
 nnoremap <leader>t :term<CR>
@@ -66,9 +66,9 @@ nnoremap <leader>gc :Commits<CR>
 nnoremap <leader>s :Snippets<CR>
 nnoremap <leader>b :Buffers<CR>
 noremap <SPACE> <Nop>
+noremap <D-E> :Explore<CR>
 noremap <silent> <C-p> :FZF!<CR>
 noremap <silent> <D-/> :Commentary<CR>
-noremap <silent> <D-E> :NERDTreeToggle<CR><C-w>=
 noremap <D-H> <C-w>R
 noremap <D-L> <C-w>R
 noremap <D-1> 1<C-w><C-w>
@@ -87,29 +87,28 @@ set shell=/bin/zsh
 
 " Plugins
 call plug#begin("~/.vim/autoload")
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ycm-core/YouCompleteMe'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-repeat'
-Plug 'mbbill/undotree'
-Plug 'sheerun/vim-polyglot'
 Plug 'danro/rename.vim'
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'mhinz/vim-startify'
-Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
-Plug 'mattn/emmet-vim'
 Plug 'ervandew/supertab'
-Plug 'junegunn/vim-emoji'
-Plug 'w0rp/ale'
-Plug 'mileszs/ack.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-emoji'
+Plug 'mattn/emmet-vim'
+Plug 'mbbill/undotree'
+Plug 'mhinz/vim-startify'
+Plug 'mileszs/ack.vim'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'w0rp/ale'
+Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 " Plugin configs
@@ -135,8 +134,6 @@ let g:netrw_winsize = 25
 let g:prettier#config#parser="babylon"
 let g:prettier#autoformat=1
 let g:jsx_ext_required=0
-let g:NERDTreeDirArrowExpandable = ' '
-let g:NERDTreeDirArrowCollapsible = ' '
 let g:ycm_add_preview_to_completeopt=0
 let g:indentLine_color_gui = '#2f2f2f'
 let g:airline_theme='minimalist'
@@ -152,6 +149,8 @@ let g:ale_sign_error = emoji#for('exclamation')
 let g:ale_sign_warning = emoji#for('small_orange_diamond')
 let g:ale_lint_on_enter = 1
 let g:startify_custom_header = []
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
 
 " Font
 if has ('gui_running')
@@ -169,7 +168,6 @@ autocmd BufRead,BufNewFile .babelrc setfiletype json
 autocmd BufRead,BufNewFile *.mdx set syntax=markdown
 autocmd VimResized * wincmd =
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 autocmd BufWinEnter *
   \ if !exists('t:startify_new_tab')
   \     && empty(expand('%'))
