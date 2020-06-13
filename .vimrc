@@ -67,7 +67,7 @@ nnoremap <leader>s :Snippets<CR>
 nnoremap <leader>b :Buffers<CR>
 noremap <SPACE> <Nop>
 noremap <D-E> :Explore<CR>
-noremap <silent> <C-p> :FZF!<CR>
+noremap <silent> <C-p> :GFiles!<CR>
 noremap <silent> <D-/> :Commentary<CR>
 noremap <D-H> <C-w>R
 noremap <D-L> <C-w>R
@@ -127,10 +127,12 @@ let g:go_highlight_generate_tags = 1
 let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_auto_sameids = 1
-let g:netrw_browse_split = 2
 let g:vrfr_rg = 'true'
+" let g:netrw_browse_split = 2
 let g:netrw_banner = 0
-let g:netrw_winsize = 25
+" let g:netrw_winsize = 25
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
 let g:prettier#config#parser="babylon"
 let g:prettier#autoformat=1
 let g:jsx_ext_required=0
@@ -152,8 +154,7 @@ let g:ale_sign_error = emoji#for('exclamation')
 let g:ale_sign_warning = emoji#for('small_orange_diamond')
 let g:ale_lint_on_enter = 1
 let g:startify_custom_header = []
-let g:netrw_liststyle = 3
-let g:netrw_banner = 0
+let g:ycm_auto_hover=''
 
 " Font
 if has ('gui_running')

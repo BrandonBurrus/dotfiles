@@ -352,6 +352,8 @@ hi! link netrwClassify Normal
 hi! link netrwTreeBar Normal
 hi! link netrwExe Constant
 
+hi! link jsonKeyword Identifier
+
 " Spell Checking
 call s:X("SpellBad","","902020","underline","","DarkRed")
 call s:X("SpellCap","","0000df","underline","","Blue")
