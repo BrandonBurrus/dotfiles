@@ -1,5 +1,10 @@
 /**
 
 !.gitignore
+!.gitconfig
+!.config/karabiner/karabiner.json
 !.vimrc
+!.vuerc
 !.xvimrc
+!.zshrc
+

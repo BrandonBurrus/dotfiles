@@ -1,3 +1,5 @@
+" Brandon Burrus .xvimrc
+"
 syn on
 let mapleader=" "
 set nocompatible
