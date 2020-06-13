@@ -1,8 +1,8 @@
 /**
 
-!.gitignore
-!.gitconfig
 !.config/karabiner/karabiner.json
+!.gitconfig
+!.gitignore
 !.vimrc
 !.vuerc
 !.xvimrc
