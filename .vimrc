@@ -151,8 +151,7 @@ let g:ale_sig_column_always = 1
 let g:ale_sign_error = emoji#for('exclamation')
 let g:ale_sign_warning = emoji#for('small_orange_diamond')
 let g:ale_lint_on_enter = 1
-let g:startify_custom_header = ''
-" nobuflisted
+let g:startify_custom_header = []
 
 " Font
 if has ('gui_running')

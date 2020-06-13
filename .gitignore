@@ -1,6 +1,5 @@
 /**
 
-!.config/karabiner/karabiner.json
 !.gitconfig
 !.gitignore
 !.gvimrc
@@ -9,4 +8,6 @@
 !.xvimrc
 !.zshrc
 !README.md
+!~/.config/karabiner/karabiner.json
+!~/.vim/colors/neonchalk.vim
 
