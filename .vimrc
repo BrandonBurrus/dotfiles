@@ -151,6 +151,8 @@ let g:ale_sig_column_always = 1
 let g:ale_sign_error = emoji#for('exclamation')
 let g:ale_sign_warning = emoji#for('small_orange_diamond')
 let g:ale_lint_on_enter = 1
+let g:startify_custom_header = ''
+" nobuflisted
 
 " Font
 if has ('gui_running')
@@ -169,6 +171,14 @@ autocmd BufRead,BufNewFile *.mdx set syntax=markdown
 autocmd VimResized * wincmd =
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+autocmd BufWinEnter *
+  \ if !exists('t:startify_new_tab')
+  \     && empty(expand('%'))
+  \     && empty(&l:buftype)
+  \     && &l:modifiable |
+  \   let t:startify_new_tab = 1 |
+  \   Startify |
+  \ endif
 
 " Vertical bar overrides
 let g:airline#extensions#tabline#left_alt_sep = ' '
