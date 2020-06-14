@@ -2,15 +2,15 @@
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting brew fzf iterm2 mvn tmux vi-mode common-aliases)
 
-export ANDROID_HOME=/Users/Brandon/Library/Android/sdk
-export ANDROID_SDK_ROOT=/Users/Brandon/Library/Android/sdk
-export ECLIM=/Users/Brandon/eclipse/jee-2020-03/Eclipse.app/Contents/Eclipse
+export ANDROID_HOME=~/Library/Android/sdk
+export ANDROID_SDK_ROOT=~/Library/Android/sdk
+export ECLIM=~/eclipse/jee-2020-03/Eclipse.app/Contents/Eclipse
 export FZF_DEFAULT_COMMAND='ag --ignore node_modules -g'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export GOPATH=~/Files/Go
 export M2_PATH=~/.m2
 export PATH=$PATH:$GOPATH/bin
-export ZSH="/Users/Brandon/.oh-my-zsh"
+export ZSH="~/.oh-my-zsh"
 export ZSH_THEME="agnoster"
 
 source $ZSH/oh-my-zsh.sh
