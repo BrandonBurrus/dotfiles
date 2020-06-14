@@ -69,7 +69,7 @@ nnoremap <silent><Down> :resize -2<CR>
 nnoremap <leader>0 :e ~/.vimrc<CR>
 nnoremap <leader>9 :UltiSnipsEdit<CR>
 nnoremap <silent> <leader>\ :so % <CR>
-nnoremap <silent> <leader>b :BuffersToggle<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>g1 :diffget //2<CR>
 nnoremap <silent> <leader>g2 :diffget //3<CR>
 nnoremap <silent> <leader>gb :Gblame<CR>

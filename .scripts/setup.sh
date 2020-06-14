@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "⚡️ Starting Setup"
+
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 # Install or upgrade Homebrew
@@ -19,6 +21,8 @@ if ! [[ -d ~/.oh-my-zsh ]]; then
 fi
 
 # Install Programs
+echo "⚡️ Installing Programs"
+
 PROGRAMS=(
     ack
     awscli
@@ -64,12 +68,15 @@ for PROGRAM in "${PROGRAMS[@]}"; do
 done
 
 # Install Apps
+echo "⚡️ Installing Apps"
+
 APPS=(
     dash
     google-chrome
     iterm2
     jetbrains-toolbox
     mongodb-compass-community
+    mysqlworkbench
     postman
     slack
     spotify
@@ -83,6 +90,35 @@ for APP in "${APPS[@]}"; do
         brew cask install --appdir="/Applications" "$APP"
     fi
 done
+
+# Install NPM Packages
+echo "📦 Installing NPM Packages"
+
+PACKAGES=(
+    @angular/cli
+    @vue/cli
+    caniuse-cmd
+    conventional-changelog-cli
+    create-react-app
+    gatsby-cli
+    jest
+    lerna
+    majestic
+    netlify-cli
+    next
+    node-sass
+    nodemon
+    parcel
+    react-devtools
+    release-it
+    serve
+    ts-node
+    typescript
+    vsce
+    yarn
+)
+
+npm i -g "${PACKAGES[@]}"
 
 # Clean up
 echo "♻️  Performing cleanup"
