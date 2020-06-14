@@ -3,3 +3,5 @@
 	email = brandon@burrus.io
 [core]
 	ignorecase = true
+[hub]
+	protocol = https

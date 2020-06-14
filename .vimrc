@@ -26,6 +26,7 @@ set nocompatible
 set nocursorline
 set noerrorbells
 set noru
+set nospell
 set noswapfile
 set novisualbell
 set nowrap
@@ -36,7 +37,7 @@ set re=0
 set relativenumber
 set scrolloff=50
 set shiftwidth=2
-set shortmess+=c
+set shortmess=a
 set signcolumn=yes
 set smartcase
 set smarttab
@@ -61,9 +62,12 @@ nmap <leader>h <plug>(YCMHover)
 nnoremap <D-j> :m .+1<CR>==<C-z>
 nnoremap <D-k> :m .-2<CR>==<C-z>
 nnoremap <ESC><ESC> :nohls<CR><C-z>
-nnoremap <leader>- :vertical resize -5<CR>
+nnoremap <silent><Right> :vertical resize +4<CR>
+nnoremap <silent><Left> :vertical resize -4<CR>
+nnoremap <silent><Up> :resize +2<CR>
+nnoremap <silent><Down> :resize -2<CR>
 nnoremap <leader>0 :e ~/.vimrc<CR>
-nnoremap <leader>= :vertical resize +5<CR>
+nnoremap <leader>9 :UltiSnipsEdit<CR>
 nnoremap <silent> <leader>\ :so % <CR>
 nnoremap <silent> <leader>b :BuffersToggle<CR>
 nnoremap <silent> <leader>g1 :diffget //2<CR>
@@ -79,6 +83,7 @@ nnoremap <silent> <leader>t :term<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
 nnoremap <silent> <leader>x :Windows<CR>
 nnoremap <silent> <leader>w :bd<CR>
+nnoremap gd :YcmCompleter GoTo<CR>
 noremap <D-1> 1<C-w><C-w>
 noremap <D-2> 2<C-w><C-w>
 noremap <D-3> 3<C-w><C-w>
@@ -102,40 +107,45 @@ set shell=/bin/zsh
 
 " Plugins
 call plug#begin("~/.vim/autoload")
-Plug 'SirVer/ultisnips'
-Plug 'airblade/vim-gitgutter'
-Plug 'danro/rename.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'ervandew/supertab'
-Plug 'honza/vim-snippets'
-Plug 'janko-m/vim-test'
-Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-emoji'
-Plug 'mattn/emmet-vim'
-Plug 'mbbill/undotree'
-Plug 'mhinz/vim-startify'
-Plug 'mileszs/ack.vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'rizzatti/dash.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-vinegar'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'w0rp/ale'
-Plug 'ycm-core/YouCompleteMe'
+  Plug 'SirVer/ultisnips'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'ap/vim-css-color'
+  Plug 'easymotion/vim-easymotion'
+  Plug 'ervandew/supertab'
+  Plug 'haya14busa/incsearch.vim'
+  Plug 'honza/vim-snippets'
+  Plug 'janko-m/vim-test'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/vim-emoji'
+  Plug 'mattn/emmet-vim'
+  Plug 'mbbill/undotree'
+  Plug 'mhinz/vim-startify'
+  Plug 'michaeljsmith/vim-indent-object'
+  Plug 'mileszs/ack.vim'
+  Plug 'peitalin/vim-jsx-typescript'
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+  Plug 'rizzatti/dash.vim'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'tommcdo/vim-exchange'
+  Plug 'tpope/vim-abolish'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-dadbod'
+  Plug 'tpope/vim-dotenv'
+  Plug 'tpope/vim-eunuch'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-obsession'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-sleuth'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-vinegar'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'w0rp/ale'
+  Plug 'xolox/vim-notes'
+  Plug 'ycm-core/YouCompleteMe'
 call plug#end()
-
-function! GitStatus()
-  let [a,m,r] = GitGutterGetHunkSummary()
-  return printf("+%d ~%d -%d", a, m, r)
-endfunction
 
 " Plugin configs
 let loadedmatchparen = 0
@@ -164,7 +174,7 @@ let g:ycm_add_preview_to_completeopt=0
 let g:indentLine_color_gui = '#2f2f2f'
 let g:airline_theme='minimalist'
 let g:airline_section_x = ''
-let g:airline_section_y = GitStatus()
+let g:airline_section_y = ''
 let g:airline_section_z = '%{strftime("%H:%M")}'
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -180,7 +190,7 @@ let g:ale_lint_on_enter = 1
 let g:startify_custom_header = []
 let g:ycm_auto_hover=''
 let g:yats_host_keyword = 1
-let g:UltiSnipsExpandTrigger="<C-@>"
+let g:UltiSnipsExpandTrigger="<C-Space>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:go_highlight_build_constraints = 1

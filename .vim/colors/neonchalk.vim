@@ -353,7 +353,10 @@ call s:X("GitGutterChange","3b3b40","","","Blue","")
 call s:X("GitGutterDelete","3b3b40","","","Red","")
 
 " UltiSnip
+hi! link snipSnippetTrigger Function
 hi! link snipMirror Constant
+hi! link snipTabStop Constant
+hi! link snipTabStopDefault Identifier
 
 " ALE
 call s:X("ALEWarning","","","","","Yellow")
@@ -456,8 +459,10 @@ hi! link typescriptBraces Delimiter
 hi! link typescriptVariable Statement
 hi! link typescriptVariableDeclaration Identifier
 hi! link typescriptIdentifierName Identifier
+hi! link typescriptIdentifier Keyword
 hi! link typescriptPredefinedType Type
 hi! link typescriptEnum Type
+hi! link typescriptClassName Type
 hi! link typescriptTypeReference Type
 hi! link typescriptFuncType Function
 hi! link typescriptUnion Normal
@@ -469,6 +474,12 @@ hi! link typescriptCall Identifier
 hi! link typescriptBlock Identifier
 hi! link typescriptGlobal Function
 hi! link typescriptComputedPropertyName Identifier
+hi! link typescriptOperator Normal
+hi! link typescriptMethodAccessor Keyword
+hi! link typescriptObjectLiteral Function
+hi! link typescriptLoopParen Identifier
+hi! link typescriptConditionalParen Identifier
+hi! link typescriptParenExp Identifier
 
 " Lua
 hi! link luaOperator Conditional
