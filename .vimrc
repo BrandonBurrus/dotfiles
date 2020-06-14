@@ -12,6 +12,7 @@ set cmdheight=1
 set directory^=$HOME/.vim/tmp//
 set encoding=UTF-8
 set expandtab
+set guicursor=
 set guioptions=
 set hidden
 set hlsearch
@@ -36,6 +37,7 @@ set re=0
 set relativenumber
 set scrolloff=50
 set shiftwidth=2
+set shortmess+=c
 set signcolumn=yes
 set smartcase
 set smarttab
@@ -64,6 +66,9 @@ nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <silent> <leader>\ :so % <CR>
 nnoremap <silent> <leader>b :BuffersToggle<CR>
 nnoremap <silent> <leader>gc :Commits<CR>
+nnoremap <silent> <leader>gs :G<CR>
+nnoremap <silent> <leader>g1 :diffget //2<CR>
+nnoremap <silent> <leader>g2 :diffget //3<CR>
 nnoremap <silent> <leader>l :Lines<CR>
 nnoremap <silent> <leader>s :Snippets<CR>
 nnoremap <silent> <leader>t :term<CR>
@@ -82,8 +87,8 @@ noremap <silent> <C-H> :tabN<CR>
 noremap <silent> <C-L> :tabn<CR>
 noremap <silent> <C-p> :GFiles!<CR>
 noremap <silent> <D-/> :Commentary<CR>
-vnoremap <D-j> :m '>+1<CR>gv=gv<C-z>
-vnoremap <D-k> :m '<-2<CR>gv=gv<C-z>
+vnoremap <D-k> :m '<-2<CR>gv=gv
+vnoremap <D-j> :m '>+1<CR>gv=gv
 map <leader>/ :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
@@ -93,7 +98,6 @@ set shell=/bin/zsh
 
 " Plugins
 call plug#begin("~/.vim/autoload")
-Plug 'HerringtonDarkholme/yats.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'danro/rename.vim'
@@ -175,8 +179,22 @@ let g:startify_custom_header = []
 let g:ycm_auto_hover=''
 let g:yats_host_keyword = 1
 let g:UltiSnipsExpandTrigger="<leader><leader>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_auto_sameids = 1
 
 " Font
 if has ('gui_running')

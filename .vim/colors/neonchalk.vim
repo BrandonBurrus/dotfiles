@@ -352,9 +352,9 @@ call s:X("GitGutterChange","3b3b40","","","Blue","")
 call s:X("GitGutterDelete","3b3b40","","","Red","")
 
 " ALE
-call s:X("ALEWarning","","ffcc00","underline","","Yellow")
+call s:X("ALEWarning","","","underline","","Yellow")
 call s:X("ALEWarningSign","","","underline","","Yellow")
-call s:X("ALEError","","902020","","","DarkRed")
+call s:X("ALEError","","","","","DarkRed")
 call s:X("ALEErrorSign","","","","","DarkRed")
 
 " Spell Checking
