@@ -94,10 +94,13 @@ set shell=/bin/zsh
 " Plugins
 call plug#begin("~/.vim/autoload")
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'danro/rename.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
+Plug 'honza/vim-snippets'
+Plug 'janko-m/vim-test'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -108,6 +111,7 @@ Plug 'mhinz/vim-startify'
 Plug 'mileszs/ack.vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'rizzatti/dash.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -170,6 +174,9 @@ let g:ale_lint_on_enter = 1
 let g:startify_custom_header = []
 let g:ycm_auto_hover=''
 let g:yats_host_keyword = 1
+let g:UltiSnipsExpandTrigger="<leader><leader>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Font
 if has ('gui_running')
