@@ -29,7 +29,6 @@ set noru
 set noswapfile
 set novisualbell
 set nowrap
-set nowrap
 set nu
 set numberwidth=4
 set path+=**
@@ -53,26 +52,32 @@ set wildmenu
 filetype plugin on
 nohls
 
+
 " Keymaps
+noremap <SPACE> <Nop>
 inoremap <D-j> <Esc>:m .+1<CR>==gi<C-z>
 inoremap <D-k> <Esc>:m .-2<CR>==gi<C-z>
 nmap <leader>h <plug>(YCMHover)
 nnoremap <D-j> :m .+1<CR>==<C-z>
 nnoremap <D-k> :m .-2<CR>==<C-z>
 nnoremap <ESC><ESC> :nohls<CR><C-z>
+nnoremap <leader>- :vertical resize -5<CR>
 nnoremap <leader>0 :e ~/.vimrc<CR>
-nnoremap <silent> <leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <leader>= :vertical resize +5<CR>
 nnoremap <silent> <leader>\ :so % <CR>
 nnoremap <silent> <leader>b :BuffersToggle<CR>
-nnoremap <silent> <leader>gc :Commits<CR>
-nnoremap <silent> <leader>gs :G<CR>
 nnoremap <silent> <leader>g1 :diffget //2<CR>
 nnoremap <silent> <leader>g2 :diffget //3<CR>
+nnoremap <silent> <leader>gb :Gblame<CR>
+nnoremap <silent> <leader>gc :Commits<CR>
+nnoremap <silent> <leader>gs :G<CR>
+nnoremap <silent> <leader>gc :Gcommit<CR>
 nnoremap <silent> <leader>l :Lines<CR>
+nnoremap <silent> <leader>m :Marks<CR>
 nnoremap <silent> <leader>s :Snippets<CR>
 nnoremap <silent> <leader>t :term<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
+nnoremap <silent> <leader>x :Windows<CR>
 nnoremap <silent> <leader>w :bd<CR>
 noremap <D-1> 1<C-w><C-w>
 noremap <D-2> 2<C-w><C-w>
@@ -82,13 +87,12 @@ noremap <D-5> 5<C-w><C-w>
 noremap <D-E> :Explore<CR>
 noremap <D-H> <C-w>R
 noremap <D-L> <C-w>R
-noremap <SPACE> <Nop>
 noremap <silent> <C-H> :tabN<CR>
 noremap <silent> <C-L> :tabn<CR>
 noremap <silent> <C-p> :GFiles!<CR>
 noremap <silent> <D-/> :Commentary<CR>
-vnoremap <D-k> :m '<-2<CR>gv=gv
 vnoremap <D-j> :m '>+1<CR>gv=gv
+vnoremap <D-k> :m '<-2<CR>gv=gv
 map <leader>/ :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
@@ -150,9 +154,7 @@ let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_auto_sameids = 1
 let g:vrfr_rg = 'true'
-" let g:netrw_browse_split = 2
 let g:netrw_banner = 0
-" let g:netrw_winsize = 25
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 let g:prettier#config#parser="babylon"
@@ -178,7 +180,7 @@ let g:ale_lint_on_enter = 1
 let g:startify_custom_header = []
 let g:ycm_auto_hover=''
 let g:yats_host_keyword = 1
-let g:UltiSnipsExpandTrigger="<leader><leader>"
+let g:UltiSnipsExpandTrigger="<C-@>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:go_highlight_build_constraints = 1
@@ -195,6 +197,8 @@ let g:go_highlight_generate_tags = 1
 let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_auto_sameids = 1
+let g:fzf_buffers_jump = 1
+let g:fzf_tags_command = 'ctags -R'
 
 " Font
 if has ('gui_running')

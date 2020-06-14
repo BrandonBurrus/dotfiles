@@ -347,13 +347,17 @@ hi! link netrwClassify Normal
 hi! link netrwTreeBar Normal
 hi! link netrwExe Constant
 
+" Git Gutter
 call s:X("GitGutterAdd","3b3b40","","","Green","")
 call s:X("GitGutterChange","3b3b40","","","Blue","")
 call s:X("GitGutterDelete","3b3b40","","","Red","")
 
+" UltiSnip
+hi! link snipMirror Constant
+
 " ALE
-call s:X("ALEWarning","","","underline","","Yellow")
-call s:X("ALEWarningSign","","","underline","","Yellow")
+call s:X("ALEWarning","","","","","Yellow")
+call s:X("ALEWarningSign","","","","","Yellow")
 call s:X("ALEError","","","","","DarkRed")
 call s:X("ALEErrorSign","","","","","DarkRed")
 
