@@ -3,6 +3,8 @@
 syn on
 let mapleader=" "
 
+colorscheme neonchalk
+
 " General config
 set antialias
 set autoindent
@@ -30,6 +32,7 @@ set nowrap
 set nu
 set numberwidth=4
 set path+=**
+set re=0
 set relativenumber
 set scrolloff=50
 set shiftwidth=2
@@ -90,10 +93,11 @@ set shell=/bin/zsh
 
 " Plugins
 call plug#begin("~/.vim/autoload")
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'airblade/vim-gitgutter'
 Plug 'danro/rename.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
-Plug 'ianks/vim-tsx'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -102,6 +106,7 @@ Plug 'mattn/emmet-vim'
 Plug 'mbbill/undotree'
 Plug 'mhinz/vim-startify'
 Plug 'mileszs/ack.vim'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
@@ -114,6 +119,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
 Plug 'ycm-core/YouCompleteMe'
 call plug#end()
+
+function! GitStatus()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return printf("+%d ~%d -%d", a, m, r)
+endfunction
 
 " Plugin configs
 let loadedmatchparen = 0
@@ -144,7 +154,7 @@ let g:ycm_add_preview_to_completeopt=0
 let g:indentLine_color_gui = '#2f2f2f'
 let g:airline_theme='minimalist'
 let g:airline_section_x = ''
-let g:airline_section_y = ''
+let g:airline_section_y = GitStatus()
 let g:airline_section_z = '%{strftime("%H:%M")}'
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -159,6 +169,7 @@ let g:ale_sign_warning = emoji#for('small_orange_diamond')
 let g:ale_lint_on_enter = 1
 let g:startify_custom_header = []
 let g:ycm_auto_hover=''
+let g:yats_host_keyword = 1
 
 " Font
 if has ('gui_running')
@@ -174,6 +185,7 @@ set completeopt-=preview
 autocmd! GUIEnter * set vb t_vb=
 autocmd BufRead,BufNewFile .babelrc setfiletype json
 autocmd BufRead,BufNewFile *.mdx set syntax=markdown
+autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 autocmd VimResized * wincmd =
 autocmd StdinReadPre * let s:std_in=1
 autocmd BufWinEnter *
@@ -189,6 +201,4 @@ autocmd BufWinEnter *
 let g:airline#extensions#tabline#left_alt_sep = ' '
 let g:indentLine_char = '|'
 set fillchars+=vert:⎸
-
-colorscheme neonchalk
 

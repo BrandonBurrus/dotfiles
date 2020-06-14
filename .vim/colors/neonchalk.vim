@@ -293,15 +293,12 @@ fun! s:X(group, fg, bg, attr, lcfg, lcbg)
   exec l:cmd
 endfun
 
-set background=dark
+" set background=dark
 
 call s:X("Normal","e8e8d3",s:background_color,"","Black","")
 call s:X("SignColumn","",s:background_color,"","Black","")
 call s:X("CursorLine","","1c1c1c","","",s:termBlack)
 call s:X("CursorColumn","","1c1c1c","","",s:termBlack)
-call s:X("TabLine","000000","b0b8c0","italic","",s:termBlack)
-call s:X("TabLineFill","9098a0","","","",s:termBlack)
-call s:X("TabLineSel","000000","f0f0f0","italic,bold",s:termBlack,"White")
 call s:X("Pmenu","ffffff","606060","","White",s:termBlack)
 call s:X("PmenuSel","101010","eeeeee","",s:termBlack,"White")
 call s:X("Visual","","003562","","",s:termBlack)
@@ -312,8 +309,6 @@ call s:X("LineNr","3b3b40",s:background_color,"NONE",s:termBlack,"")
 call s:X("CursorLineNr","ccc5c4","","","White","")
 call s:X("Comment","41B645","","italic","Grey","")
 call s:X("Todo","FF8C00","","bold","White",s:termBlack)
-call s:X("StatusLine","","2f3236","","","White")
-call s:X("StatusLineNC","","232a2f","","White","Black")
 call s:X("VertSplit","232a2f","","",s:termBlack,s:termBlack)
 call s:X("WildMenu","f0a0c0","302028","","Magenta","")
 call s:X("Folded","a0a8b0","384048","italic",s:termBlack,"")
@@ -351,6 +346,10 @@ hi! link netrwDir Function
 hi! link netrwClassify Normal
 hi! link netrwTreeBar Normal
 hi! link netrwExe Constant
+
+call s:X("GitGutterAdd","3b3b40","","","Green","")
+call s:X("GitGutterChange","3b3b40","","","Blue","")
+call s:X("GitGutterDelete","3b3b40","","","Red","")
 
 " ALE
 call s:X("ALEWarning","","ffcc00","underline","","Yellow")
@@ -460,8 +459,12 @@ hi! link typescriptFuncType Function
 hi! link typescriptUnion Normal
 hi! link typescriptFuncTypeArrow Keyword
 hi! link typescriptArrowFunc Keyword
+hi! link typescriptEnumKeyword Keyword
 hi! link typescriptFuncCallArg Identifier
 hi! link typescriptCall Identifier
+hi! link typescriptBlock Identifier
+hi! link typescriptGlobal Function
+hi! link typescriptComputedPropertyName Identifier
 
 " Lua
 hi! link luaOperator Conditional
