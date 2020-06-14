@@ -295,7 +295,8 @@ endfun
 
 set background=dark
 
-call s:X("Normal","e8e8d3",s:background_color,"","White","")
+call s:X("Normal","e8e8d3",s:background_color,"","Black","")
+call s:X("SignColumn","",s:background_color,"","Black","")
 call s:X("CursorLine","","1c1c1c","","",s:termBlack)
 call s:X("CursorColumn","","1c1c1c","","",s:termBlack)
 call s:X("TabLine","000000","b0b8c0","italic","",s:termBlack)
@@ -317,7 +318,6 @@ call s:X("VertSplit","232a2f","","",s:termBlack,s:termBlack)
 call s:X("WildMenu","f0a0c0","302028","","Magenta","")
 call s:X("Folded","a0a8b0","384048","italic",s:termBlack,"")
 call s:X("FoldColumn","535D66","1f1f1f","","",s:termBlack)
-call s:X("SignColumn","777777","333333","","",s:termBlack)
 call s:X("Title","70b950","","bold","Green","")
 call s:X("Special","da0caa","","italic","Green","")
 call s:X("Statement","da0caa","","italic","DarkBlue","")
@@ -329,7 +329,7 @@ call s:X("StringDelimiter","e8212f","","","DarkGreen","")
 call s:X("Identifier","82cb4d","","","LightCyan","")
 call s:X("Structure","8fbfdc","","","LightCyan","")
 call s:X("Function","02a7ff","","","Yellow","")
-call s:X("Type","ffb964","","","Yellow","")
+call s:X("Type","49c0b6","","","Yellow","")
 call s:X("NonText","606060",s:background_color,"",s:termBlack,"")
 call s:X("SpecialKey","444444","1c1c1c","",s:termBlack,"")
 call s:X("Directory","dad085","","","Yellow","")
@@ -352,7 +352,11 @@ hi! link netrwClassify Normal
 hi! link netrwTreeBar Normal
 hi! link netrwExe Constant
 
-hi! link jsonKeyword Identifier
+" ALE
+call s:X("ALEWarning","","ffcc00","underline","","Yellow")
+call s:X("ALEWarningSign","","","underline","","Yellow")
+call s:X("ALEError","","902020","","","DarkRed")
+call s:X("ALEErrorSign","","","","","DarkRed")
 
 " Spell Checking
 call s:X("SpellBad","","902020","underline","","DarkRed")
@@ -426,6 +430,12 @@ hi! link elixirAtom rubySymbol
 " JavaScript
 hi! link javaScriptValue Constant
 hi! link javaScriptRegexpString rubyRegexp
+hi! link jsObjectKey Constant
+hi! link jsGlobalNodeObjects Function
+hi! link jsBooleanTrue Keyword
+hi! link jsBooleanFalse Keyword
+hi! link jsOperator Normal
+hi! link jsObjectProp Identifier
 hi! link javaScriptTemplateVar StringDelim
 hi! link javaScriptTemplateDelim Identifier
 hi! link javaScriptTemplateString String
@@ -436,12 +446,22 @@ hi! link jsxClosePunct Delimiter
 hi! link jsxCloseString Delimiter
 hi! link jsxEqual Delimiter
 hi! link jsxBraces Delimiter
+hi! link jsonKeyword Identifier
 
 " TypeScript
 hi! link typescriptBraces Delimiter
 hi! link typescriptVariable Statement
 hi! link typescriptVariableDeclaration Identifier
 hi! link typescriptIdentifierName Identifier
+hi! link typescriptPredefinedType Type
+hi! link typescriptEnum Type
+hi! link typescriptTypeReference Type
+hi! link typescriptFuncType Function
+hi! link typescriptUnion Normal
+hi! link typescriptFuncTypeArrow Keyword
+hi! link typescriptArrowFunc Keyword
+hi! link typescriptFuncCallArg Identifier
+hi! link typescriptCall Identifier
 
 " Lua
 hi! link luaOperator Conditional

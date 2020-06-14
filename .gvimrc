@@ -1,2 +1,3 @@
 
-colorscheme neonchalk
+source ~/.vimrc
+

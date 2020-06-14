@@ -4,80 +4,83 @@ syn on
 let mapleader=" "
 
 " General config
-set nocompatible
-set encoding=UTF-8
-set directory^=$HOME/.vim/tmp//
-set undodir=~/.vim/undodir
-set nu
-set modelines=0
-set mouse=v
-set autoindent
-set lazyredraw
-set undolevels=10000
-set noswapfile
-set nobackup
-set undofile
-set splitbelow
-set splitright
-set path+=**
-set guioptions=
-set relativenumber
-set nowrap
 set antialias
-set nocursorline
-set nowrap
-set numberwidth=4
-set noru
+set autoindent
+set cmdheight=1
+set directory^=$HOME/.vim/tmp//
+set encoding=UTF-8
+set expandtab
+set guioptions=
+set hidden
 set hlsearch
 set incsearch
+set lazyredraw
+set linespace=2
+set modelines=0
+set mouse=v
+set nobackup
+set nocompatible
+set nocursorline
+set noerrorbells
+set noru
+set noswapfile
+set novisualbell
+set nowrap
+set nowrap
+set nu
+set numberwidth=4
+set path+=**
+set relativenumber
+set scrolloff=50
+set shiftwidth=2
+set signcolumn=yes
 set smartcase
 set smarttab
-set expandtab
-set tabstop=2
-set shiftwidth=2
 set softtabstop=2
-set noerrorbells
-set novisualbell
-set scrolloff=50
-set cmdheight=1
+set splitbelow
+set splitright
+set tabstop=2
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=10000
 set updatetime=50
-set linespace=2
-set hidden
+set wildmenu
 filetype plugin on
 nohls
 
 " Keymaps
-nnoremap <D-k> :m .-2<CR>==<C-z>
-nnoremap <D-j> :m .+1<CR>==<C-z>
 inoremap <D-j> <Esc>:m .+1<CR>==gi<C-z>
 inoremap <D-k> <Esc>:m .-2<CR>==gi<C-z>
-vnoremap <D-j> :m '>+1<CR>gv=gv<C-z>
-vnoremap <D-k> :m '<-2<CR>gv=gv<C-z>
+nmap <leader>h <plug>(YCMHover)
+nnoremap <D-j> :m .+1<CR>==<C-z>
+nnoremap <D-k> :m .-2<CR>==<C-z>
+nnoremap <ESC><ESC> :nohls<CR><C-z>
+nnoremap <leader>0 :e ~/.vimrc<CR>
 nnoremap <silent> <leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
-nnoremap <leader>0 :e ~/.vimrc<CR>
-nnoremap <ESC><ESC> :nohls<CR><C-z>
-nnoremap <leader>\ :so % <CR>
-nnoremap <leader>u :UndotreeToggle<CR>
-nnoremap <leader>l :Lines<CR>
-nnoremap <leader>w :bd<CR>
-nnoremap <leader>t :term<CR>
-nnoremap <leader>gc :Commits<CR>
-nnoremap <leader>s :Snippets<CR>
-nnoremap <leader>b :Buffers<CR>
-noremap <SPACE> <Nop>
-noremap <D-E> :Explore<CR>
-noremap <silent> <C-p> :GFiles!<CR>
-noremap <silent> <D-/> :Commentary<CR>
-noremap <D-H> <C-w>R
-noremap <D-L> <C-w>R
+nnoremap <silent> <leader>\ :so % <CR>
+nnoremap <silent> <leader>b :BuffersToggle<CR>
+nnoremap <silent> <leader>gc :Commits<CR>
+nnoremap <silent> <leader>l :Lines<CR>
+nnoremap <silent> <leader>s :Snippets<CR>
+nnoremap <silent> <leader>t :term<CR>
+nnoremap <silent> <leader>u :UndotreeToggle<CR>
+nnoremap <silent> <leader>w :bd<CR>
 noremap <D-1> 1<C-w><C-w>
 noremap <D-2> 2<C-w><C-w>
 noremap <D-3> 3<C-w><C-w>
 noremap <D-4> 4<C-w><C-w>
 noremap <D-5> 5<C-w><C-w>
+noremap <D-E> :Explore<CR>
+noremap <D-H> <C-w>R
+noremap <D-L> <C-w>R
+noremap <SPACE> <Nop>
 noremap <silent> <C-H> :tabN<CR>
 noremap <silent> <C-L> :tabn<CR>
+noremap <silent> <C-p> :GFiles!<CR>
+noremap <silent> <D-/> :Commentary<CR>
+vnoremap <D-j> :m '>+1<CR>gv=gv<C-z>
+vnoremap <D-k> :m '<-2<CR>gv=gv<C-z>
 map <leader>/ :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
@@ -90,6 +93,7 @@ call plug#begin("~/.vim/autoload")
 Plug 'danro/rename.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
+Plug 'ianks/vim-tsx'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
