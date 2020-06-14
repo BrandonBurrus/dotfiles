@@ -10,11 +10,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export GOPATH=~/Files/Go
 export M2_PATH=~/.m2
 export PATH=$PATH:$GOPATH/bin
-<<<<<<< HEAD
-export ZSH="~/.oh-my-zsh"
-=======
 export ZSH=~/.oh-my-zsh
->>>>>>> 3a619d1520dbe31019377f2679f6c226cbfd1dbb
 export ZSH_THEME="agnoster"
 
 source $ZSH/oh-my-zsh.sh
