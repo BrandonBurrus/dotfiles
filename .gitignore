@@ -9,7 +9,8 @@
 !.zshrc
 !README.md
 !~/.config/karabiner/karabiner.json
+!~/.scripts/*
 !~/.vim/colors/neonchalk.vim
-!~/.vim/UltiSnips
+!~/.vim/UltiSnips/*
 !.tern-project
 

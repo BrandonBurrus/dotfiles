@@ -143,7 +143,6 @@ call plug#begin("~/.vim/autoload")
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'w0rp/ale'
-  Plug 'xolox/vim-notes'
   Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
