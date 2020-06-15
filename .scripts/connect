@@ -1,7 +1,0 @@
-#!/bin/bash
-
-AIRPODS_BID=`blueutil --paired | grep "AirPods Pro" | awk '{ print $2 }' | sed 's/,//g'`
-
-if blueutil --connect $AIRPODS_BID; then
-    echo "✅ Connected"
-fi
