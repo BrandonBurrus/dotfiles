@@ -3,14 +3,15 @@
 !.gitconfig
 !.gitignore
 !.gvimrc
+!.tern-project
 !.vimrc
 !.vuerc
 !.xvimrc
 !.zshrc
 !README.md
+!iterm.json
 !~/.config/karabiner/karabiner.json
 !~/.scripts/*
-!~/.vim/colors/neonchalk.vim
 !~/.vim/UltiSnips/*
-!.tern-project
+!~/.vim/colors/neonchalk.vim
 

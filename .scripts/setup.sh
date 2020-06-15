@@ -2,31 +2,12 @@
 
 echo "⚡️ Starting Setup"
 
-export HOMEBREW_NO_AUTO_UPDATE=1
-
-# Install or upgrade Homebrew
-which -s brew
-if [[ $? != 0 ]] ; then
-    echo "🍺 Installing Homebrew"
-    /bin/bash -c `curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh`
-else
-    echo "🍻 Upgrading Homebrew"
-    brew update
-fi
-
-# Install Oh-my-zsh
-if ! [[ -d ~/.oh-my-zsh ]]; then
-    echo '💥 Installing oh-my-zsh'
-    /bin/bash -c `curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh`
-fi
-
-# Install Programs
-echo "⚡️ Installing Programs"
-
 PROGRAMS=(
     ack
+    ag
     awscli
     azure-cli
+    blueutil
     cmake
     deno
     docker
@@ -49,6 +30,8 @@ PROGRAMS=(
     mysql
     node
     nvm
+    sbt
+    shpotify
     speedtest-cli
     tig
     tldr
@@ -56,19 +39,6 @@ PROGRAMS=(
     tree
     zsh
 )
-
-for PROGRAM in "${PROGRAMS[@]}"; do
-    if brew ls --versions "$PROGRAM" &> /dev/null; then
-        echo "✨ Upgrading $PROGRAM"
-        brew upgrade "$PROGRAM"
-    else
-        echo "🚀 Installing $PROGRAM"
-        brew install "$PROGRAM"
-    fi
-done
-
-# Install Apps
-echo "⚡️ Installing Apps"
 
 APPS=(
     dash
@@ -83,16 +53,6 @@ APPS=(
     springtoolsuite
     visual-studio-code
 )
-
-for APP in "${APPS[@]}"; do
-    if ! brew cask ls --versions "$APP" &> /dev/null; then
-        echo "🚀 Installing $APP"
-        brew cask install --appdir="/Applications" "$APP"
-    fi
-done
-
-# Install NPM Packages
-echo "📦 Installing NPM Packages"
 
 PACKAGES=(
     @angular/cli
@@ -118,12 +78,38 @@ PACKAGES=(
     yarn
 )
 
-npm i -g "${PACKAGES[@]}"
+# Install or upgrade Homebrew
+which -s brew
+if [[ $? != 0 ]] ; then
+    echo "🍺 Installing Homebrew"
+    /bin/bash -c `curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh` > /dev/null
+else
+    echo "🍻 Upgrading Homebrew"
+    brew update > /dev/null
+fi
+
+# Install Oh-my-zsh
+if ! [[ -d ~/.oh-my-zsh ]]; then
+    echo '💥 Installing oh-my-zsh'
+    /bin/bash -c `curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh` > /dev/null
+fi
+
+# Install Programs
+echo "💾 Installing Programs"
+brew install "${PROGRAMS[@]}" > /dev/null
+
+# Install Apps
+echo "🚀 Installing Apps"
+brew cask install --appdir="/Applications" "${APPS[@]}" > /dev/null
+
+# Install NPM Packages
+echo "📦 Installing NPM Packages"
+npm i -g "${PACKAGES[@]}" > /dev/null
 
 # Clean up
 echo "♻️  Performing cleanup"
-brew cleanup
-rm -f -r /Library/Caches/Homebrew/*
+brew cleanup > /dev/null
+rm -f -r /Library/Caches/Homebrew/* > /dev/null
 
 echo "⚡️ Setup complete"
 

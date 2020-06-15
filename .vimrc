@@ -53,7 +53,6 @@ set wildmenu
 filetype plugin on
 nohls
 
-
 " Keymaps
 noremap <SPACE> <Nop>
 inoremap <D-j> <Esc>:m .+1<CR>==gi<C-z>
@@ -128,6 +127,7 @@ call plug#begin("~/.vim/autoload")
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
   Plug 'rizzatti/dash.vim'
   Plug 'sheerun/vim-polyglot'
+  Plug 'terryma/vim-multiple-cursors'
   Plug 'tommcdo/vim-exchange'
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-commentary'
