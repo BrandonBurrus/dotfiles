@@ -193,6 +193,8 @@ let g:ale_sig_column_always = 1
 let g:ale_sign_error = emoji#for('exclamation')
 let g:ale_sign_warning = emoji#for('small_orange_diamond')
 let g:ale_lint_on_enter = 1
+let g:ale_completion_enabled = 0
+let g:ale_linters_explicit = 1
 let g:ale_completion_tsserver_autoimport = 1
 let g:startify_custom_header = []
 let g:ycm_auto_hover=''
@@ -215,7 +217,7 @@ let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_auto_sameids = 1
 let g:fzf_buffers_jump = 1
-let g:fzf_tags_command = 'ctags -R'
+let g:fzf_tags_command = 'ctags -R --exclude=.git --exclude=log'
 
 " Font
 if has ('gui_running')
