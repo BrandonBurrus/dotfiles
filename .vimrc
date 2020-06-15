@@ -218,6 +218,7 @@ let g:go_highlight_variable_declarations = 1
 let g:go_auto_sameids = 1
 let g:fzf_buffers_jump = 1
 let g:fzf_tags_command = 'ctags -R --exclude=.git --exclude=log'
+let g:netrw_browsex_viewer = 'google-chrome'
 
 " Font
 if has ('gui_running')
