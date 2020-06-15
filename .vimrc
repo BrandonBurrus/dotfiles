@@ -166,6 +166,7 @@ let g:vrfr_rg = 'true'
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
+let g:netrw_list_hide= '.*\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.git'
 let g:prettier#config#parser="babylon"
 let g:prettier#autoformat=1
 let g:jsx_ext_required=0
@@ -180,12 +181,19 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:user_emmet_install_global = 1
-let g:ale_fixers = ['prettier', 'eslint']
+let g:ale_fixers = {
+      \   '*': ['trim_whitespace'],
+      \   'javascript': ['prettier', 'eslint'],
+      \   'javascriptreact': ['prettier', 'eslint'],
+      \   'typescript': ['prettier', 'eslint'],
+      \   'typescriptreact': ['prettier', 'eslint']
+      \ }
 let g:ale_fix_on_save = 1
 let g:ale_sig_column_always = 1
 let g:ale_sign_error = emoji#for('exclamation')
 let g:ale_sign_warning = emoji#for('small_orange_diamond')
 let g:ale_lint_on_enter = 1
+let g:ale_completion_tsserver_autoimport = 1
 let g:startify_custom_header = []
 let g:ycm_auto_hover=''
 let g:yats_host_keyword = 1
@@ -222,6 +230,7 @@ set completeopt-=preview
 " Auto commands
 autocmd! GUIEnter * set vb t_vb=
 autocmd BufRead,BufNewFile .babelrc setfiletype json
+autocmd BufRead,BufNewFile .prettierrc setfiletype json
 autocmd BufRead,BufNewFile *.mdx set syntax=markdown
 autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 autocmd VimResized * wincmd =

@@ -343,9 +343,9 @@ hi! link StartifyPath Function
 " Netrw
 hi! link netrwPlain Identifier
 hi! link netrwDir Function
-hi! link netrwClassify Normal
-hi! link netrwTreeBar Normal
 hi! link netrwExe Constant
+hi! link netrwClassify Normal
+call s:X("netrwTreebar","1A1D20","","","","")
 
 " Git Gutter
 call s:X("GitGutterAdd","3b3b40","","","Green","")
@@ -471,7 +471,7 @@ hi! link typescriptArrowFunc Keyword
 hi! link typescriptEnumKeyword Keyword
 hi! link typescriptFuncCallArg Identifier
 hi! link typescriptCall Identifier
-hi! link typescriptBlock Identifier
+hi! link typescriptBlock Normal
 hi! link typescriptGlobal Function
 hi! link typescriptComputedPropertyName Identifier
 hi! link typescriptOperator Normal
@@ -480,6 +480,18 @@ hi! link typescriptObjectLiteral Function
 hi! link typescriptLoopParen Identifier
 hi! link typescriptConditionalParen Identifier
 hi! link typescriptParenExp Identifier
+hi! link typescriptBOM Identifier
+hi! link typescriptNull Keyword
+hi! link typescriptObjectLabel Constant
+hi! link typescriptClassStatic Keyword
+hi! link typescriptOptionalMark Normal
+hi! link typescriptDOMNodeProp Identifier
+hi! link typescriptDOMNodeMethod Function
+hi! link typescriptDOMDocMethod Function
+hi! link typescriptBOMWindowProp Function
+hi! link typescriptClassHeritage Type
+hi! link typescriptEndColons Normal
+hi! link typescriptFuncComma Normal
 
 " Lua
 hi! link luaOperator Conditional

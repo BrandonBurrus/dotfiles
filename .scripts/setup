@@ -9,6 +9,7 @@ PROGRAMS=(
     azure-cli
     blueutil
     cmake
+    ctags
     deno
     docker
     doctl
