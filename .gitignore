@@ -4,6 +4,7 @@
 !.gitignore
 !.gvimrc
 !.tern-project
+!.tmux.config
 !.vimrc
 !.vuerc
 !.xvimrc
