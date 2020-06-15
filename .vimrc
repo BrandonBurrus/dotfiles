@@ -50,6 +50,7 @@ set undofile
 set undolevels=10000
 set updatetime=50
 set wildmenu
+set noshowmode
 filetype plugin on
 nohls
 
@@ -113,16 +114,17 @@ call plug#begin("~/.vim/autoload")
   Plug 'ervandew/supertab'
   Plug 'haya14busa/incsearch.vim'
   Plug 'honza/vim-snippets'
+  Plug 'itchyny/vim-gitbranch'
   Plug 'janko-m/vim-test'
   Plug 'jiangmiao/auto-pairs'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'junegunn/vim-emoji'
+  Plug 'junegunn/vim-slash'
   Plug 'mattn/emmet-vim'
   Plug 'mbbill/undotree'
   Plug 'mhinz/vim-startify'
   Plug 'michaeljsmith/vim-indent-object'
-  Plug 'mileszs/ack.vim'
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
   Plug 'rizzatti/dash.vim'
@@ -171,8 +173,8 @@ let g:prettier#config#parser="babylon"
 let g:prettier#autoformat=1
 let g:jsx_ext_required=0
 let g:ycm_add_preview_to_completeopt=0
-let g:indentLine_color_gui = '#2f2f2f'
 let g:airline_theme='minimalist'
+let g:airline_section_b = gitbranch#name()
 let g:airline_section_x = ''
 let g:airline_section_y = ''
 let g:airline_section_z = '%{strftime("%H:%M")}'
