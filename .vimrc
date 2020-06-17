@@ -105,6 +105,13 @@ map <leader>/ :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> t
 " Set shell
 set shell=/bin/zsh
 
+" Install Vim Plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " Plugins
 call plug#begin("~/.vim/autoload")
   Plug 'SirVer/ultisnips'
