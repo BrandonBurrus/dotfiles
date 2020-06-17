@@ -101,6 +101,7 @@ vnoremap <D-k> :m '<-2<CR>gv=gv
 map <leader>/ :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+noremap - -
 
 " Set shell
 set shell=/bin/zsh
