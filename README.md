@@ -1,6 +1,6 @@
 # dotfiles
 
-My personal dotfile configs for working in vim and zsh ⚡️
+My personal dotfile configs for working in vim, tmux and zsh ⚡️
 
 ## Setup
 
