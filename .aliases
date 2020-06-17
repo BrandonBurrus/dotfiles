@@ -4,6 +4,7 @@ alias ctags="`brew --prefix`/bin/ctags"
 alias d=docker
 alias dc=docker-compose
 alias dj=django-admin
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
 alias f=fzf
 alias fast=speedtest
 alias g=hub
