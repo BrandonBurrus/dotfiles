@@ -68,6 +68,8 @@ nnoremap <silent><Up> :resize +2<CR>
 nnoremap <silent><Down> :resize -2<CR>
 nnoremap <leader>0 :e ~/.vimrc<CR>
 nnoremap <leader>9 :UltiSnipsEdit<CR>
+nnoremap <silent> <leader>, :bp <CR>
+nnoremap <silent> <leader>. :bn <CR>
 nnoremap <silent> <leader>\ :so % <CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>g1 :diffget //2<CR>
@@ -134,7 +136,6 @@ call plug#begin("~/.vim/autoload")
   Plug 'mhinz/vim-startify'
   Plug 'michaeljsmith/vim-indent-object'
   Plug 'peitalin/vim-jsx-typescript'
-  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
   Plug 'rizzatti/dash.vim'
   Plug 'sheerun/vim-polyglot'
   Plug 'terryma/vim-multiple-cursors'

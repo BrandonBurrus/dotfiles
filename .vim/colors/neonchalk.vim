@@ -476,7 +476,7 @@ hi! link typescriptGlobal Function
 hi! link typescriptComputedPropertyName Identifier
 hi! link typescriptOperator Normal
 hi! link typescriptMethodAccessor Keyword
-hi! link typescriptObjectLiteral Function
+hi! link typescriptObjectLiteral Normal
 hi! link typescriptLoopParen Identifier
 hi! link typescriptConditionalParen Identifier
 hi! link typescriptParenExp Identifier
@@ -492,6 +492,7 @@ hi! link typescriptBOMWindowProp Function
 hi! link typescriptClassHeritage Type
 hi! link typescriptEndColons Normal
 hi! link typescriptFuncComma Normal
+hi! link typescriptArrowFuncArg Identifier
 
 " Lua
 hi! link luaOperator Conditional
