@@ -74,6 +74,7 @@ nnoremap <silent><Up> :resize +2<CR>
 nnoremap <silent><Down> :resize -2<CR>
 nnoremap <leader>0 :e ~/.vimrc<CR>
 nnoremap <leader>9 :UltiSnipsEdit<CR>
+nnoremap <leader>8 :e ~/.vim/colors/neonchalk.vim<CR>
 nnoremap <silent> <leader>, :bp <CR>
 nnoremap <silent> <leader>. :bn <CR>
 nnoremap <silent> <leader>\ :so % <CR>
@@ -96,7 +97,7 @@ noremap <D-2> 2<C-w><C-w>
 noremap <D-3> 3<C-w><C-w>
 noremap <D-4> 4<C-w><C-w>
 noremap <D-5> 5<C-w><C-w>
-noremap <D-E> :Explore<CR>
+noremap <D-E> :NERDTreeToggle<CR>
 noremap <D-H> <C-w>R
 noremap <D-L> <C-w>R
 noremap <silent> <C-H> :tabN<CR>
@@ -108,14 +109,14 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>qf  <Plug>(coc-fix-current)
-map <leader>/ :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+map <leader>/ :echo "" . synIDattr(synID(line("."),col("."),1),"name") . ' : '
+      \ . synIDattr(synID(line("."),col("."),0),"name") . " : "
+      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ""<CR>
 nmap <D-R> <Plug>(coc-rename)
 noremap - -
 
 " Use K to trigger documentation
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -152,11 +153,12 @@ endif
 
 " Plugins
 call plug#begin("~/.vim/autoload")
+  Plug 'Quramy/tsuquyomi'
   Plug 'SirVer/ultisnips'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'airblade/vim-gitgutter'
   Plug 'ap/vim-css-color'
   Plug 'easymotion/vim-easymotion'
-  Plug 'Quramy/tsuquyomi'
   Plug 'haya14busa/incsearch.vim'
   Plug 'honza/vim-snippets'
   Plug 'itchyny/vim-gitbranch'
@@ -171,6 +173,7 @@ call plug#begin("~/.vim/autoload")
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'rizzatti/dash.vim'
+  Plug 'scrooloose/nerdtree'
   Plug 'sheerun/vim-polyglot'
   Plug 'terryma/vim-multiple-cursors'
   Plug 'tommcdo/vim-exchange'
@@ -214,6 +217,8 @@ let g:coc_global_extensions = [
       \ "coc-yank"
       \ ]
 
+let g:NERDTreeDirArrowCollapsible = ''
+let g:NERDTreeDirArrowExpandable = ''
 let g:SuperTabContextDefaultCompletionType = '<c-n>'
 let g:UltiSnipsExpandTrigger="<C-Space>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
@@ -233,7 +238,6 @@ let g:gutentags_ctags_tagfile = '.tags'
 let g:gutentags_modules = ['ctags']
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
 let g:jsx_ext_required = 0
-let g:netrw_banner = 0
 let g:netrw_banner = 0
 let g:netrw_browsex_viewer = 'google-chrome'
 let g:netrw_list_hide= '.*\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.git'
@@ -267,6 +271,9 @@ autocmd BufWinEnter *
   \   let t:startify_new_tab = 1 |
   \   Startify |
   \ endif
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Vertical bar overrides
 let g:airline#extensions#tabline#left_alt_sep = ' '

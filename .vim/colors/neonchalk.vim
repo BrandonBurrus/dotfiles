@@ -347,6 +347,16 @@ hi! link netrwExe Constant
 hi! link netrwClassify Normal
 call s:X("netrwTreebar","1A1D20","","","","")
 
+" Nerd Tree
+hi! link nerdTreeHelp Comment
+hi! link nerdTreeUp Constant
+hi! link nerdTreeDir Function
+hi! link nerdTreeFile Identifier
+hi! link nerdTreeOpenable Normal
+hi! link nerdTreeClosable Normal
+hi! link nerdTreeDirSlash Normal
+hi! link nerdTreeHelpTitle String
+
 " Git Gutter
 call s:X("GitGutterAdd","3b3b40","","","Green","")
 call s:X("GitGutterChange","3b3b40","","","Blue","")
