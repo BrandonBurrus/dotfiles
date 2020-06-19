@@ -11,5 +11,15 @@
     "javascriptreact",
     "typescript",
     "typescriptreact"
-  ]
+  ],
+
+  "yank.highlight.duration": 110,
+
+  "emmet.includeLanguages": {
+    "vue-html": "html",
+    "javascript": "javascriptreact",
+    "typescript": "javascriptreact",
+    "typescriptreact": "javascriptreact"
+  }
+
 }

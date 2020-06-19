@@ -68,13 +68,14 @@ nnoremap <D-k> :m .-2<CR>==<C-z>
 vnoremap <D-j> :m '>+1<CR>gv=gv
 vnoremap <D-k> :m '<-2<CR>gv=gv
 nnoremap <ESC><ESC> :nohls<CR><C-z>
-nnoremap <silent><Right> :vertical resize +4<CR>
-nnoremap <silent><Left> :vertical resize -4<CR>
-nnoremap <silent><Up> :resize +2<CR>
-nnoremap <silent><Down> :resize -2<CR>
+nnoremap <silent><Left> :vertical resize +4<CR>
+nnoremap <silent><Right> :vertical resize -4<CR>
+nnoremap <silent><Down> :resize +2<CR>
+nnoremap <silent><Up> :resize -2<CR>
 nnoremap <leader>0 :e ~/.vimrc<CR>
 nnoremap <leader>9 :UltiSnipsEdit<CR>
 nnoremap <leader>8 :e ~/.vim/colors/neonchalk.vim<CR>
+nnoremap <leader>7 :CocConfig<CR>
 nnoremap <silent> <leader>, :bp <CR>
 nnoremap <silent> <leader>. :bn <CR>
 nnoremap <silent> <leader>\ :so % <CR>
@@ -83,6 +84,7 @@ nnoremap <silent> <leader>g1 :diffget //2<CR>
 nnoremap <silent> <leader>g2 :diffget //3<CR>
 nnoremap <silent> <leader>gb :Gblame<CR>
 nnoremap <silent> <leader>gc :Commits<CR>
+nnoremap <silent> <leader>gd :Gvdiff<CR>
 nnoremap <silent> <leader>gs :G<CR>
 nnoremap <silent> <leader>gc :Gcommit<CR>
 nnoremap <silent> <leader>l :Lines<CR>
@@ -202,6 +204,7 @@ let g:coc_global_extensions = [
       \ "coc-flutter",
       \ "coc-go",
       \ "coc-highlight",
+      \ "coc-html",
       \ "coc-java",
       \ "coc-jedi",
       \ "coc-json",
@@ -272,8 +275,6 @@ autocmd BufWinEnter *
   \   Startify |
   \ endif
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Vertical bar overrides
 let g:airline#extensions#tabline#left_alt_sep = ' '

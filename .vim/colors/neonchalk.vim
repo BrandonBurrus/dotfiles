@@ -371,6 +371,7 @@ hi! link snipTabStopDefault Identifier
 " Coc
 hi CocErrorHighlight guibg=#5F1D20 guisp=#FF3D30 gui=undercurl
 hi CocWarningHighlight guisp=#BAA720 gui=undercurl
+call s:X("CocErrorSign", "FF99AA", "", "", "", "DarkRed")
 
 " Spell Checking
 call s:X("SpellBad","","902020","underline","","DarkRed")
