@@ -358,11 +358,9 @@ hi! link snipMirror Constant
 hi! link snipTabStop Constant
 hi! link snipTabStopDefault Identifier
 
-" ALE
-call s:X("ALEWarning","","","","","Yellow")
-call s:X("ALEWarningSign","","","","","Yellow")
-call s:X("ALEError","","","","","DarkRed")
-call s:X("ALEErrorSign","","","","","DarkRed")
+" Coc
+hi CocErrorHighlight guibg=#5F1D20 guisp=#FF3D30 gui=undercurl
+hi CocWarningHighlight guisp=#BAA720 gui=undercurl
 
 " Spell Checking
 call s:X("SpellBad","","902020","underline","","DarkRed")
