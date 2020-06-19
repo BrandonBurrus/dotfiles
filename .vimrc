@@ -159,6 +159,7 @@ call plug#begin("~/.vim/autoload")
   Plug 'SirVer/ultisnips'
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'airblade/vim-gitgutter'
+  Plug 'airblade/vim-rooter'
   Plug 'ap/vim-css-color'
   Plug 'easymotion/vim-easymotion'
   Plug 'haya14busa/incsearch.vim'
