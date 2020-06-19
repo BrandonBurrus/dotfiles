@@ -136,6 +136,7 @@ call plug#begin("~/.vim/autoload")
   Plug 'mhinz/vim-startify'
   Plug 'michaeljsmith/vim-indent-object'
   Plug 'peitalin/vim-jsx-typescript'
+  Plug 'Quramy/tsuquyomi'
   Plug 'rizzatti/dash.vim'
   Plug 'sheerun/vim-polyglot'
   Plug 'terryma/vim-multiple-cursors'
@@ -154,7 +155,7 @@ call plug#begin("~/.vim/autoload")
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'w0rp/ale'
-  Plug 'ycm-core/YouCompleteMe'
+  " Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 " Plugin configs
@@ -192,13 +193,13 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:user_emmet_install_global = 1
-let g:ale_fixers = {
-      \   '*': ['trim_whitespace'],
-      \   'javascript': ['prettier', 'eslint'],
-      \   'javascriptreact': ['prettier', 'eslint'],
-      \   'typescript': ['prettier', 'eslint'],
-      \   'typescriptreact': ['prettier', 'eslint']
-      \ }
+" let g:ale_fixers = {
+"       \   '*': ['trim_whitespace'],
+"       \   'javascript': ['prettier', 'eslint'],
+"       \   'javascriptreact': ['prettier', 'eslint'],
+"       \   'typescript': ['prettier', 'eslint'],
+"       \   'typescriptreact': ['prettier', 'eslint']
+"       \ }
 let g:ale_fix_on_save = 1
 let g:ale_sig_column_always = 1
 let g:ale_sign_error = emoji#for('exclamation')
