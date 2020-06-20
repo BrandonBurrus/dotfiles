@@ -5,6 +5,7 @@ alias d=docker
 alias dc=docker-compose
 alias dj=django-admin
 alias dot='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
+alias eclim=$ECLIM/eclimd
 alias f=fzf
 alias fast=speedtest
 alias g=hub
@@ -21,6 +22,7 @@ alias m=mutt
 alias mini=minikube
 alias n=npm
 alias pip=pip3
+alias proj='cd ~/Files/Projects/'
 alias py=python3
 alias q=exit
 alias sp=spotify

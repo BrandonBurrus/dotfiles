@@ -44,7 +44,9 @@ PROGRAMS=(
 )
 
 APPS=(
+    adoptopenjdk
     dash
+    eclipse-jee
     google-chrome
     iterm2
     jetbrains-toolbox

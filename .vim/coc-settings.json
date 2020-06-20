@@ -20,6 +20,8 @@
     "javascript": "javascriptreact",
     "typescript": "javascriptreact",
     "typescriptreact": "javascriptreact"
-  }
+  },
+
+  "java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok-1.18.6.jar -Xbootclasspath/a:/usr/local/share/lombok/lombok-1.18.6.jar"
 
 }

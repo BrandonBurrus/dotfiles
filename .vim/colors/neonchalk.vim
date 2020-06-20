@@ -502,8 +502,6 @@ hi! link typescriptEndColons Normal
 hi! link typescriptFuncComma Normal
 hi! link typescriptArrowFuncArg Identifier
 
-sy keyword javaPackage package
-
 " Java
 hi! link javaPackage Keyword
 hi! link javaClassDecl Keyword
@@ -511,9 +509,12 @@ hi! link javaExternal Keyword
 hi! link javaInclude Keyword
 hi! link javaStructure Keyword
 hi! link javaStorageClass Keyword
+hi! link javaBoolean Keyword
 hi! link javaOperator Normal
 hi! link javaType Type
-highlight javaPreProc guifg=#888886 gui=italic
+hi! link javaDocComment Comment
+highlight javaAnnotation guifg=#888886 gui=italic
+hi! link javaPreProc javaAnnotation
 
 " Lua
 hi! link luaOperator Conditional

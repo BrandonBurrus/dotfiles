@@ -104,13 +104,15 @@ noremap <D-H> <C-w>R
 noremap <D-L> <C-w>R
 noremap <silent> <C-H> :tabN<CR>
 noremap <silent> <C-L> :tabn<CR>
-noremap <silent> <C-p> :GFiles!<CR>
+noremap <silent> <C-p> :Files!<CR>
 noremap <silent> <D-/> :Commentary<CR>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>rr <Plug>(coc-rename)
+nmap <silent>cr :CocRestart<CR>
 map <leader>/ :echo "" . synIDattr(synID(line("."),col("."),1),"name") . ' : '
       \ . synIDattr(synID(line("."),col("."),0),"name") . " : "
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ""<CR>
@@ -264,6 +266,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 autocmd! GUIEnter * set vb t_vb=
 autocmd BufRead,BufNewFile .babelrc setfiletype json
 autocmd BufRead,BufNewFile .prettierrc setfiletype json
+autocmd BufRead,BufNewFile .aliases setfiletype bash
 autocmd BufRead,BufNewFile *.mdx set syntax=markdown
 autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 autocmd VimResized * wincmd =
