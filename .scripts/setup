@@ -36,6 +36,7 @@ PROGRAMS=(
     sbt
     shpotify
     speedtest-cli
+    terraform
     tig
     tldr
     tmux
