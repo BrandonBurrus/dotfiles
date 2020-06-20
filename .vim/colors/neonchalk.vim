@@ -396,7 +396,6 @@ hi! link vimUserFunc Function
 hi! link vimEnvvar Identifier
 hi! link vimAutoEvent Identifier
 
-
 " PHP
 call s:X("StorageClass","c59f6f","","","Red","")
 hi! link phpFunctions Function
@@ -502,6 +501,19 @@ hi! link typescriptClassHeritage Type
 hi! link typescriptEndColons Normal
 hi! link typescriptFuncComma Normal
 hi! link typescriptArrowFuncArg Identifier
+
+sy keyword javaPackage package
+
+" Java
+hi! link javaPackage Keyword
+hi! link javaClassDecl Keyword
+hi! link javaExternal Keyword
+hi! link javaInclude Keyword
+hi! link javaStructure Keyword
+hi! link javaStorageClass Keyword
+hi! link javaOperator Normal
+hi! link javaType Type
+highlight javaPreProc guifg=#888886 gui=italic
 
 " Lua
 hi! link luaOperator Conditional

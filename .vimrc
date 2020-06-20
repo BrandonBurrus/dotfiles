@@ -68,8 +68,8 @@ nnoremap <D-k> :m .-2<CR>==<C-z>
 vnoremap <D-j> :m '>+1<CR>gv=gv
 vnoremap <D-k> :m '<-2<CR>gv=gv
 nnoremap <ESC><ESC> :nohls<CR><C-z>
-nnoremap <silent><Left> :vertical resize +4<CR>
-nnoremap <silent><Right> :vertical resize -4<CR>
+nnoremap <silent><Right> :vertical resize +4<CR>
+nnoremap <silent><Left> :vertical resize -4<CR>
 nnoremap <silent><Down> :resize +2<CR>
 nnoremap <silent><Up> :resize -2<CR>
 nnoremap <leader>0 :e ~/.vimrc<CR>
@@ -155,6 +155,7 @@ endif
 
 " Plugins
 call plug#begin("~/.vim/autoload")
+  Plug 'BrandonBurrus/java-syntax.vim'
   Plug 'Quramy/tsuquyomi'
   Plug 'SirVer/ultisnips'
   Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -223,6 +224,7 @@ let g:coc_global_extensions = [
 
 let g:NERDTreeDirArrowCollapsible = ''
 let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeMinimalUI = 1
 let g:SuperTabContextDefaultCompletionType = '<c-n>'
 let g:UltiSnipsExpandTrigger="<C-Space>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
