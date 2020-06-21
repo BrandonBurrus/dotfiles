@@ -118,6 +118,10 @@ map <leader>/ :echo "" . synIDattr(synID(line("."),col("."),1),"name") . ' : '
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ""<CR>
 nmap <D-R> <Plug>(coc-rename)
 noremap - -
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
 
 " Use K to trigger documentation
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -158,6 +162,7 @@ endif
 " Plugins
 call plug#begin("~/.vim/autoload")
   Plug 'BrandonBurrus/java-syntax.vim'
+  Plug 'unblevable/quick-scope'
   Plug 'Quramy/tsuquyomi'
   Plug 'SirVer/ultisnips'
   Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -166,6 +171,7 @@ call plug#begin("~/.vim/autoload")
   Plug 'ap/vim-css-color'
   Plug 'easymotion/vim-easymotion'
   Plug 'haya14busa/incsearch.vim'
+  Plug 'haya14busa/incsearch-easymotion.vim'
   Plug 'honza/vim-snippets'
   Plug 'itchyny/vim-gitbranch'
   Plug 'janko-m/vim-test'
@@ -173,6 +179,7 @@ call plug#begin("~/.vim/autoload")
   Plug 'junegunn/fzf.vim'
   Plug 'junegunn/vim-emoji'
   Plug 'junegunn/vim-slash'
+  Plug 'justinmk/vim-sneak'
   Plug 'mbbill/undotree'
   Plug 'mhinz/vim-startify'
   Plug 'michaeljsmith/vim-indent-object'
@@ -253,6 +260,8 @@ let g:netrw_liststyle = 3
 let g:startify_custom_header = []
 let g:vrfr_rg = 'true'
 let loadedmatchparen = 0
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+let g:qs_max_chars=104
 
 " Font
 if has ('gui_running')
