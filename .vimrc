@@ -6,10 +6,11 @@ let mapleader=" "
 colorscheme neonchalk
 
 " General config
+
 set antialias
 set autoindent
 set belloff=all
-set cmdheight=1
+set cmdheight=2
 set completeopt-=preview
 set directory^=$HOME/.vim/tmp//
 set encoding=UTF-8
@@ -22,6 +23,7 @@ set hlsearch
 set incsearch
 set lazyredraw
 set linespace=2
+set ma
 set modelines=0
 set mouse=v
 set nobackup
@@ -39,7 +41,7 @@ set numberwidth=4
 set path+=**
 set re=0
 set relativenumber
-set scrolloff=50
+set scrolloff=6
 set shiftwidth=2
 set shortmess+=c
 set shortmess=a
@@ -56,7 +58,6 @@ set undofile
 set undolevels=10000
 set updatetime=100
 set wildmenu
-
 filetype plugin on
 
 " Keymaps
@@ -79,7 +80,7 @@ nnoremap <leader>7 :CocConfig<CR>
 nnoremap <silent> <leader>, :bp <CR>
 nnoremap <silent> <leader>. :bn <CR>
 nnoremap <silent> <leader>\ :so % <CR>
-nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>b :BuffersToggle<CR>
 nnoremap <silent> <leader>g1 :diffget //2<CR>
 nnoremap <silent> <leader>g2 :diffget //3<CR>
 nnoremap <silent> <leader>gb :Gblame<CR>
@@ -89,11 +90,13 @@ nnoremap <silent> <leader>gs :G<CR>
 nnoremap <silent> <leader>gc :Gcommit<CR>
 nnoremap <silent> <leader>l :Lines<CR>
 nnoremap <silent> <leader>m :Marks<CR>
+nnoremap <silent> <leader>pi :PlugInstall<CR>
+nnoremap <silent> <leader>pc :PlugClean<CR>
 nnoremap <silent> <leader>s :Snippets<CR>
 nnoremap <silent> <leader>t :term<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
 nnoremap <silent> <leader>x :Windows<CR>
-nnoremap <silent> <leader>w :bd<CR>
+nnoremap <silent> <leader>w :BUN<CR>
 noremap <D-1> 1<C-w><C-w>
 noremap <D-2> 2<C-w><C-w>
 noremap <D-3> 3<C-w><C-w>
@@ -104,23 +107,29 @@ noremap <D-H> <C-w>R
 noremap <D-L> <C-w>R
 noremap <silent> <C-H> :tabN<CR>
 noremap <silent> <C-L> :tabn<CR>
-noremap <silent> <C-p> :Files!<CR>
+noremap <silent> <C-P> :Files<CR>
+noremap <silent> <C-p> :GFiles<CR>
 noremap <silent> <D-/> :Commentary<CR>
+noremap <silent> <D-O> :BTags<CR>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>qf  <Plug>(coc-fix-current)
-nmap <leader>rr <Plug>(coc-rename)
+nmap <leader>ca :CocAction<CR>
+nmap <D-R> <Plug>(coc-rename)
 nmap <silent>cr :CocRestart<CR>
 map <leader>/ :echo "" . synIDattr(synID(line("."),col("."),1),"name") . ' : '
       \ . synIDattr(synID(line("."),col("."),0),"name") . " : "
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ""<CR>
-nmap <D-R> <Plug>(coc-rename)
 noremap - -
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
 
 " Use K to trigger documentation
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> <leader>h :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -157,28 +166,34 @@ endif
 
 " Plugins
 call plug#begin("~/.vim/autoload")
+  Plug 'AndrewRadev/tagalong.vim'
   Plug 'BrandonBurrus/java-syntax.vim'
+  Plug 'PhilRunninger/nerdtree-visual-selection'
   Plug 'Quramy/tsuquyomi'
   Plug 'SirVer/ultisnips'
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'airblade/vim-gitgutter'
   Plug 'airblade/vim-rooter'
+  Plug 'alvan/vim-closetag'
   Plug 'ap/vim-css-color'
   Plug 'easymotion/vim-easymotion'
   Plug 'haya14busa/incsearch.vim'
   Plug 'honza/vim-snippets'
   Plug 'itchyny/vim-gitbranch'
   Plug 'janko-m/vim-test'
+  Plug 'jiangmiao/auto-pairs'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'junegunn/vim-emoji'
   Plug 'junegunn/vim-slash'
+  Plug 'justinmk/vim-sneak'
+  Plug 'mattn/emmet-vim'
   Plug 'mbbill/undotree'
   Plug 'mhinz/vim-startify'
   Plug 'michaeljsmith/vim-indent-object'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'peitalin/vim-jsx-typescript'
-  Plug 'rizzatti/dash.vim'
+  Plug 'qpkorr/vim-bufkill'
   Plug 'scrooloose/nerdtree'
   Plug 'sheerun/vim-polyglot'
   Plug 'terryma/vim-multiple-cursors'
@@ -194,6 +209,7 @@ call plug#begin("~/.vim/autoload")
   Plug 'tpope/vim-sleuth'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-vinegar'
+  Plug 'unblevable/quick-scope'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
 call plug#end()
@@ -203,7 +219,6 @@ let g:coc_global_extensions = [
       \ "coc-css",
       \ "coc-cssmodules",
       \ "coc-docker",
-      \ "coc-emmet",
       \ "coc-eslint",
       \ "coc-flutter",
       \ "coc-go",
@@ -213,9 +228,7 @@ let g:coc_global_extensions = [
       \ "coc-jedi",
       \ "coc-json",
       \ "coc-markdownlint",
-      \ "coc-pairs",
       \ "coc-omnisharp",
-      \ "coc-prettier",
       \ "coc-python",
       \ "coc-tailwindcss",
       \ "coc-tsserver",
@@ -224,8 +237,17 @@ let g:coc_global_extensions = [
       \ "coc-yank"
       \ ]
 
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
+
 let g:NERDTreeDirArrowCollapsible = ''
 let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeWinSize=52
 let g:NERDTreeMinimalUI = 1
 let g:SuperTabContextDefaultCompletionType = '<c-n>'
 let g:UltiSnipsExpandTrigger="<C-Space>"
@@ -251,8 +273,12 @@ let g:netrw_browsex_viewer = 'google-chrome'
 let g:netrw_list_hide= '.*\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.git'
 let g:netrw_liststyle = 3
 let g:startify_custom_header = []
+let g:user_emmet_leader_key = '<D-e>'
+let g:user_emmet_install_global = 1
 let g:vrfr_rg = 'true'
 let loadedmatchparen = 0
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.tsx,*.js,*.ts'
+let g:closetag_filetypes = 'html,xhtml,phtml,javascript,javascriptreact,typescript,typescriptreact'
 
 " Font
 if has ('gui_running')

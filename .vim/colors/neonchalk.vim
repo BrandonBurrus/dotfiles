@@ -330,6 +330,7 @@ call s:X("SpecialKey","444444","1c1c1c","",s:termBlack,"")
 call s:X("Directory","dad085","","","Yellow","")
 call s:X("ErrorMsg","","902020","","","DarkRed")
 call s:X("Question","65C254","","","Green","")
+call s:X("Regexp","364ded","","","Purple","")
 
 hi! link Operator Structure
 hi! link Conceal Operator
@@ -461,6 +462,8 @@ hi! link jsxCloseString Delimiter
 hi! link jsxEqual Delimiter
 hi! link jsxBraces Delimiter
 hi! link jsonKeyword Identifier
+hi! link jsStorageClass Keyword
+hi! link jsArrowFunction Keyword
 
 " TypeScript
 hi! link typescriptBraces Delimiter
@@ -501,6 +504,13 @@ hi! link typescriptClassHeritage Type
 hi! link typescriptEndColons Normal
 hi! link typescriptFuncComma Normal
 hi! link typescriptArrowFuncArg Identifier
+hi! link typescriptBOMHistoryProp Identifier
+hi! link typescriptPaymentShippingOptionProp Identifier
+hi! link typescriptDOMDocProp Identifier
+hi! link typescriptResponseProp Identifier
+hi! link typescriptArrayMethod Function
+hi! link typescriptTemplateSB Regexp
+hi! link typescriptBoolean Keyword
 
 " Java
 hi! link javaPackage Keyword
@@ -559,6 +569,17 @@ call s:X("DbgCurrent","DEEBFE","345FA8","","White","DarkBlue")
 call s:X("DbgBreakPt","","4F0037","","","DarkMagenta")
 call s:X("PreciseJumpTarget","B9ED67","405026","","White","Green")
 hi! link TagListFileName Directory
+
+" Cucumber
+hi! link cucumberFeature Keyword
+hi! link cucumberScenario Keyword
+hi! link cucumberGiven Constant
+hi! link cucumberWhen Identifier
+hi! link cucumberThen Function
+
+" Quickscope
+highlight QuickScopePrimary gui=underline cterm=underline
+highlight QuickScopeSecondary gui=underline cterm=underline
 
 delf s:X
 delf s:remove_italic_attr

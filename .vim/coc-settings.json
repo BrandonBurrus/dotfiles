@@ -13,14 +13,9 @@
     "typescriptreact"
   ],
 
-  "yank.highlight.duration": 110,
+  "prettier.disableSuccessMessage": true,
 
-  "emmet.includeLanguages": {
-    "vue-html": "html",
-    "javascript": "javascriptreact",
-    "typescript": "javascriptreact",
-    "typescriptreact": "javascriptreact"
-  },
+  "yank.highlight.duration": 110,
 
   "java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok-1.18.6.jar -Xbootclasspath/a:/usr/local/share/lombok/lombok-1.18.6.jar"
 
