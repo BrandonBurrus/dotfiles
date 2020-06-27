@@ -413,6 +413,9 @@ hi! link phpVarSelector Identifier
 " Python
 hi! link pythonOperator Statement
 
+" Swift
+hi! link swiftImports Keyword
+
 " Ruby
 call s:X("rubyInstanceVariable","c6b6fe","","","Cyan","")
 call s:X("rubySymbol","7697d6","","","Blue","")

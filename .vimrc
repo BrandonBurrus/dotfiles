@@ -41,10 +41,11 @@ set numberwidth=4
 set path+=**
 set re=0
 set relativenumber
-set scrolloff=6
+set scrolloff=14
+set shell=/bin/zsh
 set shiftwidth=2
-set shortmess+=c
 set shortmess=a
+set shortmess+=c
 set signcolumn=yes
 set smartcase
 set smarttab
@@ -61,42 +62,57 @@ set wildmenu
 filetype plugin on
 
 " Keymaps
-noremap <SPACE> <Nop>
 inoremap <D-j> <Esc>:m .+1<CR>==gi<C-z>
 inoremap <D-k> <Esc>:m .-2<CR>==gi<C-z>
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+map F <Plug>Sneak_F
+map T <Plug>Sneak_T
+map f <Plug>Sneak_f
+map t <Plug>Sneak_t
+nmap <D-R> <Plug>(coc-rename)
+nmap <leader>ca :CocAction<CR>
+nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent>cr :CocRestart<CR>
 nnoremap <D-j> :m .+1<CR>==<C-z>
 nnoremap <D-k> :m .-2<CR>==<C-z>
-vnoremap <D-j> :m '>+1<CR>gv=gv
-vnoremap <D-k> :m '<-2<CR>gv=gv
 nnoremap <ESC><ESC> :nohls<CR><C-z>
-nnoremap <silent><Right> :vertical resize +4<CR>
-nnoremap <silent><Left> :vertical resize -4<CR>
-nnoremap <silent><Down> :resize +2<CR>
-nnoremap <silent><Up> :resize -2<CR>
 nnoremap <leader>0 :e ~/.vimrc<CR>
-nnoremap <leader>9 :UltiSnipsEdit<CR>
-nnoremap <leader>8 :e ~/.vim/colors/neonchalk.vim<CR>
 nnoremap <leader>7 :CocConfig<CR>
+nnoremap <leader>8 :e ~/.vim/colors/neonchalk.vim<CR>
+nnoremap <leader>9 :UltiSnipsEdit<CR>
 nnoremap <silent> <leader>, :bp <CR>
 nnoremap <silent> <leader>. :bn <CR>
-nnoremap <silent> <leader>\ :so % <CR>
-nnoremap <silent> <leader>b :BuffersToggle<CR>
+nnoremap <silent> <leader>\ :so ~/.vimrc<CR>
+nnoremap <silent> <leader>b :call fzf#vim#buffers()<CR>
 nnoremap <silent> <leader>g1 :diffget //2<CR>
 nnoremap <silent> <leader>g2 :diffget //3<CR>
 nnoremap <silent> <leader>gb :Gblame<CR>
 nnoremap <silent> <leader>gc :Commits<CR>
+nnoremap <silent> <leader>gc :Gcommit<CR>
 nnoremap <silent> <leader>gd :Gvdiff<CR>
 nnoremap <silent> <leader>gs :G<CR>
-nnoremap <silent> <leader>gc :Gcommit<CR>
+nnoremap <silent> <leader>h :call <SID>show_documentation()<CR>
 nnoremap <silent> <leader>l :Lines<CR>
 nnoremap <silent> <leader>m :Marks<CR>
-nnoremap <silent> <leader>pi :PlugInstall<CR>
 nnoremap <silent> <leader>pc :PlugClean<CR>
+nnoremap <silent> <leader>pi :PlugInstall<CR>
 nnoremap <silent> <leader>s :Snippets<CR>
 nnoremap <silent> <leader>t :term<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
 nnoremap <silent> <leader>x :Windows<CR>
-nnoremap <silent> <leader>w :BUN<CR>
+nnoremap <silent> <leader><ESC> :Startify<CR>
+nnoremap <silent><Down> :resize +2<CR>
+nnoremap <silent><Left> :vertical resize -2<CR>
+nnoremap <silent><Right> :vertical resize +2<CR>
+nnoremap <silent><Up> :resize -2<CR>
+noremap - -
 noremap <D-1> 1<C-w><C-w>
 noremap <D-2> 2<C-w><C-w>
 noremap <D-3> 3<C-w><C-w>
@@ -105,32 +121,44 @@ noremap <D-5> 5<C-w><C-w>
 noremap <D-E> :NERDTreeToggle<CR>
 noremap <D-H> <C-w>R
 noremap <D-L> <C-w>R
+noremap <D-F> :Ag!<CR>
+noremap <SPACE> <Nop>
 noremap <silent> <C-H> :tabN<CR>
 noremap <silent> <C-L> :tabn<CR>
 noremap <silent> <C-P> :Files<CR>
 noremap <silent> <C-p> :GFiles<CR>
 noremap <silent> <D-/> :Commentary<CR>
 noremap <silent> <D-O> :BTags<CR>
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <leader>qf  <Plug>(coc-fix-current)
-nmap <leader>ca :CocAction<CR>
-nmap <D-R> <Plug>(coc-rename)
-nmap <silent>cr :CocRestart<CR>
+vnoremap <D-j> :m '>+1<CR>gv=gv
+vnoremap <D-k> :m '<-2<CR>gv=gv
+xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+
+" CamelCase remappings
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap e
+sunmap ge
+omap <silent> iw <Plug>CamelCaseMotion_iw
+xmap <silent> iw <Plug>CamelCaseMotion_iw
+omap <silent> ib <Plug>CamelCaseMotion_ib
+xmap <silent> ib <Plug>CamelCaseMotion_ib
+omap <silent> ie <Plug>CamelCaseMotion_ie
+xmap <silent> ie <Plug>CamelCaseMotion_ie
+
 map <leader>/ :echo "" . synIDattr(synID(line("."),col("."),1),"name") . ' : '
       \ . synIDattr(synID(line("."),col("."),0),"name") . " : "
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ""<CR>
-noremap - -
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
 
-" Use K to trigger documentation
-nnoremap <silent> <leader>h :call <SID>show_documentation()<CR>
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
 
+" Function to trigger hover docs
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -145,18 +173,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
-
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Set shell
-set shell=/bin/zsh
-
 " Install Vim Plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -166,52 +182,67 @@ endif
 
 " Plugins
 call plug#begin("~/.vim/autoload")
-  Plug 'AndrewRadev/tagalong.vim'
-  Plug 'BrandonBurrus/java-syntax.vim'
-  Plug 'PhilRunninger/nerdtree-visual-selection'
-  Plug 'Quramy/tsuquyomi'
-  Plug 'SirVer/ultisnips'
-  Plug 'Xuyuanp/nerdtree-git-plugin'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'airblade/vim-rooter'
-  Plug 'alvan/vim-closetag'
-  Plug 'ap/vim-css-color'
+
+  " Motions
   Plug 'easymotion/vim-easymotion'
-  Plug 'haya14busa/incsearch.vim'
-  Plug 'honza/vim-snippets'
-  Plug 'itchyny/vim-gitbranch'
-  Plug 'janko-m/vim-test'
-  Plug 'jiangmiao/auto-pairs'
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
-  Plug 'junegunn/vim-emoji'
-  Plug 'junegunn/vim-slash'
+  Plug 'haya14busa/incsearch-easymotion.vim'
   Plug 'justinmk/vim-sneak'
-  Plug 'mattn/emmet-vim'
-  Plug 'mbbill/undotree'
-  Plug 'mhinz/vim-startify'
   Plug 'michaeljsmith/vim-indent-object'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'peitalin/vim-jsx-typescript'
-  Plug 'qpkorr/vim-bufkill'
-  Plug 'scrooloose/nerdtree'
-  Plug 'sheerun/vim-polyglot'
   Plug 'terryma/vim-multiple-cursors'
+  Plug 'bkad/camelcasemotion'
+
+  " Actions
+  Plug 'AndrewRadev/tagalong.vim'
+  Plug 'SirVer/ultisnips'
+  Plug 'alvan/vim-closetag'
+  Plug 'andrewradev/splitjoin.vim'
+  Plug 'honza/vim-snippets'
+  Plug 'mattn/emmet-vim'
   Plug 'tommcdo/vim-exchange'
-  Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-dadbod'
-  Plug 'tpope/vim-dotenv'
   Plug 'tpope/vim-eunuch'
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-obsession'
   Plug 'tpope/vim-repeat'
-  Plug 'tpope/vim-sleuth'
   Plug 'tpope/vim-surround'
+
+  " Editor
+  Plug 'haya14busa/incsearch.vim'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'junegunn/vim-slash'
+  Plug 'mhinz/vim-startify'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'tpope/vim-abolish'
+  Plug 'tpope/vim-sleuth'
   Plug 'tpope/vim-vinegar'
   Plug 'unblevable/quick-scope'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+
+  " Navigation
+  Plug 'PhilRunninger/nerdtree-visual-selection'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+  Plug 'qpkorr/vim-bufkill'
+  Plug 'scrooloose/nerdtree'
+
+  " Syntax
+  Plug 'BrandonBurrus/java-syntax.vim'
+  Plug 'Quramy/tsuquyomi'
+  Plug 'elmcast/elm-vim'
+  Plug 'peitalin/vim-jsx-typescript'
+  Plug 'sheerun/vim-polyglot'
+
+  " Git
+  Plug 'airblade/vim-gitgutter'
+  Plug 'itchyny/vim-gitbranch'
+  Plug 'tpope/vim-fugitive'
+
+  " Misc
+  Plug 'airblade/vim-rooter'
+  Plug 'kshenoy/vim-signature'
+  Plug 'ludovicchabant/vim-gutentags'
+  Plug 'mbbill/undotree'
+  Plug 'tpope/vim-obsession'
+
 call plug#end()
 
 " Coc Extensions
@@ -219,10 +250,8 @@ let g:coc_global_extensions = [
       \ "coc-css",
       \ "coc-cssmodules",
       \ "coc-docker",
-      \ "coc-eslint",
       \ "coc-flutter",
       \ "coc-go",
-      \ "coc-highlight",
       \ "coc-html",
       \ "coc-java",
       \ "coc-jedi",
@@ -230,8 +259,10 @@ let g:coc_global_extensions = [
       \ "coc-markdownlint",
       \ "coc-omnisharp",
       \ "coc-python",
+      \ "coc-sourcekit",
       \ "coc-tailwindcss",
       \ "coc-tsserver",
+      \ "coc-vetur",
       \ "coc-xml",
       \ "coc-yaml",
       \ "coc-yank"
@@ -249,7 +280,6 @@ let g:NERDTreeDirArrowCollapsible = ''
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeWinSize=52
 let g:NERDTreeMinimalUI = 1
-let g:SuperTabContextDefaultCompletionType = '<c-n>'
 let g:UltiSnipsExpandTrigger="<C-Space>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
@@ -262,6 +292,7 @@ let g:airline_section_y = ''
 let g:airline_section_z = '%{strftime("%H:%M")}'
 let g:airline_theme='minimalist'
 let g:fzf_buffers_jump = 1
+let g:fzf_preview_window = ''
 let g:fzf_tags_command = 'ctags -R --exclude=.git --exclude=log'
 let g:gutentags_cache_dir = expand('~/.cache/tags')
 let g:gutentags_ctags_tagfile = '.tags'
@@ -279,6 +310,8 @@ let g:vrfr_rg = 'true'
 let loadedmatchparen = 0
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.tsx,*.js,*.ts'
 let g:closetag_filetypes = 'html,xhtml,phtml,javascript,javascriptreact,typescript,typescriptreact'
+let g:qs_enable = 1
+let g:qs_max_chars = 104
 
 " Font
 if has ('gui_running')
@@ -286,7 +319,7 @@ if has ('gui_running')
 endif
 
 " Custom commands
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Auto commands
 autocmd! GUIEnter * set vb t_vb=
