@@ -103,6 +103,7 @@ nnoremap <silent> <leader>l :Lines<CR>
 nnoremap <silent> <leader>m :Marks<CR>
 nnoremap <silent> <leader>pc :PlugClean<CR>
 nnoremap <silent> <leader>pi :PlugInstall<CR>
+nnoremap <silent> <leader>rf :NERDTreeFind<CR>
 nnoremap <silent> <leader>s :Snippets<CR>
 nnoremap <silent> <leader>t :term<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
@@ -263,7 +264,6 @@ let g:coc_global_extensions = [
       \ "coc-tailwindcss",
       \ "coc-tsserver",
       \ "coc-vetur",
-      \ "coc-xml",
       \ "coc-yaml",
       \ "coc-yank"
       \ ]

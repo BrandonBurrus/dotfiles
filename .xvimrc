@@ -1,46 +1,53 @@
 " Brandon Burrus .xvimrc
-"
 syn on
 let mapleader=" "
-set nocompatible
-set encoding=UTF-32
-set directory^=$HOME/.vim/tmp//
-set undodir=~/.vim/undodir
-set nu
-set modelines=0
-set mouse=v
-set autoindent
-set lazyredraw
-set undolevels=10000
-set noswapfile
-set nobackup
-set undofile
-set splitbelow
-set splitright
-set path+=**
-set guioptions=
-set relativenumber
-set nowrap
+
+" General config
+
 set antialias
-set nocursorline
-set nowrap
-set numberwidth=4
-set noru
+set autoindent
+set belloff=all
+set cmdheight=1
+set directory^=$HOME/.vim/tmp//
+set encoding=UTF-8
+set expandtab
+set guicursor=
+set guioptions=
+set hidden
 set hlsearch
 set incsearch
+set lazyredraw
+set ma
+set modelines=0
+set mouse=v
+set nobackup
+set nocompatible
+set nocursorline
+set noerrorbells
+set noru
+set noshowmode
+set nospell
+set noswapfile
+set novisualbell
+set nowrap
+set nu
+set path+=**
+set re=0
+set relativenumber
+set shiftwidth=2
+set shortmess=a
+set shortmess+=c
+set signcolumn=yes
 set smartcase
 set smarttab
-set expandtab
-set tabstop=2
-set shiftwidth=2
 set softtabstop=2
-set noerrorbells
-set novisualbell
-set scrolloff=50
-set cmdheight=1
-set updatetime=50
-set linespace=2
-set hidden
+set splitbelow
+set splitright
+set t_vb=
+set tabstop=2
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=10000
+set updatetime=100
 filetype plugin on
-nohls
 

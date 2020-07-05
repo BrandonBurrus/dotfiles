@@ -358,6 +358,17 @@ hi! link nerdTreeClosable Normal
 hi! link nerdTreeDirSlash Normal
 hi! link nerdTreeHelpTitle String
 
+" CSS
+hi! link cssBraces Normal
+hi! link scssSelectorName Function
+hi! link scssDefinition Keyword
+hi! link cssUnitDecorators Keyword
+hi! link scssExtend Keyword
+hi! link scssSelectorChar Normal
+hi! link cssUIProp Identifier
+hi! link cssBoxProp Identifier
+hi! link cssBorderProp Identifier
+
 " Git Gutter
 call s:X("GitGutterAdd","3b3b40","","","Green","")
 call s:X("GitGutterChange","3b3b40","","","Blue","")

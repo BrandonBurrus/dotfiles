@@ -3,5 +3,8 @@
 	email = brandon@burrus.io
 [core]
 	ignorecase = true
+	editor = vi
 [hub]
 	protocol = https
+[pull]
+	rebase = true
