@@ -297,7 +297,7 @@ endfun
 
 call s:X("Normal","e8e8d3",s:background_color,"","Black","")
 call s:X("SignColumn","",s:background_color,"","Black","")
-call s:X("CursorLine","","1c1c1c","","",s:termBlack)
+call s:X("CursorLine","","1d2426","","",s:termBlack)
 call s:X("CursorColumn","","1c1c1c","","",s:termBlack)
 call s:X("Pmenu","ffffff","606060","","White",s:termBlack)
 call s:X("PmenuSel","101010","eeeeee","",s:termBlack,"White")
@@ -305,8 +305,8 @@ call s:X("Visual","","003562","","",s:termBlack)
 call s:X("Search","4398C9","003562","underline","Magenta","")
 call s:X("MatchParen","","","underline","Magenta","")
 call s:X("Cursor",s:background_color,"bababa","","","")
-call s:X("LineNr","3b3b40",s:background_color,"NONE",s:termBlack,"")
-call s:X("CursorLineNr","ccc5c4","","","White","")
+call s:X("LineNr","3b3b40",s:background_color,"NONE","White","")
+call s:X("CursorLineNr","4b4b50","1d2426","","White","")
 call s:X("Comment","41B645","","italic","Grey","")
 call s:X("Todo","FF8C00","","bold","White",s:termBlack)
 call s:X("VertSplit","232a2f","","",s:termBlack,s:termBlack)
@@ -331,6 +331,7 @@ call s:X("Directory","dad085","","","Yellow","")
 call s:X("ErrorMsg","","902020","","","DarkRed")
 call s:X("Question","65C254","","","Green","")
 call s:X("Regexp","364ded","","","Purple","")
+call s:X("CocHighlightText", "", "032756", "", "Blue", "")
 
 hi! link Operator Structure
 hi! link Conceal Operator
@@ -357,6 +358,7 @@ hi! link nerdTreeOpenable Normal
 hi! link nerdTreeClosable Normal
 hi! link nerdTreeDirSlash Normal
 hi! link nerdTreeHelpTitle String
+hi! link nerdTreeBookmark Constant
 
 " CSS
 hi! link cssBraces Normal
@@ -457,6 +459,12 @@ hi! link erlangNode Identifier
 hi! link elixirAtom rubySymbol
 
 " JavaScript
+hi! link jsImport Keyword
+hi! link jsExport Keyword
+hi! link jsExportDefault Keyword
+hi! link jsFrom Keyword
+hi! link jsModuleKeyword Identifier
+hi! link jsFunction Keyword
 hi! link javaScriptValue Constant
 hi! link javaScriptRegexpString rubyRegexp
 hi! link jsObjectKey Constant

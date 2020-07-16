@@ -23,6 +23,7 @@ PROGRAMS=(
     jq
     kubernetes-cli
     liquibase
+    lolcat
     macvim
     maven
     minikube

@@ -18,6 +18,7 @@ export ZSH_TMUX_AUTOSTART=true
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/.scripts
+export PATH=$PATH:~/Files/Clairvoyant/LMS/Setup
 
 export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
@@ -33,3 +34,4 @@ if [[ -f ~/.bash_profile ]]; then
   source ~/.bash_profile;
 fi
 
+~/.scripts/quote | lolcat

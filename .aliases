@@ -32,6 +32,7 @@ alias jh=javah
 alias jp=javap
 alias k=kubectl
 alias liq=liquibase
+alias lmsdir='cd ~/Files/Clairvoyant/LMS'
 alias ls=ls -1AG
 alias m=mvn
 alias mk=minikube

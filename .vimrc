@@ -12,6 +12,7 @@ set autoindent
 set belloff=all
 set cmdheight=2
 set completeopt-=preview
+set cursorline
 set directory^=$HOME/.vim/tmp//
 set encoding=UTF-8
 set expandtab
@@ -28,7 +29,6 @@ set modelines=0
 set mouse=v
 set nobackup
 set nocompatible
-set nocursorline
 set noerrorbells
 set noru
 set noshowmode
@@ -41,7 +41,7 @@ set numberwidth=4
 set path+=**
 set re=0
 set relativenumber
-set scrolloff=14
+set scrolloff=4
 set shell=/bin/zsh
 set shiftwidth=2
 set shortmess=a
@@ -91,13 +91,16 @@ nnoremap <silent> <leader>, :bp <CR>
 nnoremap <silent> <leader>. :bn <CR>
 nnoremap <silent> <leader>\ :so ~/.vimrc<CR>
 nnoremap <silent> <leader>b :call fzf#vim#buffers()<CR>
+nnoremap <silent> <leader>cp :SClose<CR>
 nnoremap <silent> <leader>g1 :diffget //2<CR>
 nnoremap <silent> <leader>g2 :diffget //3<CR>
 nnoremap <silent> <leader>gb :Gblame<CR>
 nnoremap <silent> <leader>gc :Commits<CR>
 nnoremap <silent> <leader>gc :Gcommit<CR>
 nnoremap <silent> <leader>gd :Gvdiff<CR>
+nnoremap <silent> <leader>gh :NERDTreeCWD<CR>
 nnoremap <silent> <leader>gs :G<CR>
+nnoremap <silent> <leader>f :CocAction<CR>
 nnoremap <silent> <leader>h :call <SID>show_documentation()<CR>
 nnoremap <silent> <leader>l :Lines<CR>
 nnoremap <silent> <leader>m :Marks<CR>
@@ -105,9 +108,11 @@ nnoremap <silent> <leader>pc :PlugClean<CR>
 nnoremap <silent> <leader>pi :PlugInstall<CR>
 nnoremap <silent> <leader>rf :NERDTreeFind<CR>
 nnoremap <silent> <leader>s :Snippets<CR>
-nnoremap <silent> <leader>t :term<CR>
+nnoremap <silent> <leader>t :vert term<CR>
+nnoremap <silent> <leader>T :term<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
-nnoremap <silent> <leader>x :Windows<CR>
+nnoremap <silent> <leader>w :BD<CR>
+nnoremap <silent> <leader>W :bd<CR>
 nnoremap <silent> <leader><ESC> :Startify<CR>
 nnoremap <silent><Down> :resize +2<CR>
 nnoremap <silent><Left> :vertical resize -2<CR>
@@ -126,10 +131,12 @@ noremap <D-F> :Ag!<CR>
 noremap <SPACE> <Nop>
 noremap <silent> <C-H> :tabN<CR>
 noremap <silent> <C-L> :tabn<CR>
-noremap <silent> <C-P> :Files<CR>
 noremap <silent> <C-p> :GFiles<CR>
+noremap <silent> <C-E> 4zh
+noremap <silent> <C-Y> 4zl
 noremap <silent> <D-/> :Commentary<CR>
 noremap <silent> <D-O> :BTags<CR>
+noremap <silent> <D-P> :Files<CR>
 vnoremap <D-j> :m '>+1<CR>gv=gv
 vnoremap <D-k> :m '<-2<CR>gv=gv
 xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
@@ -238,8 +245,10 @@ call plug#begin("~/.vim/autoload")
   Plug 'tpope/vim-fugitive'
 
   " Misc
+  Plug 'JamshedVesuna/vim-markdown-preview'
   Plug 'airblade/vim-rooter'
   Plug 'kshenoy/vim-signature'
+  Plug 'lambdalisue/vim-fullscreen'
   Plug 'ludovicchabant/vim-gutentags'
   Plug 'mbbill/undotree'
   Plug 'tpope/vim-obsession'
@@ -303,7 +312,25 @@ let g:netrw_banner = 0
 let g:netrw_browsex_viewer = 'google-chrome'
 let g:netrw_list_hide= '.*\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.git'
 let g:netrw_liststyle = 3
-let g:startify_custom_header = []
+let g:startify_files_number = 10
+let g:startify_lists = [
+  \ { 'type': 'sessions',   'header': ['  Projects'] },
+  \ { 'type': 'files',      'header': ['  Recently opened'] },
+  \ { 'type': 'dir',        'header': ['  Recently opened in '. getcwd()] },
+  \ { 'type': 'bookmarks',  'header': ['  Bookmarks'] },
+  \ { 'type': 'commands',   'header': ['  Commands'] },
+  \ ]
+let g:startify_session_before_save = [
+  \ 'silent! NERDTreeTabsClose'
+  \ ]
+let g:startify_skiplist = [
+  \ 'COMMIT_EDITMSG',
+  \ ]
+let g:startify_session_persistence = 1
+let g:startify_session_autoload = 1
+let g:startify_change_to_dir = 1
+let g:startify_change_to_vcs_root = 1
+let g:startify_session_sort = 1
 let g:user_emmet_leader_key = '<D-e>'
 let g:user_emmet_install_global = 1
 let g:vrfr_rg = 'true'
@@ -312,6 +339,11 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.tsx,*.js,*.ts'
 let g:closetag_filetypes = 'html,xhtml,phtml,javascript,javascriptreact,typescript,typescriptreact'
 let g:qs_enable = 1
 let g:qs_max_chars = 104
+let vim_markdown_preview_hotkey='<D-m>'
+let vim_markdown_preview_browser='Google Chrome'
+
+" Custom header
+let g:startify_custom_header = 'startify#pad(startify#fortune#boxed("Brandon"))'
 
 " Font
 if has ('gui_running')
@@ -339,6 +371,11 @@ autocmd BufWinEnter *
   \   let t:startify_new_tab = 1 |
   \   Startify |
   \ endif
+autocmd VimEnter *
+  \   if !argc()
+  \ |   Startify
+  \ |   wincmd w
+  \ | endif
 autocmd StdinReadPre * let s:std_in=1
 
 " Vertical bar overrides
@@ -346,3 +383,4 @@ let g:airline#extensions#tabline#left_alt_sep = ' '
 let g:indentLine_char = '|'
 set fillchars+=vert:⎸
 
+nohls
