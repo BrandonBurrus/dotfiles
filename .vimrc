@@ -9,8 +9,9 @@ colorscheme neonchalk
 
 set antialias
 set autoindent
+set autoread
 set belloff=all
-set cmdheight=2
+set cmdheight=1
 set completeopt-=preview
 set cursorline
 set directory^=$HOME/.vim/tmp//
@@ -40,7 +41,7 @@ set nu
 set numberwidth=4
 set path+=**
 set re=0
-set relativenumber
+" set relativenumber
 set scrolloff=4
 set shell=/bin/zsh
 set shiftwidth=2
@@ -132,8 +133,6 @@ noremap <SPACE> <Nop>
 noremap <silent> <C-H> :tabN<CR>
 noremap <silent> <C-L> :tabn<CR>
 noremap <silent> <C-p> :GFiles<CR>
-noremap <silent> <C-E> 4zh
-noremap <silent> <C-Y> 4zl
 noremap <silent> <D-/> :Commentary<CR>
 noremap <silent> <D-O> :BTags<CR>
 noremap <silent> <D-P> :Files<CR>
@@ -341,6 +340,7 @@ let g:qs_enable = 1
 let g:qs_max_chars = 104
 let vim_markdown_preview_hotkey='<D-m>'
 let vim_markdown_preview_browser='Google Chrome'
+let NERDTreeIgnore=['node_modules', 'out', 'build']
 
 " Custom header
 let g:startify_custom_header = 'startify#pad(startify#fortune#boxed("Brandon"))'
@@ -369,14 +369,17 @@ autocmd BufWinEnter *
   \     && empty(&l:buftype)
   \     && &l:modifiable |
   \   let t:startify_new_tab = 1 |
+  \   NERDTreeClose |
   \   Startify |
   \ endif
 autocmd VimEnter *
   \   if !argc()
+  \ |   NERDTreeClose
   \ |   Startify
   \ |   wincmd w
   \ | endif
 autocmd StdinReadPre * let s:std_in=1
+autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
 " Vertical bar overrides
 let g:airline#extensions#tabline#left_alt_sep = ' '

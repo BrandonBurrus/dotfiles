@@ -372,9 +372,9 @@ hi! link cssBoxProp Identifier
 hi! link cssBorderProp Identifier
 
 " Git Gutter
-call s:X("GitGutterAdd","3b3b40","","","Green","")
-call s:X("GitGutterChange","3b3b40","","","Blue","")
-call s:X("GitGutterDelete","3b3b40","","","Red","")
+call s:X("GitGutterAdd","82cb4d","","","Green","")
+call s:X("GitGutterChange","005380","","","Blue","")
+call s:X("GitGutterDelete","730c13","","","Red","")
 
 " UltiSnip
 hi! link snipSnippetTrigger Function
@@ -533,6 +533,7 @@ hi! link typescriptResponseProp Identifier
 hi! link typescriptArrayMethod Function
 hi! link typescriptTemplateSB Regexp
 hi! link typescriptBoolean Keyword
+hi! link typescriptParamImpl Identifier
 
 " Java
 hi! link javaPackage Keyword
