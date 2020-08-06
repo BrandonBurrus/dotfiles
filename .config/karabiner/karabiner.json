@@ -240,6 +240,22 @@
                 },
                 {
                     "from": {
+                        "key_code": "delete_forward"
+                    },
+                    "to": {
+                        "key_code": "volume_increment"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "end"
+                    },
+                    "to": {
+                        "key_code": "volume_decrement"
+                    }
+                },
+                {
+                    "from": {
                         "key_code": "insert"
                     },
                     "to": {
@@ -256,18 +272,18 @@
                 },
                 {
                     "from": {
-                        "key_code": "delete_forward"
+                        "key_code": "page_up"
                     },
                     "to": {
-                        "key_code": "volume_increment"
+                        "key_code": "mission_control"
                     }
                 },
                 {
                     "from": {
-                        "key_code": "end"
+                        "key_code": "page_down"
                     },
                     "to": {
-                        "key_code": "volume_decrement"
+                        "key_code": "launchpad"
                     }
                 }
             ],
