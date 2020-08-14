@@ -11,7 +11,7 @@ git clone \
   --separate-git-dir=$HOME/.myconf \
   https://github.com/BrandonBurrus/dotfiles.git \
   $HOME/myconf-tmp
-source ~/myconfig-tmp/.aliases
+source ~/myconf-tmp/.aliases
 dot branch master -u origin/master
 rm -rf ~/myconf-tmp
 (cd ~; dot pull --force)
