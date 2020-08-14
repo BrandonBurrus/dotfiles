@@ -26,4 +26,3 @@ custom location.
 
 To version control the dotfiles repository, an alias for the git command has been
 created and is named `dot`.
-
