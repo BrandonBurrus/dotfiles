@@ -41,7 +41,7 @@ set nu
 set numberwidth=4
 set path+=**
 set re=0
-" set relativenumber
+set relativenumber
 set scrolloff=4
 set shell=/bin/zsh
 set shiftwidth=2
@@ -85,6 +85,8 @@ nnoremap <D-j> :m .+1<CR>==<C-z>
 nnoremap <D-k> :m .-2<CR>==<C-z>
 nnoremap <ESC><ESC> :nohls<CR><C-z>
 nnoremap <leader>0 :e ~/.vimrc<CR>
+nnoremap <silent> <leader>1 :set relativenumber<CR>
+nnoremap <silent> <leader>2 :set relativenumber!<CR>
 nnoremap <leader>7 :CocConfig<CR>
 nnoremap <leader>8 :e ~/.vim/colors/neonchalk.vim<CR>
 nnoremap <leader>9 :UltiSnipsEdit<CR>
@@ -286,7 +288,7 @@ endif
 
 let g:NERDTreeDirArrowCollapsible = ''
 let g:NERDTreeDirArrowExpandable = ''
-let g:NERDTreeWinSize=52
+let g:NERDTreeWinSize=50
 let g:NERDTreeMinimalUI = 1
 let g:UltiSnipsExpandTrigger="<C-Space>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
@@ -363,21 +365,6 @@ autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 autocmd VimResized * wincmd =
 autocmd StdinReadPre * let s:std_in=1
 autocmd CursorHold * silent call CocActionAsync('highlight')
-autocmd BufWinEnter *
-  \ if !exists('t:startify_new_tab')
-  \     && empty(expand('%'))
-  \     && empty(&l:buftype)
-  \     && &l:modifiable |
-  \   let t:startify_new_tab = 1 |
-  \   NERDTreeClose |
-  \   Startify |
-  \ endif
-autocmd VimEnter *
-  \   if !argc()
-  \ |   NERDTreeClose
-  \ |   Startify
-  \ |   wincmd w
-  \ | endif
 autocmd StdinReadPre * let s:std_in=1
 autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
