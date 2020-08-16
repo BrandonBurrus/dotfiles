@@ -1,0 +1,8 @@
+#!/bin/bash
+
+RAW_QUOTE=$(curl --silent https://programming-quotes-api.herokuapp.com/quotes/random)
+
+AUTHOR=$(echo $RAW_QUOTE | jq -r .author)
+QUOTE=$(echo $RAW_QUOTE | jq -r .en)
+
+echo "$QUOTE - $AUTHOR" | fold -w 80 -s
