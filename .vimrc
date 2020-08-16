@@ -349,7 +349,7 @@ let g:startify_custom_header = 'startify#pad(startify#fortune#boxed("Brandon"))'
 
 " Font
 if has ('gui_running')
-  set guifont=Dank_Mono:h16
+  set guifont=DankMono_Nerd_Font:h16
 endif
 
 " Custom commands
