@@ -17,6 +17,9 @@ set cursorline
 set directory^=$HOME/.vim/tmp//
 set encoding=UTF-8
 set expandtab
+set foldignore=
+set foldlevelstart=99
+set foldmethod=indent
 set guicursor+=a:blinkon0
 set guicursor=
 set guioptions=
@@ -45,8 +48,8 @@ set relativenumber
 set scrolloff=4
 set shell=/bin/zsh
 set shiftwidth=2
-set shortmess=a
 set shortmess+=c
+set shortmess=a
 set signcolumn=yes
 set smartcase
 set smarttab
@@ -296,10 +299,8 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#left_sep = ' '
-let g:airline_section_b = gitbranch#name()
-let g:airline_section_x = ''
-let g:airline_section_y = ''
-let g:airline_section_z = '%{strftime("%H:%M")}'
+let g:airline_section_a = airline#section#create(['branch'])
+let g:airline_section_z = '%{strftime("%I:%M %p")}'
 let g:airline_theme='minimalist'
 let g:fzf_buffers_jump = 1
 let g:fzf_preview_window = ''
@@ -317,7 +318,6 @@ let g:startify_files_number = 10
 let g:startify_lists = [
   \ { 'type': 'sessions',   'header': ['  Projects'] },
   \ { 'type': 'files',      'header': ['  Recently opened'] },
-  \ { 'type': 'dir',        'header': ['  Recently opened in '. getcwd()] },
   \ { 'type': 'bookmarks',  'header': ['  Bookmarks'] },
   \ { 'type': 'commands',   'header': ['  Commands'] },
   \ ]
@@ -372,5 +372,19 @@ autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 let g:airline#extensions#tabline#left_alt_sep = ' '
 let g:indentLine_char = '|'
 set fillchars+=vert:⎸
+
+" Disable mouse scrolling
+:nmap <ScrollWheelUp> <nop>
+:nmap <S-ScrollWheelUp> <nop>
+:nmap <C-ScrollWheelUp> <nop>
+:nmap <ScrollWheelDown> <nop>
+:nmap <S-ScrollWheelDown> <nop>
+:nmap <C-ScrollWheelDown> <nop>
+:nmap <ScrollWheelLeft> <nop>
+:nmap <S-ScrollWheelLeft> <nop>
+:nmap <C-ScrollWheelLeft> <nop>
+:nmap <ScrollWheelRight> <nop>
+:nmap <S-ScrollWheelRight> <nop>
+:nmap <C-ScrollWheelRight> <nop>
 
 nohls
