@@ -264,10 +264,10 @@
                 },
                 {
                     "from": {
-                        "key_code": "pause"
+                        "key_code": "page_down"
                     },
                     "to": {
-                        "key_code": "mute"
+                        "key_code": "launchpad"
                     }
                 },
                 {
@@ -280,10 +280,10 @@
                 },
                 {
                     "from": {
-                        "key_code": "page_down"
+                        "key_code": "pause"
                     },
                     "to": {
-                        "key_code": "launchpad"
+                        "key_code": "mute"
                     }
                 }
             ],

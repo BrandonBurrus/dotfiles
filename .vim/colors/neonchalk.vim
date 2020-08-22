@@ -534,6 +534,7 @@ hi! link typescriptArrayMethod Function
 hi! link typescriptTemplateSB Regexp
 hi! link typescriptBoolean Keyword
 hi! link typescriptParamImpl Identifier
+hi! link typescriptDestructureVariable Identifier
 
 " Java
 hi! link javaPackage Keyword
