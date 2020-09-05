@@ -573,9 +573,17 @@ hi! link objcMessageName Identifier
 hi! link vimOper Normal
 
 " HTML
-hi! link htmlTag Statement
+hi! link htmlTag Normal
 hi! link htmlEndTag htmlTag
-hi! link htmlTagName htmlTag
+hi! link htmlArg Identifier
+hi! link htmlTagName Function
+hi! link htmlTitle Normal
+hi! link htmlH1 Normal
+hi! link htmlH2 Normal
+hi! link htmlH3 Normal
+hi! link htmlH4 Normal
+hi! link htmlH5 Normal
+hi! link htmlH6 Normal
 
 " XML
 hi! link xmlTag Statement

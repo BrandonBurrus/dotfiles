@@ -13,7 +13,6 @@ export M2_PATH=~/.m2
 export ZSH=~/.oh-my-zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#bbbbbb,bg=bold"
 export ZSH_THEME="agnoster"
-export ZSH_TMUX_AUTOSTART=true
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH=$PATH:$GOPATH/bin

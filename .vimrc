@@ -270,7 +270,6 @@ let g:coc_global_extensions = [
       \ "coc-java",
       \ "coc-jedi",
       \ "coc-json",
-      \ "coc-markdownlint",
       \ "coc-omnisharp",
       \ "coc-python",
       \ "coc-sourcekit",
@@ -300,6 +299,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline_section_a = airline#section#create(['branch'])
+let g:airline_section_b = ''
 let g:airline_section_z = '%{strftime("%I:%M %p")}'
 let g:airline_theme='minimalist'
 let g:fzf_buffers_jump = 1
@@ -369,7 +369,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
 " Vertical bar overrides
-let g:airline#extensions#tabline#left_alt_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = ''
 let g:indentLine_char = '|'
 set fillchars+=vert:⎸
 
