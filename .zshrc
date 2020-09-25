@@ -13,11 +13,15 @@ export M2_PATH=~/.m2
 export ZSH=~/.oh-my-zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#bbbbbb,bg=bold"
 export ZSH_THEME="agnoster"
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-14.jdk/Contents/Home
+export JDK_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-14.jdk/Contents/Home
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/.scripts
 export PATH=$PATH:~/Files/Clairvoyant/LMS/Setup
+export PATH=$PATH:~/flutter/bin
+export PATH=$PATH:~/structurizr-cli-1.4.1
 
 export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
@@ -33,5 +37,6 @@ if [[ -f ~/.bash_profile ]]; then
   source ~/.bash_profile;
 fi
 
+clear
 ~/.scripts/quote | lolcat
-[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
+# [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"

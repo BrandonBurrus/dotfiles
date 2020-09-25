@@ -215,6 +215,7 @@ call plug#begin("~/.vim/autoload")
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
+  Plug 'lukelbd/vim-toggle'
 
   " Editor
   Plug 'haya14busa/incsearch.vim'
@@ -256,6 +257,8 @@ call plug#begin("~/.vim/autoload")
   Plug 'ludovicchabant/vim-gutentags'
   Plug 'mbbill/undotree'
   Plug 'tpope/vim-obsession'
+
+  Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -342,7 +345,14 @@ let g:qs_enable = 1
 let g:qs_max_chars = 104
 let vim_markdown_preview_hotkey='<D-m>'
 let vim_markdown_preview_browser='Google Chrome'
-let NERDTreeIgnore=['node_modules', 'out', 'build']
+let NERDTreeIgnore=['node_modules']
+let g:webdevicons_enable_nerdtree = 0
+let g:webdevicons_enable_airline_statusline = 1
+let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_startify = 1
+let g:webdevicons_enable = 1
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
+let g:toggle_map = "<C-b>"
 
 " Custom header
 let g:startify_custom_header = 'startify#pad(startify#fortune#boxed("Brandon"))'
@@ -369,7 +379,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
 " Vertical bar overrides
-let g:airline#extensions#tabline#left_alt_sep = ''
+" let g:airline#extensions#tabline#left_alt_sep = ''
 let g:indentLine_char = '|'
 set fillchars+=vert:⎸
 
@@ -386,5 +396,9 @@ set fillchars+=vert:⎸
 :nmap <ScrollWheelRight> <nop>
 :nmap <S-ScrollWheelRight> <nop>
 :nmap <C-ScrollWheelRight> <nop>
+
+if exists("g:loaded_webdevicons")
+  call webdevicons#refresh()
+endif
 
 nohls
