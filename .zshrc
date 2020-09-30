@@ -21,7 +21,6 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/.scripts
 export PATH=$PATH:~/Files/Clairvoyant/LMS/Setup
 export PATH=$PATH:~/flutter/bin
-export PATH=$PATH:~/structurizr-cli-1.4.1
 
 export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
@@ -38,5 +37,5 @@ if [[ -f ~/.bash_profile ]]; then
 fi
 
 clear
-~/.scripts/quote | lolcat
+~/.scripts/quote
 # [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"

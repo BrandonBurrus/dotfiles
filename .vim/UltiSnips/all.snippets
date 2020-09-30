@@ -1,0 +1,82 @@
+snippet doc "Documentation comment"
+/**
+ * ${1:TODO: Add documentation}
+ */
+endsnippet
+
+
+snippet utc "Current UTC Date"
+`date -u +%FT%TZ`
+endsnippet
+
+
+snippet if "If Statement"
+if ($1) {
+  ${VISUAL}$0
+}
+endsnippet
+
+
+snippet ife "If-Else Statement"
+if ($1) {
+  ${VISUAL}$2
+} else {
+  $0
+}
+endsnippet
+
+
+snippet fun "Function Statement"
+function $1($2) {
+  ${VISUAL}$0
+}
+endsnippet
+
+
+snippet while "While Statement"
+while ($1) {
+  ${VISUAL}$0
+}
+endsnippet
+
+
+snippet for "For Statement"
+for ($1) {
+  ${VISUAL}$0
+}
+endsnippet
+
+
+snippet switch "Switch Statement"
+switch ($1) {
+  case $2:
+    ${VISUAL}$0
+}
+endsnippet
+
+
+snippet try "Try-Catch Statement"
+try {
+  ${VISUAL}$0
+} catch ($1) {
+  $2
+}
+endsnippet
+
+
+snippet tryf "Try-Catch-Finally Statement"
+try {
+  ${VISUAL}$0
+} catch ($1) {
+  $2
+} finally {
+  $3
+}
+endsnippet
+
+
+snippet class "Class"
+class $1 {
+  $0
+}
+endsnippet

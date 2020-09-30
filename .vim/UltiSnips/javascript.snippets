@@ -1,0 +1,407 @@
+# Importing
+
+snippet im "Import"
+import '$0';
+endsnippet
+
+
+snippet imr "Import React"
+import React from 'react';$0
+endsnippet
+
+
+snippet imd "Import Default"
+import $2 from '$1';$0
+endsnippet
+
+
+snippet imf "Import-From"
+import { $2 } from '$1';$0
+endsnippet
+
+
+# Exporting
+
+snippet exd "Export default"
+export default $1;
+endsnippet
+
+
+# Statements
+
+snippet forin "For-in loop"
+for (const ${1:item} in ${2:collection}) {
+  ${VISUAL}$0
+}
+endsnippet
+
+
+snippet forof "For-of loop"
+for (const ${1:item} of ${2:collection}) {
+  ${VISUAL}$0
+}
+endsnippet
+
+
+# Console
+
+snippet log "Default logging"
+console.log($1);$0
+endsnippet
+
+
+snippet loge "Log error"
+console.error($1);$0
+endsnippet
+
+
+snippet logw "Log warning"
+console.warn($1);$0
+endsnippet
+
+
+snippet logt "Log tabble"
+console.table($1);$0
+endsnippet
+
+
+# Writing Unit Tests
+
+snippet desc "Jest 'describe' unit test block"
+describe('$1', () => {
+  $0
+});
+endsnippet
+
+
+snippet test "Jest 'test' unit test block"
+test('$1', () => {
+  $0
+});
+endsnippet
+
+
+snippet atest "Jest 'test' async unit test block"
+test('$1', async () => {
+  $0
+});
+endsnippet
+
+
+snippet testt "Jest 'todo' unit test block"
+test.todo('$1');$0
+endsnippet
+
+
+snippet aa "Jest 'afterAll' unit test block"
+afterAll(() => {
+  $0
+});
+endsnippet
+
+
+snippet ae "Jest 'afterEach' unit test block"
+afterEach(() => {
+  $0
+});
+endsnippet
+
+
+snippet ba "Jest 'beforeAll' unit test block"
+beforeAll(() => {
+  $0
+});
+endsnippet
+
+
+snippet be "Jest 'beforeEach' unit test block"
+beforeEach(() => {
+  $0
+});
+endsnippet
+
+
+# Unit Test Matchers
+
+snippet ex "Expect function"
+expect($1).$0
+endsnippet
+
+
+snippet exa "Expect anything"
+expect.anything()
+endsnippet
+
+
+snippet exac "Expect Array Containing"
+expect.arrayContaining($1)
+endsnippet
+
+
+snippet exha "Expect Has Assertions"
+expect.hasAssertions()
+endsnippet
+
+
+snippet exsc "Expect String Containing"
+expect.stringContaining($1)
+endsnippet
+
+
+snippet exsm "Expect String Matching"
+expect.stringMatching($1)
+endsnippet
+
+
+snippet exoc "Expect Object Containing"
+expect.objectContaining($1)
+endsnippet
+
+
+snippet tbd "toBeDefined function"
+toBeDefined();$0
+endsnippet
+
+
+snippet tb "toBe function"
+toBe($1);$0
+endsnippet
+
+
+snippet thbc "toHaveBeenCalled function"
+toHaveBeenCalled();$0
+endsnippet
+
+
+snippet thbct "toHaveBeenCalledTimes function"
+toHaveBeenCalledTimes($1);$0
+endsnippet
+
+
+snippet thbcw "toHaveBeenCalledWith function"
+toHaveBeenCalledWith($1);$0
+endsnippet
+
+
+snippet thblcw "toHaveBeenLastCalledWith function"
+toHaveBeenLastCalledWith($1);$0
+endsnippet
+
+
+snippet thbncw "toHaveBeenNthCalledWith function"
+toHaveBeenNthCalledWith($1);$0
+endsnippet
+
+
+snippet thr "toHaveReturned function"
+toHaveReturned();$0
+endsnippet
+
+
+snippet thrt "toHaveReturnedTimes function"
+toHaveReturnedTimes($1);$0
+endsnippet
+
+
+snippet thrw "toHaveReturnedWith function"
+toHaveReturnedWith($1);$0
+endsnippet
+
+
+snippet thlrw "toHaveLastReturned function"
+toHaveLastReturnedWith($1);$0
+endsnippet
+
+
+snippet thnrw "toHaveNthReturnedWith function"
+toHaveNthReturnedWith($1);$0
+endsnippet
+
+
+snippet thl "toHaveLength function"
+toHaveLength($1);$0
+endsnippet
+
+
+snippet thp "toHaveProperty function"
+toHaveProperty($1);$0
+endsnippet
+
+
+snippet tbct "toBeCloseTo function"
+toBeCloseTo($1);$0
+endsnippet
+
+
+snippet tbf "toBeFalsy function"
+toBeFalsy();$0
+endsnippet
+
+
+snippet tbgt "toBeGreaterThan function"
+toBeGreaterThan($1);$0
+endsnippet
+
+
+snippet tbgte "toBeGreaterThanOrEqual function"
+toBeGreaterThanOrEqual($1);$0
+endsnippet
+
+
+snippet tblt "toBeLessThan function"
+toBeLessThan($1);$0
+endsnippet
+
+
+snippet tblte "toBeLessThanOrEqual function"
+toBeLessThanOrEqual($1);$0
+endsnippet
+
+
+snippet tbi "toBeInstanceOf function"
+toBeInstanceOf($1);$0
+endsnippet
+
+
+snippet tbn "toBeNull function"
+toBeNull();$0
+endsnippet
+
+
+snippet tbt "toBeTruthy function"
+toBeTruthy();$0
+endsnippet
+
+
+snippet tbu "toBeUndefined function"
+toBeUndefined();$0
+endsnippet
+
+
+snippet tc "toContain function"
+toContain($1);$0
+endsnippet
+
+
+snippet tce "toContainEqual function"
+toContainEqual($1);$0
+endsnippet
+
+
+snippet te "toEqual function"
+toEqual($1);$0
+endsnippet
+
+
+snippet tm "toMatch function"
+toMatch($1);$0
+endsnippet
+
+
+snippet tmo "toMatchObject function"
+toMatchObject($1);$0
+endsnippet
+
+
+snippet tms "toMatchSnapshot function"
+toMatchSnapshot();$0
+endsnippet
+
+
+snippet tmis "toMatchInlineSnapshot function"
+toMatchInlineSnapshot();$0
+endsnippet
+
+
+snippet tse "toStrictEqual function"
+toStrictEqual($1);$0
+endsnippet
+
+
+snippet tt "toThrow function"
+toThrow($1);$0
+endsnippet
+
+
+snippet ttems "toThrowErrorMatchingSnapshot function"
+toThrowErrorMatchingSnapshot();$0
+endsnippet
+
+
+snippet ttemis "toThrowErrorMatchingInlineSnapshot function"
+toThrowErrorMatchingInlineSnapshot();$0
+endsnippet
+
+
+# Classes
+
+snippet con "Constructor"
+constructor() {
+  $0
+}
+endsnippet
+
+
+snippet get "Getter"
+get ${1:property}() {
+  $0
+}
+endsnippet
+
+
+snippet set "Setter"
+set ${1:property}(newValue) {
+  $0
+}
+endsnippet
+
+
+# Misc Utils
+
+snippet afc "Arrow Function"
+${1:()} => $0
+endsnippet
+
+
+snippet map "Map"
+map(${1:item} => ${2:\{\}})
+endsnippet
+
+
+snippet filter "Filter"
+filter(${1:item} => ${2:\{\}})
+endsnippet
+
+
+snippet prom "Promise"
+new Promise((resolve, reject) => {
+  ${VISUAL}$0
+});
+endsnippet
+
+
+snippet promt "Promise + Try-Catch"
+new Promise((resolve, reject) => {
+  try {
+    ${VISUAL}$0
+  } catch ($1) {
+    reject($2);
+  }
+});
+endsnippet
+
+
+snippet then "Promise.then"
+then(${1:()} => {
+  $0
+})
+endsnippet
+
+
+snippet catch "Promise.catch"
+catch(${1:()} => {
+  $0
+})
+endsnippet
+
+

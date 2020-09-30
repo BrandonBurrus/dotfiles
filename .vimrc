@@ -44,7 +44,7 @@ set nu
 set numberwidth=4
 set path+=**
 set re=0
-set relativenumber
+set norelativenumber
 set scrolloff=4
 set shell=/bin/zsh
 set shiftwidth=2
@@ -120,10 +120,12 @@ nnoremap <silent> <leader>u :UndotreeToggle<CR>
 nnoremap <silent> <leader>w :BD<CR>
 nnoremap <silent> <leader>W :bd<CR>
 nnoremap <silent> <leader><ESC> :Startify<CR>
-nnoremap <silent><Down> :resize +2<CR>
-nnoremap <silent><Left> :vertical resize -2<CR>
-nnoremap <silent><Right> :vertical resize +2<CR>
-nnoremap <silent><Up> :resize -2<CR>
+nnoremap <silent> <Down> :resize +2<CR>
+nnoremap <silent> <Left> :vertical resize -2<CR>
+nnoremap <silent> <Right> :vertical resize +2<CR>
+nnoremap <silent> <Up> :resize -2<CR>
+nnoremap <silent> <D-H> :bp<CR>
+nnoremap <silent> <D-L> :bn<CR>
 noremap - -
 noremap <D-1> 1<C-w><C-w>
 noremap <D-2> 2<C-w><C-w>
@@ -131,8 +133,6 @@ noremap <D-3> 3<C-w><C-w>
 noremap <D-4> 4<C-w><C-w>
 noremap <D-5> 5<C-w><C-w>
 noremap <D-E> :NERDTreeToggle<CR>
-noremap <D-H> <C-w>R
-noremap <D-L> <C-w>R
 noremap <D-F> :Ag!<CR>
 noremap <SPACE> <Nop>
 noremap <silent> <C-H> :tabN<CR>
@@ -275,13 +275,15 @@ if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
   let g:coc_global_extensions += ['coc-eslint']
 endif
 
+let g:NERDTreeIgnore=['node_modules']
 let g:NERDTreeDirArrowCollapsible = ''
 let g:NERDTreeDirArrowExpandable = ''
-let g:NERDTreeWinSize=50
 let g:NERDTreeMinimalUI = 1
+let g:NERDTreeWinSize=50
 let g:UltiSnipsExpandTrigger="<C-Space>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#left_sep = ' '
@@ -289,6 +291,8 @@ let g:airline_section_a = airline#section#create(['branch'])
 let g:airline_section_b = ''
 let g:airline_section_z = '%{strftime("%I:%M %p")}'
 let g:airline_theme='minimalist'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.tsx,*.js,*.ts'
+let g:closetag_filetypes = 'html,xhtml,phtml,javascript,javascriptreact,typescript,typescriptreact'
 let g:fzf_buffers_jump = 1
 let g:fzf_preview_window = ''
 let g:fzf_tags_command = 'ctags -R --exclude=.git --exclude=log'
@@ -301,42 +305,39 @@ let g:netrw_banner = 0
 let g:netrw_browsex_viewer = 'google-chrome'
 let g:netrw_list_hide= '.*\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.git'
 let g:netrw_liststyle = 3
-let g:startify_files_number = 10
-let g:startify_lists = [
-  \ { 'type': 'sessions',   'header': ['  Projects'] },
-  \ { 'type': 'files',      'header': ['  Recently opened'] },
-  \ { 'type': 'bookmarks',  'header': ['  Bookmarks'] },
-  \ { 'type': 'commands',   'header': ['  Commands'] },
-  \ ]
-let g:startify_session_before_save = [
-  \ 'silent! NERDTreeTabsClose'
-  \ ]
-let g:startify_skiplist = [
-  \ 'COMMIT_EDITMSG',
-  \ ]
-let g:startify_session_persistence = 1
-let g:startify_session_autoload = 1
-let g:startify_change_to_dir = 1
-let g:startify_change_to_vcs_root = 1
-let g:startify_session_sort = 1
-let g:user_emmet_leader_key = '<D-e>'
-let g:user_emmet_install_global = 1
-let g:vrfr_rg = 'true'
-let loadedmatchparen = 0
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.tsx,*.js,*.ts'
-let g:closetag_filetypes = 'html,xhtml,phtml,javascript,javascriptreact,typescript,typescriptreact'
 let g:qs_enable = 1
 let g:qs_max_chars = 104
-let vim_markdown_preview_hotkey='<D-m>'
-let vim_markdown_preview_browser='Google Chrome'
-let NERDTreeIgnore=['node_modules']
-let g:webdevicons_enable_nerdtree = 0
+let g:startify_change_to_dir = 1
+let g:startify_change_to_vcs_root = 1
+let g:startify_files_number = 10
+let g:startify_session_autoload = 1
+let g:startify_session_persistence = 1
+let g:startify_session_sort = 1
+let g:toggle_map = "<C-b>"
+let g:user_emmet_install_global = 1
+let g:user_emmet_leader_key = '<D-e>'
+let g:vrfr_rg = 'true'
+let g:webdevicons_enable = 1
 let g:webdevicons_enable_airline_statusline = 1
 let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_nerdtree = 0
 let g:webdevicons_enable_startify = 1
-let g:webdevicons_enable = 1
-let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
-let g:toggle_map = "<C-b>"
+let loadedmatchparen = 0
+let vim_markdown_preview_browser='Google Chrome'
+let vim_markdown_preview_hotkey='<D-m>'
+
+let g:startify_lists = [
+      \ { 'type': 'sessions',   'header': ['  Projects'] },
+      \ { 'type': 'files',      'header': ['  Recently opened'] },
+      \ { 'type': 'bookmarks',  'header': ['  Bookmarks'] },
+      \ { 'type': 'commands',   'header': ['  Commands'] },
+      \ ]
+let g:startify_session_before_save = [
+      \ 'silent! NERDTreeTabsClose'
+      \ ]
+let g:startify_skiplist = [
+      \ 'COMMIT_EDITMSG',
+      \ ]
 
 " Custom header
 let g:startify_custom_header = 'startify#pad(startify#fortune#boxed("Brandon"))'
