@@ -37,5 +37,4 @@ if [[ -f ~/.bash_profile ]]; then
 fi
 
 clear
-~/.scripts/quote
 # [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"

@@ -12,7 +12,7 @@ set autoindent
 set autoread
 set belloff=all
 set cmdheight=1
-set completeopt-=preview
+set completeopt+=preview
 set cursorline
 set directory^=$HOME/.vim/tmp//
 set encoding=UTF-8
@@ -21,7 +21,6 @@ set foldignore=
 set foldlevelstart=99
 set foldmethod=indent
 set guicursor+=a:blinkon0
-set guicursor=
 set guioptions=
 set hidden
 set hlsearch
@@ -44,8 +43,9 @@ set nu
 set numberwidth=4
 set path+=**
 set re=0
-set norelativenumber
+set relativenumber
 set scrolloff=4
+set sessionoptions-=blank
 set shell=/bin/zsh
 set shiftwidth=2
 set shortmess+=c
@@ -86,13 +86,14 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent>cr :CocRestart<CR>
 nnoremap <D-j> :m .+1<CR>==<C-z>
 nnoremap <D-k> :m .-2<CR>==<C-z>
+nnoremap <D-'> cs'`<CR>
 nnoremap <ESC><ESC> :nohls<CR><C-z>
-nnoremap <leader>0 :e ~/.vimrc<CR>
 nnoremap <silent> <leader>1 :set relativenumber<CR>
 nnoremap <silent> <leader>2 :set relativenumber!<CR>
-nnoremap <leader>7 :CocConfig<CR>
-nnoremap <leader>8 :e ~/.vim/colors/neonchalk.vim<CR>
-nnoremap <leader>9 :UltiSnipsEdit<CR>
+nnoremap <D-7> :CocConfig<CR>
+nnoremap <D-8> :e ~/.vim/colors/neonchalk.vim<CR>
+nnoremap <D-9> :UltiSnipsEdit<CR>
+nnoremap <D-0> :e ~/.vimrc<CR>
 nnoremap <silent> <leader>, :bp <CR>
 nnoremap <silent> <leader>. :bn <CR>
 nnoremap <silent> <leader>\ :so ~/.vimrc<CR>
@@ -144,6 +145,17 @@ noremap <silent> <D-P> :Files<CR>
 vnoremap <D-j> :m '>+1<CR>gv=gv
 vnoremap <D-k> :m '<-2<CR>gv=gv
 xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>+ <Plug>AirlineSelectNextTab
 
 map <leader>/ :echo "" . synIDattr(synID(line("."),col("."),1),"name") . ' : '
       \ . synIDattr(synID(line("."),col("."),0),"name") . " : "
@@ -193,7 +205,6 @@ call plug#begin("~/.vim/autoload")
   Plug 'alvan/vim-closetag'
   Plug 'andrewradev/splitjoin.vim'
   Plug 'honza/vim-snippets'
-  Plug 'mattn/emmet-vim'
   Plug 'tommcdo/vim-exchange'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-eunuch'
@@ -211,7 +222,6 @@ call plug#begin("~/.vim/autoload")
   Plug 'tpope/vim-sleuth'
   Plug 'tpope/vim-vinegar'
   Plug 'unblevable/quick-scope'
-  Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
 
   " Navigation
@@ -219,7 +229,7 @@ call plug#begin("~/.vim/autoload")
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'qpkorr/vim-bufkill'
-  Plug 'scrooloose/nerdtree'
+  Plug 'scrooloose/nerdtree' |  Plug 'vim-airline/vim-airline' | Plug 'ryanoasis/vim-devicons'
 
   " Syntax
   Plug 'BrandonBurrus/java-syntax.vim'
@@ -242,8 +252,6 @@ call plug#begin("~/.vim/autoload")
   Plug 'mbbill/undotree'
   Plug 'tpope/vim-obsession'
 
-  Plug 'ryanoasis/vim-devicons'
-
 call plug#end()
 
 " Coc Extensions
@@ -251,15 +259,15 @@ let g:coc_global_extensions = [
       \ "coc-css",
       \ "coc-cssmodules",
       \ "coc-docker",
+      \ "coc-emmet",
       \ "coc-flutter",
       \ "coc-go",
       \ "coc-html",
       \ "coc-java",
-      \ "coc-jedi",
       \ "coc-json",
       \ "coc-omnisharp",
-      \ "coc-python",
       \ "coc-sourcekit",
+      \ "coc-spell-checker",
       \ "coc-tailwindcss",
       \ "coc-tsserver",
       \ "coc-vetur",
@@ -275,22 +283,32 @@ if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
   let g:coc_global_extensions += ['coc-eslint']
 endif
 
-let g:NERDTreeIgnore=['node_modules']
 let g:NERDTreeDirArrowCollapsible = ''
 let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeIgnore=['node_modules']
 let g:NERDTreeMinimalUI = 1
-let g:NERDTreeWinSize=50
+let g:NERDTreeWinSize=44
 let g:UltiSnipsExpandTrigger="<C-Space>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ' '
+let g:airline#extensions#tabline#right_alt_sep = ' '
 let g:airline_section_a = airline#section#create(['branch'])
-let g:airline_section_b = ''
+let g:airline_section_b = '%{kite#statusline()}'
+let g:airline_section_y = ''
 let g:airline_section_z = '%{strftime("%I:%M %p")}'
+let g:airline_inactive_alt_sep=1
 let g:airline_theme='minimalist'
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.branch = ''
+let g:airline_symbols.notexists = ' '
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.tsx,*.js,*.ts'
 let g:closetag_filetypes = 'html,xhtml,phtml,javascript,javascriptreact,typescript,typescriptreact'
 let g:fzf_buffers_jump = 1
@@ -314,13 +332,12 @@ let g:startify_session_autoload = 1
 let g:startify_session_persistence = 1
 let g:startify_session_sort = 1
 let g:toggle_map = "<C-b>"
-let g:user_emmet_install_global = 1
-let g:user_emmet_leader_key = '<D-e>'
 let g:vrfr_rg = 'true'
+let g:webdevicons_conceal_nerdtree_brackets = 1
 let g:webdevicons_enable = 1
 let g:webdevicons_enable_airline_statusline = 1
 let g:webdevicons_enable_airline_tabline = 1
-let g:webdevicons_enable_nerdtree = 0
+let g:webdevicons_enable_nerdtree = 1
 let g:webdevicons_enable_startify = 1
 let loadedmatchparen = 0
 let vim_markdown_preview_browser='Google Chrome'
@@ -332,12 +349,26 @@ let g:startify_lists = [
       \ { 'type': 'bookmarks',  'header': ['  Bookmarks'] },
       \ { 'type': 'commands',   'header': ['  Commands'] },
       \ ]
-let g:startify_session_before_save = [
-      \ 'silent! NERDTreeTabsClose'
-      \ ]
+
 let g:startify_skiplist = [
       \ 'COMMIT_EDITMSG',
       \ ]
+
+let g:airline#extensions#tabline#buffer_idx_format = {
+        \ '0': ' ',
+        \ '1': ' ',
+        \ '2': ' ',
+        \ '3': ' ',
+        \ '4': ' ',
+        \ '5': ' ',
+        \ '6': ' ',
+        \ '7': ' ',
+        \ '8': ' ',
+        \ '9': ' '
+        \}
+
+let g:kite_snippets=0
+let g:kite_supported_languages = ['python', 'javascript', 'go']
 
 " Custom header
 let g:startify_custom_header = 'startify#pad(startify#fortune#boxed("Brandon"))'
@@ -351,20 +382,18 @@ endif
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Auto commands
-autocmd! GUIEnter * set vb t_vb=
+autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+autocmd BufRead,BufNewFile *.md setlocal textwidth=100
+autocmd BufRead,BufNewFile *.mdx set syntax=markdown
+autocmd BufRead,BufNewFile *.mdx setlocal textwidth=100
+autocmd BufRead,BufNewFile .aliases setfiletype bash
 autocmd BufRead,BufNewFile .babelrc setfiletype json
 autocmd BufRead,BufNewFile .prettierrc setfiletype json
-autocmd BufRead,BufNewFile .aliases setfiletype bash
-autocmd BufRead,BufNewFile *.mdx set syntax=markdown
-autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
-autocmd VimResized * wincmd =
-autocmd StdinReadPre * let s:std_in=1
+autocmd CompleteDone * if !pumvisible() | pclose | endif
 autocmd CursorHold * silent call CocActionAsync('highlight')
 autocmd StdinReadPre * let s:std_in=1
-autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
 " Vertical bar overrides
-" let g:airline#extensions#tabline#left_alt_sep = ''
 let g:indentLine_char = '|'
 set fillchars+=vert:⎸
 

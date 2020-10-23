@@ -5,7 +5,7 @@ snippet doc "Documentation comment"
 endsnippet
 
 
-snippet utc "Current UTC Date"
+snippet utc "Current UTC Date" i
 `date -u +%FT%TZ`
 endsnippet
 
@@ -26,7 +26,7 @@ if ($1) {
 endsnippet
 
 
-snippet fun "Function Statement"
+snippet fun "Function Statement" i
 function $1($2) {
   ${VISUAL}$0
 }
@@ -75,7 +75,7 @@ try {
 endsnippet
 
 
-snippet class "Class"
+snippet class "Class" i
 class $1 {
   $0
 }

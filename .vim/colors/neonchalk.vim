@@ -293,11 +293,9 @@ fun! s:X(group, fg, bg, attr, lcfg, lcbg)
   exec l:cmd
 endfun
 
-" set background=dark
-
 call s:X("Normal","e8e8d3",s:background_color,"","Black","")
 call s:X("SignColumn","",s:background_color,"","Black","")
-call s:X("CursorLine","","1d2426","","",s:termBlack)
+call s:X("CursorLine","",s:background_color,"","",s:termBlack)
 call s:X("CursorColumn","","1c1c1c","","",s:termBlack)
 call s:X("Pmenu","ffffff","606060","","White",s:termBlack)
 call s:X("PmenuSel","101010","eeeeee","",s:termBlack,"White")
@@ -306,7 +304,7 @@ call s:X("Search","4398C9","003562","underline","Magenta","")
 call s:X("MatchParen","","","underline","Magenta","")
 call s:X("Cursor",s:background_color,"bababa","","","")
 call s:X("LineNr","3b3b40",s:background_color,"NONE","White","")
-call s:X("CursorLineNr","4b4b50","1d2426","","White","")
+call s:X("CursorLineNr","5b5b60",s:background_color,"","White","")
 call s:X("Comment","41B645","","italic","Grey","")
 call s:X("Todo","FF8C00","","bold","White",s:termBlack)
 call s:X("VertSplit","232a2f","","",s:termBlack,s:termBlack)
@@ -325,13 +323,15 @@ call s:X("Identifier","82cb4d","","","LightCyan","")
 call s:X("Structure","8fbfdc","","","LightCyan","")
 call s:X("Function","02a7ff","","","Yellow","")
 call s:X("Type","49c0b6","","","Yellow","")
-call s:X("NonText","606060",s:background_color,"",s:termBlack,"")
+" call s:X("NonText","606060",s:background_color,"",s:termBlack,"")
 call s:X("SpecialKey","444444","1c1c1c","",s:termBlack,"")
 call s:X("Directory","dad085","","","Yellow","")
 call s:X("ErrorMsg","","902020","","","DarkRed")
 call s:X("Question","65C254","","","Green","")
 call s:X("Regexp","364ded","","","Purple","")
 call s:X("CocHighlightText", "", "032756", "", "Blue", "")
+
+hi NonText guifg=bg
 
 hi! link Operator Structure
 hi! link Conceal Operator
@@ -360,16 +360,25 @@ hi! link nerdTreeDirSlash Normal
 hi! link nerdTreeHelpTitle String
 hi! link nerdTreeBookmark Constant
 
-" CSS
-hi! link cssBraces Normal
+" SCSS
 hi! link scssSelectorName Function
 hi! link scssDefinition Keyword
-hi! link cssUnitDecorators Keyword
 hi! link scssExtend Keyword
 hi! link scssSelectorChar Normal
+
+" CSS
+hi! link cssBraces Normal
+hi! link cssUnitDecorators Keyword
 hi! link cssUIProp Identifier
 hi! link cssBoxProp Identifier
 hi! link cssBorderProp Identifier
+hi! link cssPositioningProp Identifier
+hi! link cssMediaProp Identifier
+hi! link cssBackgroundProp Identifier
+hi! link cssAtKeyword Keyword
+hi! link cssFontProp Identifier
+hi! link cssAttrComma Normal
+hi! link cssTagName Function
 
 " Git Gutter
 call s:X("GitGutterAdd","82cb4d","","","Green","")
@@ -486,6 +495,7 @@ hi! link jsxBraces Delimiter
 hi! link jsonKeyword Identifier
 hi! link jsStorageClass Keyword
 hi! link jsArrowFunction Keyword
+hi! link jsModuleAs Keyword
 
 " TypeScript
 hi! link typescriptBraces Delimiter
@@ -547,8 +557,8 @@ hi! link javaBoolean Keyword
 hi! link javaOperator Normal
 hi! link javaType Type
 hi! link javaDocComment Comment
-highlight javaAnnotation guifg=#888886 gui=italic
 hi! link javaPreProc javaAnnotation
+highlight javaAnnotation guifg=#888886 gui=italic
 
 " Lua
 hi! link luaOperator Conditional
