@@ -10,6 +10,16 @@ snippet utc "Current UTC Date" i
 endsnippet
 
 
+snippet timesec "Current Unix Date" i
+`date +%s`
+endsnippet
+
+
+snippet uuid "Random UUID" w
+`!p if not snip.c: import uuid; snip.rv = str(uuid.uuid4())`
+endsnippet
+
+
 snippet if "If Statement"
 if ($1) {
   ${VISUAL}$0
@@ -33,7 +43,7 @@ function $1($2) {
 endsnippet
 
 
-snippet while "While Statement"
+snippet wh "While Statement"
 while ($1) {
   ${VISUAL}$0
 }
@@ -47,10 +57,20 @@ for ($1) {
 endsnippet
 
 
-snippet switch "Switch Statement"
+snippet sw "Switch Statement"
 switch ($1) {
   case $2:
     ${VISUAL}$0
+}
+endsnippet
+
+
+snippet swd "Switch Statement + Default"
+switch ($1) {
+  case $2:
+    ${VISUAL}$3
+  default:
+    $0
 }
 endsnippet
 
@@ -75,22 +95,22 @@ try {
 endsnippet
 
 
-snippet class "Class" i
+snippet cl "Class" i
 class $1 {
-  $0
+  ${VISUAL}$0
 }
 endsnippet
 
 
-snippet enum "Enum"
+snippet en "Enum"
 enum $1 {
-  $0
+  ${VISUAL}$0
 }
 endsnippet
 
 
-snippet int "Interface"
+snippet in "Interface"
 interface $1 {
-  $0
+  ${VISUAL}$0
 }
 endsnippet

@@ -63,7 +63,7 @@ set undofile
 set undolevels=10000
 set updatetime=100
 set wildmenu
-filetype plugin on
+filetype plugin indent on
 
 " Keymaps
 inoremap <D-j> <Esc>:m .+1<CR>==gi<C-z>
@@ -108,6 +108,9 @@ nnoremap <silent> <leader>gd :Gvdiff<CR>
 nnoremap <silent> <leader>gh :NERDTreeCWD<CR>
 nnoremap <silent> <leader>gs :G<CR>
 nnoremap <silent> <leader>f :CocAction<CR>
+nmap <silent> <leader>d <Plug>DashSearch
+nmap <silent> <leader><leader>d <Plug>DashGlobalSearch
+nnoremap <silent> <leader>h :call <SID>show_documentation()<CR>
 nnoremap <silent> <leader>h :call <SID>show_documentation()<CR>
 nnoremap <silent> <leader>l :Lines<CR>
 nnoremap <silent> <leader>m :Marks<CR>
@@ -223,6 +226,7 @@ call plug#begin("~/.vim/autoload")
   Plug 'tpope/vim-vinegar'
   Plug 'unblevable/quick-scope'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'rizzatti/dash.vim'
 
   " Navigation
   Plug 'PhilRunninger/nerdtree-visual-selection'
@@ -289,17 +293,17 @@ let g:NERDTreeIgnore=['node_modules']
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeWinSize=44
 let g:UltiSnipsExpandTrigger="<C-Space>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline#extensions#tabline#right_sep = ' '
-let g:airline#extensions#tabline#right_alt_sep = ' '
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline_section_a = airline#section#create(['branch'])
-let g:airline_section_b = '%{kite#statusline()}'
-let g:airline_section_y = ''
+let g:airline_section_b = ''
+let g:airline_section_c = ''
 let g:airline_section_z = '%{strftime("%I:%M %p")}'
 let g:airline_inactive_alt_sep=1
 let g:airline_theme='minimalist'
@@ -307,7 +311,6 @@ let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_symbols.branch = ''
 let g:airline_symbols.notexists = ' '
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.tsx,*.js,*.ts'
 let g:closetag_filetypes = 'html,xhtml,phtml,javascript,javascriptreact,typescript,typescriptreact'
@@ -327,7 +330,7 @@ let g:qs_enable = 1
 let g:qs_max_chars = 104
 let g:startify_change_to_dir = 1
 let g:startify_change_to_vcs_root = 1
-let g:startify_files_number = 10
+let g:startify_files_number = 12
 let g:startify_session_autoload = 1
 let g:startify_session_persistence = 1
 let g:startify_session_sort = 1
@@ -342,6 +345,7 @@ let g:webdevicons_enable_startify = 1
 let loadedmatchparen = 0
 let vim_markdown_preview_browser='Google Chrome'
 let vim_markdown_preview_hotkey='<D-m>'
+let g:EclimLogLevel = 'trace'
 
 let g:startify_lists = [
       \ { 'type': 'sessions',   'header': ['  Projects'] },

@@ -1,3 +1,5 @@
+priority 50
+
 # Keywords
 
 snippet const "Const"
@@ -34,9 +36,22 @@ snippet imf "Import-From"
 import { $2 } from '$1';$0
 endsnippet
 
+
+
 snippet imt "Import for test"
-import '`!p snip.rv = snip.basename.replace('.test', '')`' from './`!p snip.rv = snip.basename.replace('.test', '')`';$0
+import `!p snip.rv = snip.basename.replace('.test', '')` from './`!p snip.rv = snip.basename.replace('.test', '')`';$0
 endsnippet
+
+
+# snippet ims "Import css module styles"
+# import styles from './`!p snip.rv = snip.basename`.module.css';$0
+# endsnippet
+
+
+snippet ims "Import scss module styles"
+import styles from './`!p snip.rv = snip.basename`.module.scss';$0
+endsnippet
+
 
 # Exporting
 
@@ -73,6 +88,38 @@ snippet pt "Prop Types" i
 propTypes = {
   $0
 };
+endsnippet
+
+
+# React
+
+snippet fc "Function component"
+import React from 'react';
+
+/**
+ * ${1:TODO: Add Documentation}
+ */
+function `!p snip.rv = snip.basename`() {
+  return ${0:<p>`!p snip.rv = snip.basename`</p>}
+}
+
+export default `!p snip.rv = snip.basename`;
+endsnippet
+
+
+snippet fcp "FUnction component + Props"
+import React from 'react';
+
+/**
+ * ${1:TODO: Add Documentation}
+ */
+function `!p snip.rv = snip.basename`(props) {
+  const { $2 } = props;
+
+  return ${0:<p>`!p snip.rv = snip.basename`</p>}
+}
+
+export default `!p snip.rv = snip.basename`;
 endsnippet
 
 
@@ -158,11 +205,9 @@ endsnippet
 
 snippet csmoke "Jest React component unit test smoke test" b
 test('renders without crashing', () => {
-  const { container } = render(<`!p snip.rv = snip.basename.replace('.test', '')` />);
+  const { container } = $1render(<`!p snip.rv = snip.basename.replace('.test', '')` />);
   expect(container).toBeDefined();
-});
-
-$0
+});$0
 endsnippet
 
 snippet desc "Jest 'describe' unit test block" b
@@ -512,3 +557,12 @@ snippet js "JSON stringify" i
 JSON.stringify(${VISUAL}$0)
 endsnippet
 
+
+snippet bang "Shebang"
+#! /usr/bin/env node
+endsnippet
+
+
+snippet mex "Module exports"
+module.exports = $0;
+endsnippet

@@ -6,7 +6,7 @@ bindkey -v
 
 export ANDROID_HOME=~/Library/Android/sdk
 export ANDROID_SDK_ROOT=~/Library/Android/sdk
-export ECLIM=~/eclipse/jee/Eclipse.app/Contents/Eclipse
+export ECLIM=/Applications/Eclipse.app/Contents/Eclipse
 export EDITOR="mvim"
 export GOPATH=~/Files/Go
 export M2_PATH=~/.m2

@@ -1,5 +1,7 @@
 extends javascript
 
+priority 100
+
 snippet type "Type Alias"
 type $1 = {
   $0
@@ -10,22 +12,27 @@ endsnippet
 
 # React
 
-snippet co "Component"
-type $1Props = {
+snippet fcp "Function Component + Props"
+import React from 'react';
+
+type `!p snip.rv = snip.basename`Props = {
   $2
 }
 
-function $1(props: $1Props) {
+/**
+ * ${1:TODO: Add Documentation}
+ */
+function `!p snip.rv = snip.basename`(props: `!p snip.rv = snip.basename`Props) {
   const { $3 } = props;
 
-  return $0
+  return ${0:<p>`!p snip.rv = snip.basename`</p>}
 }
 
-export default $1;
+export default `!p snip.rv = snip.basename`;
 endsnippet
 
 
-snippet cco "Class Component"
+snippet cc "Class Component"
 type $1Props = {
   $2
 }
