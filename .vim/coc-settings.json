@@ -1,9 +1,11 @@
 {
   "prettier.requireConfig": true,
-  "diagnostic.errorSign": "❗️",
-  "diagnostic.warningSign": "🔸",
-  "diagnostic.infoSign": "🔹",
-  "diagnostic.hintSign": "💡",
+
+  "diagnostic.level": "hint",
+  "diagnostic.errorSign": "",
+  "diagnostic.warningSign": "",
+  "diagnostic.infoSign": "",
+  "diagnostic.hintSign": "",
 
   "coc.preferences.formatOnSaveFiletypes": [
     "css",

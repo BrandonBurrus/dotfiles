@@ -1,9 +1,9 @@
 " Brandon Burrus .vimrc
 
 syn on
-let mapleader=" "
-
 colorscheme neonchalk
+
+let mapleader=" "
 
 " General config
 
@@ -44,7 +44,7 @@ set numberwidth=4
 set path+=**
 set re=0
 set relativenumber
-set scrolloff=4
+set scrolloff=0
 set sessionoptions-=blank
 set shell=/bin/zsh
 set shiftwidth=2
@@ -195,38 +195,39 @@ endif
 call plug#begin("~/.vim/autoload")
 
   " Motions
+  Plug 'bkad/camelcasemotion'
+  Plug 'christoomey/vim-sort-motion'
   Plug 'easymotion/vim-easymotion'
   Plug 'haya14busa/incsearch-easymotion.vim'
   Plug 'justinmk/vim-sneak'
   Plug 'michaeljsmith/vim-indent-object'
   Plug 'terryma/vim-multiple-cursors'
-  Plug 'bkad/camelcasemotion'
 
   " Actions
   Plug 'AndrewRadev/tagalong.vim'
-  Plug 'SirVer/ultisnips'
-  Plug 'alvan/vim-closetag'
   Plug 'andrewradev/splitjoin.vim'
   Plug 'honza/vim-snippets'
+  Plug 'lukelbd/vim-toggle'
   Plug 'tommcdo/vim-exchange'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
-  Plug 'lukelbd/vim-toggle'
 
   " Editor
+  Plug 'SirVer/ultisnips'
+  Plug 'alvan/vim-closetag'
   Plug 'haya14busa/incsearch.vim'
   Plug 'jiangmiao/auto-pairs'
   Plug 'junegunn/vim-slash'
   Plug 'mhinz/vim-startify'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'rizzatti/dash.vim'
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-sleuth'
   Plug 'tpope/vim-vinegar'
   Plug 'unblevable/quick-scope'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'rizzatti/dash.vim'
 
   " Navigation
   Plug 'PhilRunninger/nerdtree-visual-selection'
@@ -301,8 +302,8 @@ let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
-let g:airline_section_a = airline#section#create(['branch'])
-let g:airline_section_b = ''
+let g:airline_section_a = 'BrandonBurrus'
+let g:airline_section_b = airline#section#create(['branch'])
 let g:airline_section_c = ''
 let g:airline_section_z = '%{strftime("%I:%M %p")}'
 let g:airline_inactive_alt_sep=1
@@ -311,7 +312,9 @@ let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_symbols.notexists = ' '
+let g:airline_symbols.notexists = ' '
+let g:airline_symbols.branch = ''
+let g:airline_symbols.dirty = ' '
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.tsx,*.js,*.ts'
 let g:closetag_filetypes = 'html,xhtml,phtml,javascript,javascriptreact,typescript,typescriptreact'
 let g:fzf_buffers_jump = 1
@@ -337,15 +340,14 @@ let g:startify_session_sort = 1
 let g:toggle_map = "<C-b>"
 let g:vrfr_rg = 'true'
 let g:webdevicons_conceal_nerdtree_brackets = 1
-let g:webdevicons_enable = 1
-let g:webdevicons_enable_airline_statusline = 1
-let g:webdevicons_enable_airline_tabline = 1
-let g:webdevicons_enable_nerdtree = 1
-let g:webdevicons_enable_startify = 1
+" let g:webdevicons_enable = 0
+" let g:webdevicons_enable_airline_statusline = 0
+" let g:webdevicons_enable_airline_tabline = 0
+" let g:webdevicons_enable_nerdtree = 0
+" let g:webdevicons_enable_startify = 0
 let loadedmatchparen = 0
 let vim_markdown_preview_browser='Google Chrome'
 let vim_markdown_preview_hotkey='<D-m>'
-let g:EclimLogLevel = 'trace'
 
 let g:startify_lists = [
       \ { 'type': 'sessions',   'header': ['  Projects'] },
@@ -377,11 +379,6 @@ let g:kite_supported_languages = ['python', 'javascript', 'go']
 " Custom header
 let g:startify_custom_header = 'startify#pad(startify#fortune#boxed("Brandon"))'
 
-" Font
-if has ('gui_running')
-  set guifont=DankMono_Nerd_Font:h16
-endif
-
 " Custom commands
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
@@ -389,6 +386,7 @@ command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport
 autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 autocmd BufRead,BufNewFile *.md setlocal textwidth=100
 autocmd BufRead,BufNewFile *.mdx set syntax=markdown
+autocmd BufRead,BufNewFile *.zsh-theme set syntax=bash
 autocmd BufRead,BufNewFile *.mdx setlocal textwidth=100
 autocmd BufRead,BufNewFile .aliases setfiletype bash
 autocmd BufRead,BufNewFile .babelrc setfiletype json
@@ -402,21 +400,17 @@ let g:indentLine_char = '|'
 set fillchars+=vert:⎸
 
 " Disable mouse scrolling
-:nmap <ScrollWheelUp> <nop>
-:nmap <S-ScrollWheelUp> <nop>
-:nmap <C-ScrollWheelUp> <nop>
-:nmap <ScrollWheelDown> <nop>
-:nmap <S-ScrollWheelDown> <nop>
-:nmap <C-ScrollWheelDown> <nop>
-:nmap <ScrollWheelLeft> <nop>
-:nmap <S-ScrollWheelLeft> <nop>
-:nmap <C-ScrollWheelLeft> <nop>
-:nmap <ScrollWheelRight> <nop>
-:nmap <S-ScrollWheelRight> <nop>
-:nmap <C-ScrollWheelRight> <nop>
-
-if exists("g:loaded_webdevicons")
-  call webdevicons#refresh()
-endif
+nmap <ScrollWheelUp> <nop>
+nmap <S-ScrollWheelUp> <nop>
+nmap <C-ScrollWheelUp> <nop>
+nmap <ScrollWheelDown> <nop>
+nmap <S-ScrollWheelDown> <nop>
+nmap <C-ScrollWheelDown> <nop>
+nmap <ScrollWheelLeft> <nop>
+nmap <S-ScrollWheelLeft> <nop>
+nmap <C-ScrollWheelLeft> <nop>
+nmap <ScrollWheelRight> <nop>
+nmap <S-ScrollWheelRight> <nop>
+nmap <C-ScrollWheelRight> <nop>
 
 nohls
