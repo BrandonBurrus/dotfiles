@@ -437,6 +437,7 @@ hi! link pythonOperator Statement
 
 " Swift
 hi! link swiftImports Keyword
+hi! link swiftStructure Keyword
 
 " Ruby
 call s:X("rubyInstanceVariable","c6b6fe","","","Cyan","")

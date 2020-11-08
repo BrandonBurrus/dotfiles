@@ -159,6 +159,8 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>+ <Plug>AirlineSelectNextTab
+nnoremap <silent>_ :MaximizerToggle<CR>
+vnoremap <silent>_ :MaximizerToggle<CR>gv
 
 map <leader>/ :echo "" . synIDattr(synID(line("."),col("."),1),"name") . ' : '
       \ . synIDattr(synID(line("."),col("."),0),"name") . " : "
@@ -203,6 +205,14 @@ call plug#begin("~/.vim/autoload")
   Plug 'michaeljsmith/vim-indent-object'
   Plug 'terryma/vim-multiple-cursors'
 
+  " Text Objects
+  Plug 'kana/vim-textobj-user'
+  Plug 'kana/vim-textobj-entire'
+  Plug 'kana/vim-textobj-function'
+  Plug 'kana/vim-textobj-line'
+  Plug 'glts/vim-textobj-comment'
+  Plug 'sgur/vim-textobj-parameter'
+  
   " Actions
   Plug 'AndrewRadev/tagalong.vim'
   Plug 'andrewradev/splitjoin.vim'
@@ -228,6 +238,7 @@ call plug#begin("~/.vim/autoload")
   Plug 'tpope/vim-vinegar'
   Plug 'unblevable/quick-scope'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'szw/vim-maximizer'
 
   " Navigation
   Plug 'PhilRunninger/nerdtree-visual-selection'
@@ -238,6 +249,7 @@ call plug#begin("~/.vim/autoload")
 
   " Syntax
   Plug 'BrandonBurrus/java-syntax.vim'
+  Plug 'BrandonBurrus/vim-swift'
   Plug 'Quramy/tsuquyomi'
   Plug 'elmcast/elm-vim'
   Plug 'peitalin/vim-jsx-typescript'
