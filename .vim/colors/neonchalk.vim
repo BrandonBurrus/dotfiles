@@ -360,6 +360,8 @@ hi! link nerdTreeDirSlash Normal
 hi! link nerdTreeHelpTitle String
 hi! link nerdTreeBookmark Constant
 
+autocmd filetype nerdtree highlight html_icon ctermbg=none ctermfg=Red guifg=#ffa500
+
 " SCSS
 hi! link scssSelectorName Function
 hi! link scssDefinition Keyword
@@ -546,6 +548,17 @@ hi! link typescriptTemplateSB Regexp
 hi! link typescriptBoolean Keyword
 hi! link typescriptParamImpl Identifier
 hi! link typescriptDestructureVariable Identifier
+hi! link typescriptBOMWindowMethod Function
+hi! link typescriptMember Function
+hi! link tsxAttrib Identifier
+hi! link tsxTagName Function
+hi! link tsxCloseTagName Function
+hi! link tsxCloseComponentName Function
+hi! link tsxOpenPunct Delimiter
+hi! link tsxClosePunct Delimiter
+hi! link tsxCloseString Delimiter
+hi! link tsxEqual Delimiter
+hi! link tsxBraces Delimiter
 
 " Java
 hi! link javaPackage Keyword
@@ -560,6 +573,8 @@ hi! link javaType Type
 hi! link javaDocComment Comment
 hi! link javaPreProc javaAnnotation
 highlight javaAnnotation guifg=#888886 gui=italic
+
+hi! link typescriptDecorator javaAnnotation
 
 " Lua
 hi! link luaOperator Conditional
@@ -621,8 +636,12 @@ hi! link cucumberWhen Identifier
 hi! link cucumberThen Function
 
 " Quickscope
-highlight QuickScopePrimary gui=underline cterm=underline
-highlight QuickScopeSecondary gui=underline cterm=underline
+hi QuickScopePrimary gui=underline cterm=underline
+hi QuickScopeSecondary gui=underline cterm=underline
+
+" Misc
+hi LineNr ctermfg=darkgray
+hi CursorLineNr ctermfg=gray
 
 delf s:X
 delf s:remove_italic_attr

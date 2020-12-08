@@ -117,6 +117,7 @@ nnoremap <silent> <leader>m :Marks<CR>
 nnoremap <silent> <leader>pc :PlugClean<CR>
 nnoremap <silent> <leader>pi :PlugInstall<CR>
 nnoremap <silent> <leader>rf :NERDTreeFind<CR>
+nnoremap <leader>rl :so ~/.gvimrc<CR>
 nnoremap <silent> <leader>s :Snippets<CR>
 nnoremap <silent> <leader>t :vert term<CR>
 nnoremap <silent> <leader>T :term<CR>
@@ -249,7 +250,6 @@ call plug#begin("~/.vim/autoload")
 
   " Syntax
   Plug 'BrandonBurrus/java-syntax.vim'
-  Plug 'BrandonBurrus/vim-swift'
   Plug 'Quramy/tsuquyomi'
   Plug 'elmcast/elm-vim'
   Plug 'peitalin/vim-jsx-typescript'
@@ -273,6 +273,7 @@ call plug#end()
 
 " Coc Extensions
 let g:coc_global_extensions = [
+      \ "coc-angular",
       \ "coc-css",
       \ "coc-cssmodules",
       \ "coc-docker",
@@ -324,7 +325,7 @@ let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_symbols.notexists = ' '
+let g:airline_symbols.notexists = '  '
 let g:airline_symbols.branch = ''
 let g:airline_symbols.dirty = ' '
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.tsx,*.js,*.ts'
@@ -352,14 +353,10 @@ let g:startify_session_sort = 1
 let g:toggle_map = "<C-b>"
 let g:vrfr_rg = 'true'
 let g:webdevicons_conceal_nerdtree_brackets = 1
-" let g:webdevicons_enable = 0
-" let g:webdevicons_enable_airline_statusline = 0
-" let g:webdevicons_enable_airline_tabline = 0
-" let g:webdevicons_enable_nerdtree = 0
-" let g:webdevicons_enable_startify = 0
 let loadedmatchparen = 0
 let vim_markdown_preview_browser='Google Chrome'
 let vim_markdown_preview_hotkey='<D-m>'
+let g:indentguides_spacechar = '│'
 
 let g:startify_lists = [
       \ { 'type': 'sessions',   'header': ['  Projects'] },
