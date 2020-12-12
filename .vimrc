@@ -75,30 +75,48 @@ map F <Plug>Sneak_F
 map T <Plug>Sneak_T
 map f <Plug>Sneak_f
 map t <Plug>Sneak_t
-nmap <D-R> <Plug>(coc-rename)
-nmap <leader>ca :CocAction<CR>
-nmap <leader>qf  <Plug>(coc-fix-current)
-nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent>cr :CocRestart<CR>
+nnoremap <D-'> cs'`<CR>
+nnoremap <D-R> <Plug>(coc-rename)
 nnoremap <D-j> :m .+1<CR>==<C-z>
 nnoremap <D-k> :m .-2<CR>==<C-z>
-nnoremap <D-'> cs'`<CR>
 nnoremap <ESC><ESC> :nohls<CR><C-z>
-nnoremap <silent> <leader>1 :set relativenumber<CR>
-nnoremap <silent> <leader>2 :set relativenumber!<CR>
-nnoremap <D-7> :CocConfig<CR>
-nnoremap <D-8> :e ~/.vim/colors/neonchalk.vim<CR>
-nnoremap <D-9> :UltiSnipsEdit<CR>
-nnoremap <D-0> :e ~/.vimrc<CR>
+nnoremap <leader>+ <Plug>AirlineSelectNextTab
+nnoremap <leader>- <Plug>AirlineSelectPrevTab
+nnoremap <leader>1 <Plug>AirlineSelectTab1
+nnoremap <leader>2 <Plug>AirlineSelectTab2
+nnoremap <leader>3 <Plug>AirlineSelectTab3
+nnoremap <leader>4 <Plug>AirlineSelectTab4
+nnoremap <leader>5 <Plug>AirlineSelectTab5
+nnoremap <leader>6 <Plug>AirlineSelectTab6
+nnoremap <leader>7 <Plug>AirlineSelectTab7
+nnoremap <leader>8 <Plug>AirlineSelectTab8
+nnoremap <leader>9 <Plug>AirlineSelectTab9
+nnoremap <leader>ca :CocAction<CR>
+nnoremap <leader>qf  <Plug>(coc-fix-current)
+nnoremap <leader>rl :so ~/.gvimrc<CR>
+nnoremap <silent> <D-H> :bp<CR>
+nnoremap <silent> <D-L> :bn<CR>
+nnoremap <silent> <Down> :resize +2<CR>
+nnoremap <silent> <Left> :vertical resize -2<CR>
+nnoremap <silent> <Right> :vertical resize +2<CR>
+nnoremap <silent> <Up> :resize -2<CR>
 nnoremap <silent> <leader>, :bp <CR>
 nnoremap <silent> <leader>. :bn <CR>
+nnoremap <silent> <leader><ESC> :Startify<CR>
+nnoremap <silent> <leader><leader>d <Plug>DashGlobalSearch
+nnoremap <silent> <leader>T :term<CR>
+nnoremap <silent> <leader>W :bd<CR>
 nnoremap <silent> <leader>\ :so ~/.vimrc<CR>
+nnoremap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
 nnoremap <silent> <leader>b :call fzf#vim#buffers()<CR>
+nnoremap <silent> <leader>cc :CocConfig<CR>
 nnoremap <silent> <leader>cp :SClose<CR>
+nnoremap <silent> <leader>co :Commands<CR>
+nnoremap <silent> <leader>cs :e ~/.vim/colors/neonchalk.vim<CR>
+nnoremap <silent> <leader>cu :UltiSnipsEdit<CR>
+nnoremap <silent> <leader>cv :e ~/.vimrc<CR>
+nnoremap <silent> <leader>d <Plug>DashSearch
+nnoremap <silent> <leader>f :CocAction<CR>
 nnoremap <silent> <leader>g1 :diffget //2<CR>
 nnoremap <silent> <leader>g2 :diffget //3<CR>
 nnoremap <silent> <leader>gb :Gblame<CR>
@@ -107,30 +125,28 @@ nnoremap <silent> <leader>gc :Gcommit<CR>
 nnoremap <silent> <leader>gd :Gvdiff<CR>
 nnoremap <silent> <leader>gh :NERDTreeCWD<CR>
 nnoremap <silent> <leader>gs :G<CR>
-nnoremap <silent> <leader>f :CocAction<CR>
-nmap <silent> <leader>d <Plug>DashSearch
-nmap <silent> <leader><leader>d <Plug>DashGlobalSearch
-nnoremap <silent> <leader>h :call <SID>show_documentation()<CR>
 nnoremap <silent> <leader>h :call <SID>show_documentation()<CR>
 nnoremap <silent> <leader>l :Lines<CR>
-nnoremap <silent> <leader>m :Marks<CR>
+nnoremap <silent> <leader>mk :Marks<CR>
+nnoremap <silent> <leader>mp :Maps<CR>
+nnoremap <silent> <leader>or :OR<CR>
 nnoremap <silent> <leader>pc :PlugClean<CR>
 nnoremap <silent> <leader>pi :PlugInstall<CR>
+nnoremap <silent> <leader>pu :PlugUpdate<CR>
+nnoremap <silent> <leader>rN :set relativenumber!<CR>
 nnoremap <silent> <leader>rf :NERDTreeFind<CR>
-nnoremap <leader>rl :so ~/.gvimrc<CR>
-nnoremap <silent> <leader>s :Snippets<CR>
+nnoremap <silent> <leader>rn :set relativenumber<CR>
+nnoremap <silent> <leader>sn :Snippets<CR>
+nnoremap <silent> <leader>sf :GFiles?<CR>
 nnoremap <silent> <leader>t :vert term<CR>
-nnoremap <silent> <leader>T :term<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
 nnoremap <silent> <leader>w :BD<CR>
-nnoremap <silent> <leader>W :bd<CR>
-nnoremap <silent> <leader><ESC> :Startify<CR>
-nnoremap <silent> <Down> :resize +2<CR>
-nnoremap <silent> <Left> :vertical resize -2<CR>
-nnoremap <silent> <Right> :vertical resize +2<CR>
-nnoremap <silent> <Up> :resize -2<CR>
-nnoremap <silent> <D-H> :bp<CR>
-nnoremap <silent> <D-L> :bn<CR>
+nnoremap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> gi <Plug>(coc-implementation)
+nnoremap <silent> gr <Plug>(coc-references)
+nnoremap <silent> gy <Plug>(coc-type-definition)
+nnoremap <silent>_ :MaximizerToggle<CR>
+nmap <silent><leader>cr :CocRestart<CR>
 noremap - -
 noremap <D-1> 1<C-w><C-w>
 noremap <D-2> 2<C-w><C-w>
@@ -138,41 +154,31 @@ noremap <D-3> 3<C-w><C-w>
 noremap <D-4> 4<C-w><C-w>
 noremap <D-5> 5<C-w><C-w>
 noremap <D-E> :NERDTreeToggle<CR>
-noremap <D-F> :Ag!<CR>
+noremap <D-F> :Ag<CR>
 noremap <SPACE> <Nop>
 noremap <silent> <C-H> :tabN<CR>
 noremap <silent> <C-L> :tabn<CR>
+noremap <silent> <C-O> :BTags<CR>
 noremap <silent> <C-p> :GFiles<CR>
 noremap <silent> <D-/> :Commentary<CR>
-noremap <silent> <D-O> :BTags<CR>
 noremap <silent> <D-P> :Files<CR>
 vnoremap <D-j> :m '>+1<CR>gv=gv
 vnoremap <D-k> :m '<-2<CR>gv=gv
-xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
-nmap <leader>- <Plug>AirlineSelectPrevTab
-nmap <leader>+ <Plug>AirlineSelectNextTab
-nnoremap <silent>_ :MaximizerToggle<CR>
 vnoremap <silent>_ :MaximizerToggle<CR>gv
+xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+try
+    nmap <silent> ]e :call CocAction('diagnosticNext')<cr>
+    nmap <silent> [e :call CocAction('diagnosticPrevious')<cr>
+    nmap <silent> ]h <Plug>(GitGutterNextHunk)
+    nmap <silent> [h <Plug>(GitGutterPrevHunk)
+endtry
 
+" Bind for <leader>/ to show syntax groups
 map <leader>/ :echo "" . synIDattr(synID(line("."),col("."),1),"name") . ' : '
       \ . synIDattr(synID(line("."),col("."),0),"name") . " : "
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ""<CR>
 
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
-
-" Function to trigger hover docs
+" Bind to trigger hover docs
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -186,6 +192,12 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
+
+" Bind for cycling through auto-complete menu
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
 
 " Install Vim Plug
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -203,20 +215,20 @@ call plug#begin("~/.vim/autoload")
   Plug 'easymotion/vim-easymotion'
   Plug 'haya14busa/incsearch-easymotion.vim'
   Plug 'justinmk/vim-sneak'
-  Plug 'michaeljsmith/vim-indent-object'
   Plug 'terryma/vim-multiple-cursors'
 
   " Text Objects
-  Plug 'kana/vim-textobj-user'
+  Plug 'glts/vim-textobj-comment'
   Plug 'kana/vim-textobj-entire'
   Plug 'kana/vim-textobj-function'
   Plug 'kana/vim-textobj-line'
-  Plug 'glts/vim-textobj-comment'
+  Plug 'kana/vim-textobj-user'
+  Plug 'michaeljsmith/vim-indent-object'
   Plug 'sgur/vim-textobj-parameter'
-  
+
   " Actions
   Plug 'AndrewRadev/tagalong.vim'
-  Plug 'andrewradev/splitjoin.vim'
+  Plug 'AndrewRadev/splitjoin.vim'
   Plug 'honza/vim-snippets'
   Plug 'lukelbd/vim-toggle'
   Plug 'tommcdo/vim-exchange'
@@ -233,19 +245,20 @@ call plug#begin("~/.vim/autoload")
   Plug 'junegunn/vim-slash'
   Plug 'mhinz/vim-startify'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'qpkorr/vim-bufkill'
   Plug 'rizzatti/dash.vim'
+  Plug 'szw/vim-maximizer'
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-sleuth'
   Plug 'tpope/vim-vinegar'
   Plug 'unblevable/quick-scope'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'szw/vim-maximizer'
 
   " Navigation
   Plug 'PhilRunninger/nerdtree-visual-selection'
+  Plug 'dyng/ctrlsf.vim'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
-  Plug 'qpkorr/vim-bufkill'
   Plug 'scrooloose/nerdtree' |  Plug 'vim-airline/vim-airline' | Plug 'ryanoasis/vim-devicons'
 
   " Syntax
@@ -261,10 +274,8 @@ call plug#begin("~/.vim/autoload")
   Plug 'tpope/vim-fugitive'
 
   " Misc
-  Plug 'JamshedVesuna/vim-markdown-preview'
   Plug 'airblade/vim-rooter'
   Plug 'kshenoy/vim-signature'
-  Plug 'lambdalisue/vim-fullscreen'
   Plug 'ludovicchabant/vim-gutentags'
   Plug 'mbbill/undotree'
   Plug 'tpope/vim-obsession'
@@ -293,55 +304,53 @@ let g:coc_global_extensions = [
       \ "coc-yank"
       \ ]
 
+" Load prettier
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
   let g:coc_global_extensions += ['coc-prettier']
 endif
 
+" Load eslint
 if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
   let g:coc_global_extensions += ['coc-eslint']
 endif
 
+" Plugin configuration
 let g:NERDTreeDirArrowCollapsible = ''
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeIgnore=['node_modules']
 let g:NERDTreeMinimalUI = 1
-let g:NERDTreeWinSize=44
+let g:NERDTreeWinSize=50
 let g:UltiSnipsExpandTrigger="<C-Space>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline_inactive_alt_sep=1
+let g:airline_powerline_fonts = 1
 let g:airline_section_a = ' BrandonBurrus'
 let g:airline_section_b = airline#section#create(['branch'])
 let g:airline_section_c = ''
 let g:airline_section_z = '%{strftime("%I:%M %p")}'
-let g:airline_inactive_alt_sep=1
-let g:airline_theme='minimalist'
-let g:airline_powerline_fonts = 1
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.notexists = '  '
 let g:airline_symbols.branch = ''
 let g:airline_symbols.dirty = ' '
+let g:airline_symbols.notexists = ''
+let g:airline_theme='minimalist'
+let g:closetag_emptyTags_caseSensitive = 1
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.tsx,*.js,*.ts'
 let g:closetag_filetypes = 'html,xhtml,phtml,javascript,javascriptreact,typescript,typescriptreact'
+let g:closetag_shortcut = '>'
 let g:fzf_buffers_jump = 1
-let g:fzf_preview_window = ''
 let g:fzf_tags_command = 'ctags -R --exclude=.git --exclude=log'
 let g:gutentags_cache_dir = expand('~/.cache/tags')
 let g:gutentags_ctags_tagfile = '.tags'
 let g:gutentags_modules = ['ctags']
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+let g:indentguides_spacechar = '│'
 let g:jsx_ext_required = 0
-let g:netrw_banner = 0
-let g:netrw_browsex_viewer = 'google-chrome'
-let g:netrw_list_hide= '.*\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.git'
-let g:netrw_liststyle = 3
 let g:qs_enable = 1
 let g:qs_max_chars = 104
 let g:startify_change_to_dir = 1
@@ -354,9 +363,6 @@ let g:toggle_map = "<C-b>"
 let g:vrfr_rg = 'true'
 let g:webdevicons_conceal_nerdtree_brackets = 1
 let loadedmatchparen = 0
-let vim_markdown_preview_browser='Google Chrome'
-let vim_markdown_preview_hotkey='<D-m>'
-let g:indentguides_spacechar = '│'
 
 let g:startify_lists = [
       \ { 'type': 'sessions',   'header': ['  Projects'] },
@@ -382,12 +388,6 @@ let g:airline#extensions#tabline#buffer_idx_format = {
         \ '9': ' '
         \}
 
-let g:kite_snippets=0
-let g:kite_supported_languages = ['python', 'javascript', 'go']
-
-" Custom header
-let g:startify_custom_header = 'startify#pad(startify#fortune#boxed("Brandon"))'
-
 " Custom commands
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
@@ -404,10 +404,6 @@ autocmd CompleteDone * if !pumvisible() | pclose | endif
 autocmd CursorHold * silent call CocActionAsync('highlight')
 autocmd StdinReadPre * let s:std_in=1
 
-" Vertical bar overrides
-let g:indentLine_char = '|'
-set fillchars+=vert:⎸
-
 " Disable mouse scrolling
 nmap <ScrollWheelUp> <nop>
 nmap <S-ScrollWheelUp> <nop>
@@ -422,4 +418,5 @@ nmap <ScrollWheelRight> <nop>
 nmap <S-ScrollWheelRight> <nop>
 nmap <C-ScrollWheelRight> <nop>
 
-nohls
+" Vertical bar overrides
+set fillchars+=vert:⎸
