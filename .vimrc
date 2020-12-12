@@ -225,6 +225,7 @@ call plug#begin("~/.vim/autoload")
   Plug 'kana/vim-textobj-user'
   Plug 'michaeljsmith/vim-indent-object'
   Plug 'sgur/vim-textobj-parameter'
+  Plug 'wellle/targets.vim'
 
   " Actions
   Plug 'AndrewRadev/tagalong.vim'
@@ -314,6 +315,10 @@ if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
   let g:coc_global_extensions += ['coc-eslint']
 endif
 
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
 " Plugin configuration
 let g:NERDTreeDirArrowCollapsible = ''
 let g:NERDTreeDirArrowExpandable = ''
@@ -323,28 +328,36 @@ let g:NERDTreeWinSize=50
 let g:UltiSnipsExpandTrigger="<C-Space>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:airline#extensions#coc#error_symbol = 'E:'
+let g:airline#extensions#coc#warning_symbol = 'W:'
+let g:airline#extensions#csv#enabled = 0
+let g:airline#extensions#nerdtree_statusline = 0
+let g:airline#extensions#searchcount#enabled = 0
+let g:airline#extensions#searchcount#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#wordcount#enabled = 0
 let g:airline_inactive_alt_sep=1
 let g:airline_powerline_fonts = 1
-let g:airline_section_a = ' BrandonBurrus'
-let g:airline_section_b = airline#section#create(['branch'])
-let g:airline_section_c = ''
+let g:airline_section_a = ''
+let g:airline_section_b = 'Brandon Burrus'
+let g:airline_section_c = airline#section#create(['branch'])
 let g:airline_section_z = '%{strftime("%I:%M %p")}'
-let g:airline_symbols.branch = ''
+let g:airline_symbols.branch = ''
 let g:airline_symbols.dirty = ' '
 let g:airline_symbols.notexists = ''
-let g:airline_theme='minimalist'
+let g:airline_theme='deus'
 let g:closetag_emptyTags_caseSensitive = 1
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.tsx,*.js,*.ts'
 let g:closetag_filetypes = 'html,xhtml,phtml,javascript,javascriptreact,typescript,typescriptreact'
 let g:closetag_shortcut = '>'
 let g:fzf_buffers_jump = 1
 let g:fzf_tags_command = 'ctags -R --exclude=.git --exclude=log'
+let g:gitgutter_show_msg_on_hunk_jumping = 1
 let g:gutentags_cache_dir = expand('~/.cache/tags')
 let g:gutentags_ctags_tagfile = '.tags'
 let g:gutentags_modules = ['ctags']
