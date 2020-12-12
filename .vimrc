@@ -31,7 +31,6 @@ set ma
 set modelines=0
 set mouse=v
 set nobackup
-set nocompatible
 set noerrorbells
 set noru
 set noshowmode
@@ -50,6 +49,7 @@ set shell=/bin/zsh
 set shiftwidth=2
 set shortmess+=c
 set shortmess=a
+set showcmd
 set signcolumn=yes
 set smartcase
 set smarttab
@@ -75,24 +75,30 @@ map F <Plug>Sneak_F
 map T <Plug>Sneak_T
 map f <Plug>Sneak_f
 map t <Plug>Sneak_t
+nmap <leader>+ <Plug>AirlineSelectNextTab
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <silent> <leader>d <Plug>DashSearch
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent><leader>cr :CocRestart<CR>
 nnoremap <D-'> cs'`<CR>
 nnoremap <D-R> <Plug>(coc-rename)
 nnoremap <D-j> :m .+1<CR>==<C-z>
 nnoremap <D-k> :m .-2<CR>==<C-z>
 nnoremap <ESC><ESC> :nohls<CR><C-z>
-nnoremap <leader>+ <Plug>AirlineSelectNextTab
-nnoremap <leader>- <Plug>AirlineSelectPrevTab
-nnoremap <leader>1 <Plug>AirlineSelectTab1
-nnoremap <leader>2 <Plug>AirlineSelectTab2
-nnoremap <leader>3 <Plug>AirlineSelectTab3
-nnoremap <leader>4 <Plug>AirlineSelectTab4
-nnoremap <leader>5 <Plug>AirlineSelectTab5
-nnoremap <leader>6 <Plug>AirlineSelectTab6
-nnoremap <leader>7 <Plug>AirlineSelectTab7
-nnoremap <leader>8 <Plug>AirlineSelectTab8
-nnoremap <leader>9 <Plug>AirlineSelectTab9
 nnoremap <leader>ca :CocAction<CR>
-nnoremap <leader>qf  <Plug>(coc-fix-current)
 nnoremap <leader>rl :so ~/.gvimrc<CR>
 nnoremap <silent> <D-H> :bp<CR>
 nnoremap <silent> <D-L> :bn<CR>
@@ -103,19 +109,18 @@ nnoremap <silent> <Up> :resize -2<CR>
 nnoremap <silent> <leader>, :bp <CR>
 nnoremap <silent> <leader>. :bn <CR>
 nnoremap <silent> <leader><ESC> :Startify<CR>
-nnoremap <silent> <leader><leader>d <Plug>DashGlobalSearch
+nmap <silent> <leader><leader>d <Plug>DashGlobalSearch
 nnoremap <silent> <leader>T :term<CR>
 nnoremap <silent> <leader>W :bd<CR>
 nnoremap <silent> <leader>\ :so ~/.vimrc<CR>
 nnoremap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
 nnoremap <silent> <leader>b :call fzf#vim#buffers()<CR>
 nnoremap <silent> <leader>cc :CocConfig<CR>
-nnoremap <silent> <leader>cp :SClose<CR>
 nnoremap <silent> <leader>co :Commands<CR>
+nnoremap <silent> <leader>cp :SClose<CR>
 nnoremap <silent> <leader>cs :e ~/.vim/colors/neonchalk.vim<CR>
 nnoremap <silent> <leader>cu :UltiSnipsEdit<CR>
 nnoremap <silent> <leader>cv :e ~/.vimrc<CR>
-nnoremap <silent> <leader>d <Plug>DashSearch
 nnoremap <silent> <leader>f :CocAction<CR>
 nnoremap <silent> <leader>g1 :diffget //2<CR>
 nnoremap <silent> <leader>g2 :diffget //3<CR>
@@ -136,17 +141,12 @@ nnoremap <silent> <leader>pu :PlugUpdate<CR>
 nnoremap <silent> <leader>rN :set relativenumber!<CR>
 nnoremap <silent> <leader>rf :NERDTreeFind<CR>
 nnoremap <silent> <leader>rn :set relativenumber<CR>
-nnoremap <silent> <leader>sn :Snippets<CR>
 nnoremap <silent> <leader>sf :GFiles?<CR>
+nnoremap <silent> <leader>sn :Snippets<CR>
 nnoremap <silent> <leader>t :vert term<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
 nnoremap <silent> <leader>w :BD<CR>
-nnoremap <silent> gd <Plug>(coc-definition)
-nnoremap <silent> gi <Plug>(coc-implementation)
-nnoremap <silent> gr <Plug>(coc-references)
-nnoremap <silent> gy <Plug>(coc-type-definition)
 nnoremap <silent>_ :MaximizerToggle<CR>
-nmap <silent><leader>cr :CocRestart<CR>
 noremap - -
 noremap <D-1> 1<C-w><C-w>
 noremap <D-2> 2<C-w><C-w>
@@ -334,6 +334,7 @@ let g:airline#extensions#csv#enabled = 0
 let g:airline#extensions#nerdtree_statusline = 0
 let g:airline#extensions#searchcount#enabled = 0
 let g:airline#extensions#searchcount#enabled = 0
+let g:airline#extensions#tabline#buffers_label = ''
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#left_alt_sep = ''
@@ -343,14 +344,16 @@ let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#wordcount#enabled = 0
 let g:airline_inactive_alt_sep=1
 let g:airline_powerline_fonts = 1
+let g:airline_theme='minimalist'
 let g:airline_section_a = ''
-let g:airline_section_b = 'Brandon Burrus'
-let g:airline_section_c = airline#section#create(['branch'])
+let g:airline_section_b = airline#section#create(['branch'])
+let g:airline_section_c = ''
+let g:airline_section_x = ''
+let g:airline_section_y = ''
 let g:airline_section_z = '%{strftime("%I:%M %p")}'
 let g:airline_symbols.branch = ''
 let g:airline_symbols.dirty = ' '
 let g:airline_symbols.notexists = ''
-let g:airline_theme='deus'
 let g:closetag_emptyTags_caseSensitive = 1
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.tsx,*.js,*.ts'
 let g:closetag_filetypes = 'html,xhtml,phtml,javascript,javascriptreact,typescript,typescriptreact'
@@ -368,20 +371,21 @@ let g:qs_enable = 1
 let g:qs_max_chars = 104
 let g:startify_change_to_dir = 1
 let g:startify_change_to_vcs_root = 1
-let g:startify_files_number = 12
+let g:startify_files_number = 10
 let g:startify_session_autoload = 1
 let g:startify_session_persistence = 1
 let g:startify_session_sort = 1
+let g:startify_custom_header = 'startify#pad(startify#fortune#boxed())'
 let g:toggle_map = "<C-b>"
 let g:vrfr_rg = 'true'
 let g:webdevicons_conceal_nerdtree_brackets = 1
 let loadedmatchparen = 0
 
 let g:startify_lists = [
-      \ { 'type': 'sessions',   'header': ['  Projects'] },
-      \ { 'type': 'files',      'header': ['  Recently opened'] },
-      \ { 'type': 'bookmarks',  'header': ['  Bookmarks'] },
-      \ { 'type': 'commands',   'header': ['  Commands'] },
+      \ { 'type': 'sessions',   'header': ['   Projects'] },
+      \ { 'type': 'files',      'header': ['   Recently opened'] },
+      \ { 'type': 'bookmarks',  'header': ['   Bookmarks'] },
+      \ { 'type': 'commands',   'header': ['   Commands'] },
       \ ]
 
 let g:startify_skiplist = [
@@ -405,17 +409,27 @@ let g:airline#extensions#tabline#buffer_idx_format = {
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Auto commands
-autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
-autocmd BufRead,BufNewFile *.md setlocal textwidth=100
-autocmd BufRead,BufNewFile *.mdx set syntax=markdown
-autocmd BufRead,BufNewFile *.zsh-theme set syntax=bash
-autocmd BufRead,BufNewFile *.mdx setlocal textwidth=100
-autocmd BufRead,BufNewFile .aliases setfiletype bash
-autocmd BufRead,BufNewFile .babelrc setfiletype json
-autocmd BufRead,BufNewFile .prettierrc setfiletype json
-autocmd CompleteDone * if !pumvisible() | pclose | endif
-autocmd CursorHold * silent call CocActionAsync('highlight')
-autocmd StdinReadPre * let s:std_in=1
+augroup AutoFileTypes
+  autocmd!
+  autocmd BufRead,BufNewFile .aliases setfiletype bash
+  autocmd BufRead,BufNewFile .babelrc setfiletype json
+  autocmd BufRead,BufNewFile .eslintrc setfiletype json
+  autocmd BufRead,BufNewFile .prettierrc setfiletype json
+augroup END
+
+augroup AutoFileLocals
+  autocmd!
+  autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+  autocmd BufRead,BufNewFile *.md setlocal textwidth=100
+  autocmd BufRead,BufNewFile *.mdx set syntax=markdown
+  autocmd BufRead,BufNewFile *.zsh-theme set syntax=bash
+augroup END
+
+augroup AutoMisc
+  autocmd!
+  autocmd CompleteDone * if !pumvisible() | pclose | endif
+  autocmd StdinReadPre * let s:std_in=1
+augroup END
 
 " Disable mouse scrolling
 nmap <ScrollWheelUp> <nop>
