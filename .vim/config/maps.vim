@@ -2,18 +2,33 @@
 
 " Use the spacebar as the leader key
 let mapleader=" "
+noremap <SPACE> <Nop>
 
-inoremap <D-j> <Esc>:m .+1<CR>==gi<C-z>
-inoremap <D-k> <Esc>:m .-2<CR>==gi<C-z>
+" Insert-mode CoC auto-complete menu tab remaps
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Sneak plugin remaps
 map F <Plug>Sneak_F
 map T <Plug>Sneak_T
 map f <Plug>Sneak_f
 map t <Plug>Sneak_t
-nmap <leader>+ <Plug>AirlineSelectNextTab
-nmap <leader>- <Plug>AirlineSelectPrevTab
+
+" CamelCase plugin remaps
+map <silent> w <Plug>CamelCaseMotion_w
+sunmap w
+map <silent> b <Plug>CamelCaseMotion_b
+sunmap b
+map <silent> e <Plug>CamelCaseMotion_e
+sunmap e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap ge
+
+" Remap easymotion prefix to backslash
+map \ <Plug>(easymotion-prefix)
+
+" Airline tab selection remaps using <leader>
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
@@ -23,92 +38,177 @@ nmap <leader>6 <Plug>AirlineSelectTab6
 nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
+
+" qf to apply a quick-fix on the current line
 nmap <leader>qf  <Plug>(coc-fix-current)
-nmap <silent> <leader>d <Plug>DashSearch
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent><leader>cr :CocRestart<CR>
-nnoremap <D-'> cs'`<CR>
+
+" leader+f to open fix menu
+nnoremap <leader>f :CocAction<CR>
+
+" gd to go to definition
+nmap gd <Plug>(coc-definition)
+
+" gi to go to implementation
+nmap gi <Plug>(coc-implementation)
+
+" gr to get a list of references
+nmap gr <Plug>(coc-references)
+
+" gy to get the type definition
+nmap gy <Plug>(coc-type-definition)
+
+" Cmd+Shift+R to rename symbol
 nnoremap <D-R> <Plug>(coc-rename)
-nnoremap <D-j> :m .+1<CR>==<C-z>
-nnoremap <D-k> :m .-2<CR>==<C-z>
 nnoremap <ESC><ESC> :nohls<CR><C-z>
+
+" Arrow keys to resize splits
+nnoremap <Down> :resize +2<CR>
+nnoremap <Left> :vertical resize -2<CR>
+nnoremap <Right> :vertical resize +2<CR>
+nnoremap <Up> :resize -2<CR>
+
+" Leader and < or > to move between buffers
+nnoremap <leader>, :bp <CR>
+nnoremap <leader>. :bn <CR>
+
+" Cmd+Shift+H and Cmd+Shift+L to move between buffers
+nnoremap <D-H> :bp<CR>
+nnoremap <D-L> :bn<CR>
+
+" Leader ESC to close the current project session
+nnoremap <leader><ESC> :Startify<CR>
+
+" Dash remaps
+nmap <leader>dg <Plug>DashGlobalSearch
+nmap <leader>ds <Plug>DashSearch
+
+" Run code action
 nnoremap <leader>ca :CocAction<CR>
+
+" Open CoC config
+nnoremap <leader>cc :CocConfig<CR>
+
+" List of commands
+nnoremap <leader>co :Commands<CR>
+
+" Close project
+nnoremap <leader>cp :SClose<CR>
+
+" Restart CoC
+nnoremap <leader>cr :CocRestart<CR>
+
+" Open color scheme
+nnoremap <leader>cs :e ~/.vim/colors/neonchalk.vim<CR>
+
+" Open snippets
+nnoremap <leader>cu :UltiSnipsEdit<CR>
+
+" Edit vimrc
+nnoremap <leader>cv :e ~/.vimrc<CR>
+
+" Git
+nnoremap <leader>g0 :diffget //3<CR>
+nnoremap <leader>g1 :diffget //2<CR>
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gc :Commits<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gd :Gvdiff<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gp :Gpush<CR>
+
+" Leader+h to show hover documentation
+nnoremap <leader>h :call <SID>show_documentation()<CR>
+
+" List of marks
+nnoremap <leader>mk :Marks<CR>
+
+" Organize imports
+nnoremap <leader>or :OR<CR>
+
+" Vim-Plug ease of use :D
+nnoremap <leader>pc :PlugClean<CR>
+nnoremap <leader>pi :PlugInstall<CR>
+nnoremap <leader>pu :PlugUpdate<CR>
+
+" Find the current buffers file in the nerd tree
+nnoremap <leader>rf :NERDTreeFind<CR>
+
+" Reload the rc configuration
 nnoremap <leader>rl :so ~/.gvimrc<CR>
-nnoremap <silent> <D-H> :bp<CR>
-nnoremap <silent> <D-L> :bn<CR>
-nnoremap <silent> <Down> :resize +2<CR>
-nnoremap <silent> <Left> :vertical resize -2<CR>
-nnoremap <silent> <Right> :vertical resize +2<CR>
-nnoremap <silent> <Up> :resize -2<CR>
-nnoremap <silent> <leader>, :bp <CR>
-nnoremap <silent> <leader>. :bn <CR>
-nnoremap <silent> <leader><ESC> :Startify<CR>
-nmap <silent> <leader><leader>d <Plug>DashGlobalSearch
-nnoremap <silent> <leader>T :term<CR>
-nnoremap <silent> <leader>W :bd<CR>
-nnoremap <silent> <leader>\ :so ~/.vimrc<CR>
-nnoremap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
-nnoremap <silent> <leader>b :call fzf#vim#buffers()<CR>
-nnoremap <silent> <leader>cc :CocConfig<CR>
-nnoremap <silent> <leader>co :Commands<CR>
-nnoremap <silent> <leader>cp :SClose<CR>
-nnoremap <silent> <leader>cs :e ~/.vim/colors/neonchalk.vim<CR>
-nnoremap <silent> <leader>cu :UltiSnipsEdit<CR>
-nnoremap <silent> <leader>cv :e ~/.vimrc<CR>
-nnoremap <silent> <leader>f :CocAction<CR>
-nnoremap <silent> <leader>g1 :diffget //2<CR>
-nnoremap <silent> <leader>g2 :diffget //3<CR>
-nnoremap <silent> <leader>gb :Gblame<CR>
-nnoremap <silent> <leader>gc :Commits<CR>
-nnoremap <silent> <leader>gc :Gcommit<CR>
-nnoremap <silent> <leader>gd :Gvdiff<CR>
-nnoremap <silent> <leader>gh :NERDTreeCWD<CR>
-nnoremap <silent> <leader>gs :G<CR>
-nnoremap <silent> <leader>h :call <SID>show_documentation()<CR>
-nnoremap <silent> <leader>l :Lines<CR>
-nnoremap <silent> <leader>mk :Marks<CR>
-nnoremap <silent> <leader>mp :Maps<CR>
-nnoremap <silent> <leader>or :OR<CR>
-nnoremap <silent> <leader>pc :PlugClean<CR>
-nnoremap <silent> <leader>pi :PlugInstall<CR>
-nnoremap <silent> <leader>pu :PlugUpdate<CR>
-nnoremap <silent> <leader>rN :set relativenumber!<CR>
-nnoremap <silent> <leader>rf :NERDTreeFind<CR>
-nnoremap <silent> <leader>rn :set relativenumber<CR>
-nnoremap <silent> <leader>sf :GFiles?<CR>
-nnoremap <silent> <leader>sn :Snippets<CR>
-nnoremap <silent> <leader>t :vert term<CR>
-nnoremap <silent> <leader>u :UndotreeToggle<CR>
-nnoremap <silent> <leader>w :BD<CR>
-nnoremap <silent>_ :MaximizerToggle<CR>
-noremap - -
+
+" rn and rN to switch between relative line numbers
+nnoremap <leader>rN :set relativenumber!<CR>
+nnoremap <leader>rn :set relativenumber<CR>
+
+" List of snippets
+nnoremap <leader>sn :Snippets<CR>
+
+" Open a terminal in a horizontal split
+nnoremap <leader>T :term<CR>
+" Open a terminal in a vertical split
+nnoremap <leader>t :vert term<CR>
+
+" Trim whitespace
+nnoremap <leader>rw :Trim<CR>
+
+" Open undo-tree panel
+nnoremap <leader>u :UndotreeToggle<CR>
+
+" Delete the buffer and the window
+nnoremap <leader>W :bd<CR>
+" Delete the buffer but leave the window
+nnoremap <leader>w :BD<CR>
+
+" Maximizer plugin maps to _
+nnoremap _ :MaximizerToggle<CR>
+vnoremap _ :MaximizerToggle<CR>gv
+
+" Cmd 1-5 to select the given split
 noremap <D-1> 1<C-w><C-w>
 noremap <D-2> 2<C-w><C-w>
 noremap <D-3> 3<C-w><C-w>
 noremap <D-4> 4<C-w><C-w>
 noremap <D-5> 5<C-w><C-w>
+
+" Cmd+Shift+E to open/close nerd tree explorer
 noremap <D-E> :NERDTreeToggle<CR>
+
+" Cmd+Shift+F Perform a global search in current project
 noremap <D-F> :Ag<CR>
-noremap <SPACE> <Nop>
-noremap <silent> <C-H> :tabN<CR>
-noremap <silent> <C-L> :tabn<CR>
-noremap <silent> <C-O> :BTags<CR>
-noremap <silent> <C-p> :GFiles<CR>
-noremap <silent> <D-/> :Commentary<CR>
-noremap <silent> <D-P> :Files<CR>
+
+" Tab navigation using Ctrl+Shift+H (previous) and Ctrl+Shift+L (next)
+noremap <C-H> :tabN<CR>
+noremap <C-L> :tabn<CR>
+
+" Ctrl+Shift+O to see a list of tags in the current buffer
+noremap <C-O> :BTags<CR>
+
+" Ctrl+p to see a list of files
+noremap <C-p> :GFiles<CR>
+noremap <D-P> :Files<CR>
+
+" Cmd+/ to toggle comment
+noremap <D-/> :Commentary<CR>
+
+" Cmd+j, Cmd+k to move lines up and down
+nnoremap <D-j> :m .+1<CR>==<C-z>
+nnoremap <D-k> :m .-2<CR>==<C-z>
 vnoremap <D-j> :m '>+1<CR>gv=gv
 vnoremap <D-k> :m '<-2<CR>gv=gv
-vnoremap <silent>_ :MaximizerToggle<CR>gv
-xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-try
-    nmap <silent> ]e :call CocAction('diagnosticNext')<cr>
-    nmap <silent> [e :call CocAction('diagnosticPrevious')<cr>
-    nmap <silent> ]h <Plug>(GitGutterNextHunk)
-    nmap <silent> [h <Plug>(GitGutterPrevHunk)
-endtry
+
+" ?????
+xmap <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+
+" Slash plugin map
+noremap <plug>(slash-after) zz
+
+" Next/previous error
+nmap ]e :call CocAction('diagnosticNext')<cr>
+nmap [e :call CocAction('diagnosticPrevious')<cr>
+
+" Next/Previous git hunk
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
 
 " Bind for <leader>/ to show syntax groups
 map <leader>/ :echo "" . synIDattr(synID(line("."),col("."),1),"name") . ' : '
@@ -135,4 +235,18 @@ inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
+
+" Disable all mouse scrolling
+nmap <ScrollWheelUp> <nop>
+nmap <S-ScrollWheelUp> <nop>
+nmap <C-ScrollWheelUp> <nop>
+nmap <ScrollWheelDown> <nop>
+nmap <S-ScrollWheelDown> <nop>
+nmap <C-ScrollWheelDown> <nop>
+nmap <ScrollWheelLeft> <nop>
+nmap <S-ScrollWheelLeft> <nop>
+nmap <C-ScrollWheelLeft> <nop>
+nmap <ScrollWheelRight> <nop>
+nmap <S-ScrollWheelRight> <nop>
+nmap <C-ScrollWheelRight> <nop>
 

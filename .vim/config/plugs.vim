@@ -8,77 +8,132 @@ endif
 " Plugins
 call plug#begin("~/.vim/autoload")
 
-  " Motions
+" Motions
+  " Modify default word-wise motions to respect camelcasing
   Plug 'bkad/camelcasemotion'
+  " Apply a sort as a motion
   Plug 'christoomey/vim-sort-motion'
+  " More advanced jumping motions by search
   Plug 'easymotion/vim-easymotion'
+  " Display easymotion jumps using incsearch
   Plug 'haya14busa/incsearch-easymotion.vim'
+  " Replace s and S as a quick two-letter jump
   Plug 'justinmk/vim-sneak'
+  " Multi-cursor editing
   Plug 'terryma/vim-multiple-cursors'
 
-  " Text Objects
+" Text Objects
+  " Comments as text objects
   Plug 'glts/vim-textobj-comment'
+  " Entire buffer as a text object
   Plug 'kana/vim-textobj-entire'
+  " Function definitions themselves as text objects
   Plug 'kana/vim-textobj-function'
+  " Current line as a text object
   Plug 'kana/vim-textobj-line'
+  " Kana custom text-objects required plugin
   Plug 'kana/vim-textobj-user'
+  " Indentation groups as text object
   Plug 'michaeljsmith/vim-indent-object'
+  " Function parameters as text object
   Plug 'sgur/vim-textobj-parameter'
+  " Extended text objects for more characters
   Plug 'wellle/targets.vim'
 
-  " Actions
+" Actions
+  " Automatically update closing tag when changing opening tag
   Plug 'AndrewRadev/tagalong.vim'
+  " Split/join complex expressions
   Plug 'AndrewRadev/splitjoin.vim'
+  " Bunch of pre-defined snippets
   Plug 'honza/vim-snippets'
+  " Toggle boolean-like works
   Plug 'lukelbd/vim-toggle'
+  " Swap two motion-selected blocks of text
   Plug 'tommcdo/vim-exchange'
+  " easier commenting
   Plug 'tpope/vim-commentary'
+  " unix-like helper commands
   Plug 'tpope/vim-eunuch'
+  " make plugin maps repeatable
   Plug 'tpope/vim-repeat'
+  " surround motion with a character or input
   Plug 'tpope/vim-surround'
+  " manipulate dates and times using Ctrl+A and Ctrl+X
+  Plug 'tpope/vim-speeddating'
 
-  " Editor
+" Editor
+  " Snippets manager
   Plug 'SirVer/ultisnips'
+  " Auto add closing xml-like tags
   Plug 'alvan/vim-closetag'
+  " Better increment search
   Plug 'haya14busa/incsearch.vim'
+  " Automatically close pairs like brackets
   Plug 'jiangmiao/auto-pairs'
+  " Better search
   Plug 'junegunn/vim-slash'
+  " Better start screen
   Plug 'mhinz/vim-startify'
+  " Intellisense
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Better buffer closing management
   Plug 'qpkorr/vim-bufkill'
+  " Vim integration with the Dash documentation app
   Plug 'rizzatti/dash.vim'
+  " Maximize buffer windows temporarily
   Plug 'szw/vim-maximizer'
-  Plug 'tpope/vim-abolish'
+  " Auto set indentation settings based on the file
   Plug 'tpope/vim-sleuth'
-  Plug 'tpope/vim-vinegar'
+  " Show f and t possibilities on the current lines
   Plug 'unblevable/quick-scope'
-  Plug 'vim-airline/vim-airline-themes'
 
-  " Navigation
-  Plug 'PhilRunninger/nerdtree-visual-selection'
+" Navigation
+  " Global find and replace
   Plug 'dyng/ctrlsf.vim'
+  " Fuzzy finder
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
-  Plug 'scrooloose/nerdtree' |  Plug 'vim-airline/vim-airline' | Plug 'ryanoasis/vim-devicons'
+  " Visual file explorer
+  Plug 'scrooloose/nerdtree'
+  " Use visual mode to make edits to multiple files at the same time
+  Plug 'PhilRunninger/nerdtree-visual-selection'
+  " Custom status line
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  " Icons :D
+  Plug 'ryanoasis/vim-devicons'
 
-  " Syntax
-  Plug 'BrandonBurrus/java-syntax.vim'
-  Plug 'Quramy/tsuquyomi'
-  Plug 'elmcast/elm-vim'
-  Plug 'peitalin/vim-jsx-typescript'
+" Syntax
+  " General syntax groups
   Plug 'sheerun/vim-polyglot'
+  " Java syntax groups
+  Plug 'BrandonBurrus/java-syntax.vim'
+  " TypeScript syntax groups
+  Plug 'Quramy/tsuquyomi'
+  Plug 'peitalin/vim-jsx-typescript'
+  " Elm syntax groups
+  Plug 'elmcast/elm-vim'
 
-  " Git
+" Git
+  " Add git hunk signs to left gutter
   Plug 'airblade/vim-gitgutter'
-  Plug 'itchyny/vim-gitbranch'
+  " Git commands
   Plug 'tpope/vim-fugitive'
 
-  " Misc
+" Misc
+  " Auto set the current working dir to the dir containing the .git dir
   Plug 'airblade/vim-rooter'
+  " Display marks in the left gutter
   Plug 'kshenoy/vim-signature'
+  " Automatic tag management
   Plug 'ludovicchabant/vim-gutentags'
+  " Traverse undo history visually
   Plug 'mbbill/undotree'
+  " Auto-save and manage sessions
   Plug 'tpope/vim-obsession'
+  " Get good son
+  Plug 'ThePrimeagen/vim-be-good'
 
 call plug#end()
 
@@ -104,29 +159,32 @@ let g:coc_global_extensions = [
       \ "coc-yank"
       \ ]
 
-" Load prettier
+" Load Prettier
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
   let g:coc_global_extensions += ['coc-prettier']
 endif
 
-" Load eslint
+" Load ESLint
 if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
   let g:coc_global_extensions += ['coc-eslint']
 endif
 
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-" Plugin configuration
+" Nerd Tree
 let g:NERDTreeDirArrowCollapsible = ''
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeIgnore=['node_modules']
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeWinSize=50
+
+" Ultisnips
 let g:UltiSnipsExpandTrigger="<C-Space>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
+
+" Airline
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
 let g:airline#extensions#coc#error_symbol = 'E:'
 let g:airline#extensions#coc#warning_symbol = 'W:'
 let g:airline#extensions#csv#enabled = 0
@@ -153,43 +211,6 @@ let g:airline_section_z = '%{strftime("%I:%M %p")}'
 let g:airline_symbols.branch = ''
 let g:airline_symbols.dirty = ' '
 let g:airline_symbols.notexists = ''
-let g:closetag_emptyTags_caseSensitive = 1
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.tsx,*.js,*.ts'
-let g:closetag_filetypes = 'html,xhtml,phtml,javascript,javascriptreact,typescript,typescriptreact'
-let g:closetag_shortcut = '>'
-let g:fzf_buffers_jump = 1
-let g:fzf_tags_command = 'ctags -R --exclude=.git --exclude=log'
-let g:gitgutter_show_msg_on_hunk_jumping = 1
-let g:gutentags_cache_dir = expand('~/.cache/tags')
-let g:gutentags_ctags_tagfile = '.tags'
-let g:gutentags_modules = ['ctags']
-let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-let g:indentguides_spacechar = '│'
-let g:jsx_ext_required = 0
-let g:qs_enable = 1
-let g:qs_max_chars = 104
-let g:startify_change_to_dir = 1
-let g:startify_change_to_vcs_root = 1
-let g:startify_files_number = 10
-let g:startify_session_autoload = 1
-let g:startify_session_persistence = 1
-let g:startify_session_sort = 1
-let g:startify_custom_header = 'startify#pad(startify#fortune#boxed())'
-let g:toggle_map = "<C-b>"
-let g:vrfr_rg = 'true'
-let g:webdevicons_conceal_nerdtree_brackets = 1
-let loadedmatchparen = 0
-
-let g:startify_lists = [
-      \ { 'type': 'sessions',   'header': ['   Projects'] },
-      \ { 'type': 'files',      'header': ['   Recently opened'] },
-      \ { 'type': 'bookmarks',  'header': ['   Bookmarks'] },
-      \ { 'type': 'commands',   'header': ['   Commands'] },
-      \ ]
-
-let g:startify_skiplist = [
-      \ 'COMMIT_EDITMSG',
-      \ ]
 
 let g:airline#extensions#tabline#buffer_idx_format = {
         \ '0': ' ',
@@ -203,4 +224,58 @@ let g:airline#extensions#tabline#buffer_idx_format = {
         \ '8': ' ',
         \ '9': ' '
         \}
+
+" Closetag
+let g:closetag_emptyTags_caseSensitive = 1
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.tsx,*.js,*.ts'
+let g:closetag_filetypes = 'html,xhtml,phtml,javascript,javascriptreact,typescript,typescriptreact'
+let g:closetag_shortcut = '>'
+
+" FZF
+let g:fzf_buffers_jump = 1
+let g:fzf_tags_command = 'ctags -R --exclude=.git --exclude=log'
+
+" Git gutter
+let g:gitgutter_show_msg_on_hunk_jumping = 1
+
+" Gutentags
+let g:gutentags_cache_dir = expand('~/.cache/tags')
+let g:gutentags_ctags_tagfile = '.tags'
+let g:gutentags_modules = ['ctags']
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+
+"JSX
+let g:jsx_ext_required = 0
+
+" Quick scope
+let g:qs_enable = 1
+let g:qs_max_chars = 104
+
+" Startify
+let g:startify_change_to_dir = 1
+let g:startify_change_to_vcs_root = 1
+let g:startify_files_number = 10
+let g:startify_session_autoload = 1
+let g:startify_session_persistence = 1
+let g:startify_session_sort = 1
+let g:startify_custom_header = 'startify#pad(startify#fortune#boxed())'
+
+let g:startify_lists = [
+      \ { 'type': 'sessions',   'header': ['   Projects'] },
+      \ { 'type': 'files',      'header': ['   Recently opened'] },
+      \ { 'type': 'bookmarks',  'header': ['   Bookmarks'] },
+      \ { 'type': 'commands',   'header': ['   Commands'] },
+      \ ]
+
+let g:startify_skiplist = [
+      \ 'COMMIT_EDITMSG',
+      \ ]
+
+" Toggle
+let g:toggle_map = "<C-b>"
+let g:vrfr_rg = 'true'
+
+" Web dev icons
+let g:webdevicons_conceal_nerdtree_brackets = 1
+let loadedmatchparen = 0
 
