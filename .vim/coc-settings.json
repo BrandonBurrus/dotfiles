@@ -35,12 +35,15 @@
   "sourcekit.commandPath": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
   "sourcekit.iOSsdkPath": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.1.sdk",
 
+  "java.jdt.ls.vmargs": "-javaagent:/Users/brandonburrus/.m2/repository/org/projectlombok/lombok/1.18.16/lombok-1.18.16.jar",
+
   "typescript.suggest.autoImports": true,
   "typescript.suggest.enabled": true,
 
   "cSpell.userWords": [
     "Algolia",
     "Autosave",
+    "Autowired",
     "Burrus",
     "CKAD",
     "Codesandbox",
@@ -55,6 +58,7 @@
     "JNLP",
     "Keras",
     "Kubernetes",
+    "Learna",
     "Liquibase",
     "Maplewood",
     "Mitigations",
@@ -76,6 +80,7 @@
     "codebases",
     "debuggable",
     "desync",
+    "frontends",
     "fullscreen",
     "gradebook",
     "grpc",
@@ -85,6 +90,7 @@
     "immer",
     "jiangmiao",
     "justinmk",
+    "nicr",
     "omnisharp",
     "performant",
     "prettierrc",
@@ -99,6 +105,7 @@
     "testid",
     "tpope",
     "trigged",
+    "truely",
     "typecheck",
     "ultisnips",
     "unmount",

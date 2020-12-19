@@ -132,8 +132,6 @@ call plug#begin("~/.vim/autoload")
   Plug 'mbbill/undotree'
   " Auto-save and manage sessions
   Plug 'tpope/vim-obsession'
-  " Get good son
-  Plug 'ThePrimeagen/vim-be-good'
 
 call plug#end()
 
@@ -148,6 +146,7 @@ let g:coc_global_extensions = [
       \ "coc-go",
       \ "coc-html",
       \ "coc-java",
+      \ "coc-jest",
       \ "coc-json",
       \ "coc-omnisharp",
       \ "coc-sourcekit",
@@ -276,6 +275,12 @@ let g:toggle_map = "<C-b>"
 let g:vrfr_rg = 'true'
 
 " Web dev icons
+" let g:WebDevIconsOS = 'Darwin'
 let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['java'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['properties'] = ''
+let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+
 let loadedmatchparen = 0
 

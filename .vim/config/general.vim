@@ -1,6 +1,10 @@
 " General vim configuration
 
 set encoding=utf-8              " Use UTF-8 encoding in buffers
+syntax on                       " Enable syntax highlighting
+
+" Enable vim filetype detection, type-specific plugins, and auto-indentation
+filetype plugin indent on
 
 " Indentation
 set autoindent                  " Use the previous lines indentation when adding new lines
@@ -78,5 +82,6 @@ set modelines=0                 " Disable mode lines
 set nospell                     " Disable vim spellchecker (use coc-spell-checker instead)
 set sessionoptions-=blank       " Do no store empty windows in saved sessions
 set updatetime=100              " How often to store file changes in swap files (recovery/auto-save)
-set fillchars+=vert:⎸
+
+set fillchars+=vert:\⎸
 

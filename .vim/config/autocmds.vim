@@ -25,3 +25,6 @@ augroup AutoMisc
   autocmd CompleteDone * if !pumvisible() | pclose | endif
   autocmd StdinReadPre * let s:std_in=1
 augroup END
+
+" Autocmd fix for https://github.com/ryanoasis/vim-devicons/issues/133
+autocmd FileType nerdtree setlocal nolist

@@ -30,7 +30,8 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/.scripts
 export PATH=$PATH:~/Files/Clairvoyant/LMS/Setup
-export PATH=$PATH:~/Files/apache-tomcat-9.0.40/bin
+export PATH=$PATH:~/Files/Programs/Tomcat/bin
+export PATH=$PATH:~/Files/Programs/SpringBootCli/bin
 export PATH=$PATH:~/flutter/bin
 
 # Aliases

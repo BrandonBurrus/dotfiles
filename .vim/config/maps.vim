@@ -58,7 +58,7 @@ nmap gr <Plug>(coc-references)
 nmap gy <Plug>(coc-type-definition)
 
 " Cmd+Shift+R to rename symbol
-nnoremap <D-R> <Plug>(coc-rename)
+nmap <D-R> <Plug>(coc-rename)
 nnoremap <ESC><ESC> :nohls<CR><C-z>
 
 " Arrow keys to resize splits
@@ -105,6 +105,17 @@ nnoremap <leader>cu :UltiSnipsEdit<CR>
 
 " Edit vimrc
 nnoremap <leader>cv :e ~/.vimrc<CR>
+
+" Edit Zshrc
+nnoremap <leader>cz :e ~/.zshrc<CR>
+
+" Edit vim configs
+nnoremap <leader>ea :e ~/.vim/config/autocmds.vim<CR>
+nnoremap <leader>ec :e ~/.vim/config/cmds.vim<CR>
+nnoremap <leader>eg :e ~/.vim/config/general.vim<CR>
+nnoremap <leader>em :e ~/.vim/config/maps.vim<CR>
+nnoremap <leader>ep :e ~/.vim/config/plugs.vim<CR>
+
 
 " Git
 nnoremap <leader>g0 :diffget //3<CR>
@@ -237,6 +248,7 @@ inoremap <silent><expr> <Tab>
       \ coc#refresh()
 
 " Disable all mouse scrolling
+set mouse=nicr
 nmap <ScrollWheelUp> <nop>
 nmap <S-ScrollWheelUp> <nop>
 nmap <C-ScrollWheelUp> <nop>
