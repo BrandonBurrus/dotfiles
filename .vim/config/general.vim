@@ -49,6 +49,8 @@ set nobackup                    " Disable backup file when overwriting an existi
 set nowrap                      " Disable line wrapping
 set path+=**                    " Use the current path as the root to be indexed for gf
 set scrolloff=0                 " How many lines can the screen scroll beyond the last line in the buffer
+set hidden                      " Allow buffers with unsaved changes to exist in the background
+set modelines=1                 " Enable modelines on the last line of a buffer
 
 " Notifications
 set belloff=all                 " Turn off the notification sound for everything
@@ -66,6 +68,8 @@ set cmdheight=1                 " Use a single line for Ex commands
 set shell=/bin/zsh              " Use Zsh as the preferred shell
 set shortmess=a                 " Always prefer shorter error msgs
 set showcmd                     " Show the result of cmds in the cmd line
+set exrc                        " Enable project-specific vimrc config file
+set secure                      " Disable insecure commands in project-specific vimrc files
 
 " Extra Feedback
 set noruler                     " Disable showing the current line/column the cursor is at
@@ -83,5 +87,5 @@ set nospell                     " Disable vim spellchecker (use coc-spell-checke
 set sessionoptions-=blank       " Do no store empty windows in saved sessions
 set updatetime=100              " How often to store file changes in swap files (recovery/auto-save)
 
-set fillchars+=vert:\⎸
+set fillchars+=vert:\⎸          " Special character to use to separate vertical splits
 

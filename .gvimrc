@@ -1,25 +1,28 @@
 " Brandon Burrus .gvimrc
 
+" Resource default vimrc
 so ~/.vimrc
 
+" Color Scheme
 colorscheme neonchalk
 
-set macligatures
-
-" Font
-if has ('gui_running')
+if has('gui_running')
+  " Font = Dank Mono
   set guifont=DankMono_Nerd_Font:h16
+  " Enable font ligatures
+  set macligatures
 endif
 
-let g:webdevicons_conceal_nerdtree_brackets = 1
-let g:webdevicons_enable = 1
-let g:webdevicons_enable_nerdtree = 1
-let g:webdevicons_enable_startify = 1
-
+" Reload dev icons plugin
 if exists("g:loaded_webdevicons")
   call webdevicons#refresh()
 endif
 
-let g:webdevicons_enable_airline_tabline = 1
-let g:webdevicons_enable_airline_statusline = 1
+" Remove MacVim menus (and related bindings)
+try
+  aunmenu File.Open\.\.\.
+  aunmenu File.Close
+  aunmenu File.Print
+catch
+endtry
 

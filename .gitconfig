@@ -8,3 +8,20 @@
 	protocol = https
 [pull]
 	rebase = true
+[credential]
+	helper = osxkeychain
+[mergetool]
+	keepBackup = false
+[alias]
+	aa = add .
+	b = branch
+	c = commit
+	co = checkout
+	cp = cherry-pick
+	d = diff
+	l = log --oneline
+	s = status
+	s = switch
+	undo = reset --hard
+	unstage = reset HEAD
+

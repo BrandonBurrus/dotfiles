@@ -33,15 +33,40 @@
   },
 
   "sourcekit.commandPath": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
-  "sourcekit.iOSsdkPath": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.1.sdk",
+  "sourcekit.sdkPath": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.1.sdk",
 
   "java.jdt.ls.vmargs": "-javaagent:/Users/brandonburrus/.m2/repository/org/projectlombok/lombok/1.18.16/lombok-1.18.16.jar",
+  "java.codeGeneration.useBlocks": true,
+  "java.implementationsCodeLens.enabled": true,
+  "java.format.onType.enabled": true,
+  "java.referencesCodeLens.enabled": true,
+  "java.format.onType.fixComment.enabled": true,
+  "java.codeGeneration.toString.codeStyle": "STRING_FORMAT",
 
   "typescript.suggest.autoImports": true,
   "typescript.suggest.enabled": true,
 
+  "bookmark.sign": "",
+
+  "explorer.width": 45,
+  "explorer.icon.enableVimDevicons": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.presets": {
+    "base": {
+      "sources": [
+        {
+          "name": "file",
+          "expand": true
+        }
+      ],
+      "file-root-template": "  [git & 1][hidden & 1][root]",
+      "file-child-template": "[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]"
+    }
+  },
+
   "cSpell.userWords": [
     "Algolia",
+    "Askable",
     "Autosave",
     "Autowired",
     "Burrus",
@@ -69,6 +94,7 @@
     "Primeagen",
     "Pytest",
     "SDLC",
+    "Scoreable",
     "Todos",
     "Ulti",
     "Vuex",
@@ -89,11 +115,13 @@
     "heirarchical",
     "immer",
     "jiangmiao",
+    "jupyter",
     "justinmk",
     "nicr",
     "omnisharp",
     "performant",
     "prettierrc",
+    "protobuf",
     "refactorable",
     "scrollable",
     "scrollbar",

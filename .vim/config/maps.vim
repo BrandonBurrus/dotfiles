@@ -25,6 +25,10 @@ sunmap e
 map <silent> ge <Plug>CamelCaseMotion_ge
 sunmap ge
 
+" Easy Align maps
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+
 " Remap easymotion prefix to backslash
 map \ <Plug>(easymotion-prefix)
 
@@ -59,6 +63,9 @@ nmap gy <Plug>(coc-type-definition)
 
 " Cmd+Shift+R to rename symbol
 nmap <D-R> <Plug>(coc-rename)
+nnoremap <D-r> :CocAction refactor<CR>
+
+" Reset search result highlighting
 nnoremap <ESC><ESC> :nohls<CR><C-z>
 
 " Arrow keys to resize splits
@@ -79,17 +86,23 @@ nnoremap <D-L> :bn<CR>
 nnoremap <leader><ESC> :Startify<CR>
 
 " Dash remaps
-nmap <leader>dg <Plug>DashGlobalSearch
-nmap <leader>ds <Plug>DashSearch
+nmap <leader>S <Plug>DashGlobalSearch
+nmap <leader>s <Plug>DashSearch
 
 " Run code action
-nnoremap <leader>ca :CocAction<CR>
+noremap <leader>g :CocAction<CR>
+noremap <C-.> :CocAction<CR>
+
+" Bookmarks
+nnoremap <leader>bb :CocCommand bookmark.toggle<CR>
+nnoremap <leader>bt :CocCommand bookmark.annotate<CR>
+nnoremap <leader>bn :CocCommand bookmark.next<CR>
+nnoremap <leader>bp :CocCommand bookmark.prev<CR>
+nnoremap <leader>bc :CocCommand bookmark.clearForCurrentFile<CR>
+nnoremap <leader>bl :CocList bookmark<CR>
 
 " Open CoC config
 nnoremap <leader>cc :CocConfig<CR>
-
-" List of commands
-nnoremap <leader>co :Commands<CR>
 
 " Close project
 nnoremap <leader>cp :SClose<CR>
@@ -109,6 +122,9 @@ nnoremap <leader>cv :e ~/.vimrc<CR>
 " Edit Zshrc
 nnoremap <leader>cz :e ~/.zshrc<CR>
 
+" Carbon.sh
+vnoremap <leader>cn :CarbonNowSh<CR>
+
 " Edit vim configs
 nnoremap <leader>ea :e ~/.vim/config/autocmds.vim<CR>
 nnoremap <leader>ec :e ~/.vim/config/cmds.vim<CR>
@@ -116,6 +132,8 @@ nnoremap <leader>eg :e ~/.vim/config/general.vim<CR>
 nnoremap <leader>em :e ~/.vim/config/maps.vim<CR>
 nnoremap <leader>ep :e ~/.vim/config/plugs.vim<CR>
 
+" Generate js-doc
+nnoremap <leader>dt :CocCommand docthis.documentThis<CR>
 
 " Git
 nnoremap <leader>g0 :diffget //3<CR>
@@ -126,12 +144,22 @@ nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>gl :GBranches<CR>
+nnoremap <leader>gt :GTags<CR>
 
 " Leader+h to show hover documentation
 nnoremap <leader>h :call <SID>show_documentation()<CR>
 
+" Java commands
+nnoremap <leader>jb :CocCommand java.workspace.compile <CR>
+nnoremap <leader>jc :CocCommand java.clean.workspace <CR>
+nnoremap <leader>jo :CocCommand java.open.output <CR>
+
 " List of marks
 nnoremap <leader>mk :Marks<CR>
+
+" List of maps
+nnoremap <leader>mp :Maps<CR>
 
 " Organize imports
 nnoremap <leader>or :OR<CR>
@@ -150,9 +178,6 @@ nnoremap <leader>rl :so ~/.gvimrc<CR>
 " rn and rN to switch between relative line numbers
 nnoremap <leader>rN :set relativenumber!<CR>
 nnoremap <leader>rn :set relativenumber<CR>
-
-" List of snippets
-nnoremap <leader>sn :Snippets<CR>
 
 " Open a terminal in a horizontal split
 nnoremap <leader>T :term<CR>
@@ -181,8 +206,13 @@ noremap <D-3> 3<C-w><C-w>
 noremap <D-4> 4<C-w><C-w>
 noremap <D-5> 5<C-w><C-w>
 
+function! ToggleNERDTree()
+  NERDTreeToggle
+  silent NERDTreeMirror
+endfunction
+
 " Cmd+Shift+E to open/close nerd tree explorer
-noremap <D-E> :NERDTreeToggle<CR>
+noremap <D-E> :call ToggleNERDTree()<CR>
 
 " Cmd+Shift+F Perform a global search in current project
 noremap <D-F> :Ag<CR>
@@ -192,11 +222,12 @@ noremap <C-H> :tabN<CR>
 noremap <C-L> :tabn<CR>
 
 " Ctrl+Shift+O to see a list of tags in the current buffer
-noremap <C-O> :BTags<CR>
+noremap <D-O> :BTags<CR>
 
 " Ctrl+p to see a list of files
 noremap <C-p> :GFiles<CR>
-noremap <D-P> :Files<CR>
+noremap <D-P> :Commands<CR>
+noremap <D-p> :Files<CR>
 
 " Cmd+/ to toggle comment
 noremap <D-/> :Commentary<CR>
@@ -207,19 +238,30 @@ nnoremap <D-k> :m .-2<CR>==<C-z>
 vnoremap <D-j> :m '>+1<CR>gv=gv
 vnoremap <D-k> :m '<-2<CR>gv=gv
 
-" ?????
-xmap <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+" Easier linewise motions
+nnoremap gb ^
+nnoremap gl $
+
+" Swap + and =
+nnoremap = +
+nnoremap + =
 
 " Slash plugin map
 noremap <plug>(slash-after) zz
 
 " Next/previous error
-nmap ]e :call CocAction('diagnosticNext')<cr>
-nmap [e :call CocAction('diagnosticPrevious')<cr>
+nmap ]e :call CocAction('diagnosticNext')<CR>
+nmap [e :call CocAction('diagnosticPrevious')<CR>
 
 " Next/Previous git hunk
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
+
+" Class text objects from CoC
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
 
 " Bind for <leader>/ to show syntax groups
 map <leader>/ :echo "" . synIDattr(synID(line("."),col("."),1),"name") . ' : '
@@ -247,8 +289,9 @@ inoremap <silent><expr> <Tab>
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
 
-" Disable all mouse scrolling
-set mouse=nicr
+" Disable mouse completely
+set mouse=
+set ttymouse=
 nmap <ScrollWheelUp> <nop>
 nmap <S-ScrollWheelUp> <nop>
 nmap <C-ScrollWheelUp> <nop>
@@ -261,4 +304,7 @@ nmap <C-ScrollWheelLeft> <nop>
 nmap <ScrollWheelRight> <nop>
 nmap <S-ScrollWheelRight> <nop>
 nmap <C-ScrollWheelRight> <nop>
+
+" Disable Ex mode (Who tf uses this)
+" nmap Q <Nop>
 

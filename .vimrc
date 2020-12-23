@@ -6,3 +6,5 @@ runtime! config/*.vim
 " Set the color scheme to Neon Chalk
 colorscheme neonchalk 
 
+" Reset highlighting
+nohls

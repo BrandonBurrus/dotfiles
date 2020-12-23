@@ -421,21 +421,12 @@ hi! link vimUserFunc Function
 hi! link vimEnvvar Identifier
 hi! link vimAutoEvent Identifier
 
-" PHP
-call s:X("StorageClass","c59f6f","","","Red","")
-hi! link phpFunctions Function
-hi! link phpSuperglobal Identifier
-hi! link phpQuoteSingle StringDelimiter
-hi! link phpQuoteDouble StringDelimiter
-hi! link phpBoolean Constant
-hi! link phpNull Constant
-hi! link phpArrayPair Operator
-hi! link phpOperator Normal
-hi! link phpRelation Normal
-hi! link phpVarSelector Identifier
-
 " Python
 hi! link pythonOperator Statement
+hi! link pythonImport Keyword
+hi! link pythonStrInterpRegion Constant
+hi! link pythonStrFormatting String
+hi! link pythonBytesEscape pythonStrFormatting
 
 " Swift
 hi! link swiftImports Keyword

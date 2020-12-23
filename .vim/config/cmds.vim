@@ -13,4 +13,8 @@ endfunction
 
 " :Trim to trim trailing whitespace
 command! -nargs=0 Trim :call TrimWhitespace()
+command! -nargs=0 T :Trim
 
+" :Format to format the current buffer
+command! -nargs=0 Format :call CocAction('format')
+command! -nargs=0 F :Format
