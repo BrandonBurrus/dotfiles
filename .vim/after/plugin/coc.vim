@@ -25,8 +25,8 @@ let g:coc_global_extensions = [
       \ "coc-tailwindcss",
       \ "coc-tsserver",
       \ "coc-vetur",
-      \ "coc-vimlsp"
-      \ "coc-xml"
+      \ "coc-vimlsp",
+      \ "coc-xml",
       \ "coc-yaml",
       \ "coc-yank"
       \ ]

@@ -4,7 +4,7 @@
 let mapleader=" "
 noremap <SPACE> <Nop>
 
-" Insert-mode CoC auto-complete menu tab remaps
+" Use tab and enter in auto-complete menu
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -30,7 +30,9 @@ nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
 " Remap easymotion prefix to backslash
-map \ <Plug>(easymotion-prefix)
+nmap <BS> nop
+nmap <BS> <Plug>(easymotion-prefix)
+vmap <BS> <Plug>(easymotion-prefix)
 
 " Airline tab selection remaps using <leader>
 nmap <leader>1 <Plug>AirlineSelectTab1
@@ -130,7 +132,7 @@ nnoremap <leader>ea :e ~/.vim/config/autocmds.vim<CR>
 nnoremap <leader>ec :e ~/.vim/config/cmds.vim<CR>
 nnoremap <leader>eg :e ~/.vim/config/general.vim<CR>
 nnoremap <leader>em :e ~/.vim/config/maps.vim<CR>
-nnoremap <leader>ep :e ~/.vim/config/plugs.vim<CR>
+nnoremap <leader>ep :e ~/.vim/config/plugins.vim<CR>
 
 " Generate js-doc
 nnoremap <leader>dt :CocCommand docthis.documentThis<CR>
@@ -232,6 +234,9 @@ noremap <D-p> :Files<CR>
 " Cmd+/ to toggle comment
 noremap <D-/> :Commentary<CR>
 
+" Toggle plugin
+nnoremap <D-b> :Toggle<CR>
+
 " Cmd+j, Cmd+k to move lines up and down
 nnoremap <D-j> :m .+1<CR>==<C-z>
 nnoremap <D-k> :m .-2<CR>==<C-z>
@@ -240,7 +245,9 @@ vnoremap <D-k> :m '<-2<CR>gv=gv
 
 " Easier linewise motions
 nnoremap gb ^
-nnoremap gl $
+vnoremap gb ^
+nnoremap gE $
+vnoremap gE $
 
 " Swap + and =
 nnoremap = +
@@ -264,7 +271,7 @@ xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
 " Bind for <leader>/ to show syntax groups
-map <leader>/ :echo "" . synIDattr(synID(line("."),col("."),1),"name") . ' : '
+nmap <leader>/ :echo "" . synIDattr(synID(line("."),col("."),1),"name") . ' : '
       \ . synIDattr(synID(line("."),col("."),0),"name") . " : "
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ""<CR>
 
@@ -277,7 +284,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Use Tab for auto-completion
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
@@ -305,6 +311,6 @@ nmap <ScrollWheelRight> <nop>
 nmap <S-ScrollWheelRight> <nop>
 nmap <C-ScrollWheelRight> <nop>
 
-" Disable Ex mode (Who tf uses this)
-" nmap Q <Nop>
+" Disable Ex mode
+nmap Q <Nop>
 

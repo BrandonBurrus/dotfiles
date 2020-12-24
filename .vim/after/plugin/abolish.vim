@@ -9,3 +9,4 @@ Abolish collectable collectible
 Abolish definetly definitely
 Abolish maintainence maintenance
 Abolish referance reference
+Abolish subsitute substitute
