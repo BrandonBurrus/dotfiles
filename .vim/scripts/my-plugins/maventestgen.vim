@@ -19,7 +19,7 @@ function s:MvnGenerateTestFile() abort
       call mkdir(l:testGenDir, 'p')
     endif
 
-    let l:javaTestFile = l:testGenDir . '/' . substitute(l:currentBufferFileName, '.java', 'Test.java', '')
+    let l:javaTestFile = l:testGenDir . '/' . substitute(l:currentBufferFileName, '.java', 'Tests.java', '')
     NERDTreeRefreshRoot
 
     if empty(glob(l:javaTestFile))
@@ -33,7 +33,7 @@ function s:MvnGenerateTestFile() abort
           \ '',
           \ 'import org.junit.Test;',
           \ '',
-          \ 'public class ' . substitute(l:currentBufferFileName, '.java', 'Test', '') . ' {',
+          \ 'public class ' . substitute(l:currentBufferFileName, '.java', 'Tests', '') . ' {',
           \ "\t",
           \ '}'
           \ ],

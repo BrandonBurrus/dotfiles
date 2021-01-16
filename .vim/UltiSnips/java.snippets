@@ -34,10 +34,6 @@ snippet a "Abstract"
 abstract $0
 endsnippet
 
-snippet s "Static"
-static $0
-endsnippet
-
 snippet sy "Synchronized"
 synchronized $0
 endsnippet
@@ -138,4 +134,9 @@ endsnippet
 
 snippet set "Set"
 Set<${1:Object}> ${2:set} = new ${3:Hash}Set<>($4);
+endsnippet
+
+snippet logger "Slf4j logger"
+private static final Logger log = LoggerFactory.getLogger(`!p snip.rv = snip.basename`.class);
+$0
 endsnippet

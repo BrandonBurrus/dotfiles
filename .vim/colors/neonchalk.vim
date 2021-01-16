@@ -603,15 +603,17 @@ hi! link htmlH5 Normal
 hi! link htmlH6 Normal
 
 " XML
-hi! link xmlTag Statement
-hi! link xmlEndTag xmlTag
-hi! link xmlTagName xmlTag
-hi! link xmlEqual xmlTag
-hi! link xmlEntity Special
-hi! link xmlEntityPunct xmlEntity
+hi! link xmlTag Normal
+hi! link xmlTagName Function
+hi! link xmlAttrib Identifier
+hi! link xmlAttribPunct Normal
 hi! link xmlDocTypeDecl PreProc
 hi! link xmlDocTypeKeyword PreProc
-hi! link xmlProcessingDelim xmlAttrib
+hi! link xmlEndTag xmlTag
+hi! link xmlEntity Special
+hi! link xmlEntityPunct Normal
+hi! link xmlEqual Normal
+hi! link xmlProcessingDelim Normal
 
 " Debugger.vim
 call s:X("DbgCurrent","DEEBFE","345FA8","","White","DarkBlue")

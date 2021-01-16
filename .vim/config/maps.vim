@@ -137,13 +137,15 @@ nnoremap <leader>ep :e ~/.vim/config/plugins.vim<CR>
 " Generate js-doc
 nnoremap <leader>dt :CocCommand docthis.documentThis<CR>
 
-" Git
+" Git diffing
+nnoremap <leader>gd :CocDisable<CR>:Gvdiffsplit!<CR>
 nnoremap <leader>g0 :diffget //3<CR>
 nnoremap <leader>g1 :diffget //2<CR>
+
+" Git
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gc :Commits<CR>
 nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gl :GBranches<CR>
@@ -235,7 +237,7 @@ noremap <D-p> :Files<CR>
 noremap <D-/> :Commentary<CR>
 
 " Toggle plugin
-nnoremap <D-b> :Toggle<CR>
+nnoremap <C-b> :Toggle<CR>
 
 " Cmd+j, Cmd+k to move lines up and down
 nnoremap <D-j> :m .+1<CR>==<C-z>
@@ -252,6 +254,10 @@ vnoremap gE $
 " Swap + and =
 nnoremap = +
 nnoremap + =
+
+" Swap ` and '
+nnoremap ' `
+nnoremap ` '
 
 " Slash plugin map
 noremap <plug>(slash-after) zz

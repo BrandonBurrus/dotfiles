@@ -31,7 +31,7 @@ function! AirlineInit() abort
   let g:airline_section_a = airline#section#create([''])
   let g:airline_section_b = airline#section#create(['mode'])
   let g:airline_section_c = airline#section#create(['branch'])
-  let g:airline_section_x = airline#section#create([])
+  " let g:airline_section_x = airline#section#create([])
   let g:airline_section_y = airline#section#create([])
   let g:airline_section_z = airline#section#create(['%{strftime("%I:%M %p")}'])
 endfunction
