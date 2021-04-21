@@ -1,47 +1,65 @@
 # Brandon Burrus .zshrc
 clear
 
-plugins=(common-aliases git tmux vi-mode zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(\
+  aws \
+  common-aliases \
+  dash \
+  docker \
+  docker-compose \
+  doctl \
+  dotenv \
+  fzf \
+  gcloud \
+  git \
+  golang \
+  gradle \
+  helm \
+  kubectl \
+  mvn \
+  postgres \
+  python \
+  spring \
+  tmux \
+  vi-mode \
+  zsh-autosuggestions \
+  zsh-syntax-highlighting \
+)
 
 bindkey -v
 
-export ANDROID_HOME=~/Library/Android/sdk
-export ANDROID_SDK_ROOT=~/Library/Android/sdk
-export ECLIM=/Applications/Eclipse.app/Contents/Eclipse
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export EDITOR="mvim"
-export GOPATH=~/Files/Go
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-14.jdk/Contents/Home
-export JDK_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-14.jdk/Contents/Home
-export M2_PATH=~/.m2
-export ZSH=~/.oh-my-zsh
-export ZSH_THEME="agnoster"
+export GOPATH=$HOME/go
+export M2_PATH=$HOME/.m2
+export MYVIMRC=$HOME/.vimrc
+export MYZSHRC=$HOME/.zshrc
+export ZSH=$HOME/.oh-my-zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#bbbbbb,bg=bold"
+export ZSH_THEME="agnoster"
 export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
-export MYVIMRC=~/.vimrc
-export MYZSHRC=~/.zshrc
+#   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
+#   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
 
 source $ZSH/oh-my-zsh.sh
 
 # Path additions
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:~/.scripts
-export PATH=$PATH:~/Files/Clairvoyant/LMS/Setup
-export PATH=$PATH:~/Files/Programs/Tomcat/bin
-export PATH=$PATH:~/Files/Programs/SpringBootCli/bin
-export PATH=$PATH:~/flutter/bin
+export PATH=$PATH:$HOME/.config/yarn/global/node_modules/.bin
+export PATH=$PATH:$HOME/.scripts
+export PATH=$PATH:$HOME/.yarn/bin
+export PATH=$PATH:$HOME/flutter/bin
+export PATH=$PATH:$HOME/ij/bin
 
 # Aliases
-
-if [[ -f ~/.aliases ]]; then
-  source ~/.aliases
-fi
+[ -f ~/.aliases ] && source ~/.aliases
 
 # Bash profile
+[ -f ~/.bash_profile ] && source ~/.bash_profile;
 
-if [[ -f ~/.bash_profile ]]; then
-  source ~/.bash_profile;
-fi
+# Jabba
+# [ -s "/Users/brandon/.jabba/jabba.sh" ] && source "/Users/brandon/.jabba/jabba.sh"
+
+clear
+complete -F __start_kubectl k

@@ -567,6 +567,10 @@ highlight javaAnnotation guifg=#888886 gui=italic
 
 hi! link typescriptDecorator javaAnnotation
 
+" Terraform
+hi! link terraBlockType Keyword
+hi! link terraBlockIntroduction Function
+
 " Lua
 hi! link luaOperator Conditional
 

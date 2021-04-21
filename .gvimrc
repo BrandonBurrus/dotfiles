@@ -21,8 +21,15 @@ endif
 " Remove MacVim menus (and related bindings)
 try
   aunmenu File.Open\.\.\.
-  aunmenu File.Close
-  aunmenu File.Print
 catch
 endtry
 
+try
+  aunmenu File.Close
+catch
+endtry
+
+try
+  aunmenu File.Print
+catch
+endtry

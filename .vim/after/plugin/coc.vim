@@ -1,7 +1,6 @@
 " Coc Extensions
 let g:coc_global_extensions = [
       \ "coc-angular",
-      \ "coc-bookmark",
       \ "coc-calc",
       \ "coc-css",
       \ "coc-cssmodules",
@@ -15,7 +14,6 @@ let g:coc_global_extensions = [
       \ "coc-jest",
       \ "coc-json",
       \ "coc-kite",
-      \ "coc-lua",
       \ "coc-omnisharp",
       \ "coc-protobuf",
       \ "coc-react-refactor",

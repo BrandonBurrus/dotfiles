@@ -2,7 +2,7 @@
 	name = Brandon Burrus
 	email = brandon@burrus.io
 [core]
-	ignorecase = true
+	ignorecase = false
 	editor = vi
 [hub]
 	protocol = https
@@ -24,4 +24,6 @@
 	s = switch
 	undo = reset --hard
 	unstage = reset HEAD
+[init]
+	defaultBranch = main
 

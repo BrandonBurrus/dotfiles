@@ -1,7 +1,6 @@
 {
   "useTaobaoRegistry": false,
   "packageManager": "yarn",
-  "latestVersion": "4.2.3",
-  "lastChecked": 1583459868597
+  "latestVersion": "4.5.12",
+  "lastChecked": 1616975491371
 }
-
